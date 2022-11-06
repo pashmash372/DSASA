@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Advance DSA/Advance DSA.iml" filepath="$PROJECT_DIR$/Advance DSA/Advance DSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Intermediate DSA/Intermediate DSA.iml" filepath="$PROJECT_DIR$/Intermediate DSA/Intermediate DSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/scaler-academy.iml" filepath="$PROJECT_DIR$/.idea/scaler-academy.iml" />
+    </modules>
+  </component>
+</project>
