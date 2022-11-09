@@ -4,15 +4,13 @@ public class Reversepairs {
 
     public int solve(int[] A) {
         int n = A.length;
-        mergeSort_and_count(A, 0, n - 1);
-        return 0;
+        return mergeSort_and_count(A, 0, n - 1);
     }
 
     int mergeSort_and_count(int[] A, int start, int end) {
         if (start < end) {
             int mid = (start + end) / 2;
-            int count = 0;
-            count += mergeSort_and_count(A, 0, mid) + mergeSort_and_count(A, mid + 1, end);
+            int count = mergeSort_and_count(A, start, mid) + mergeSort_and_count(A, mid + 1, end);
             int j = mid + 1;
             for (int i = start; i <= mid; i++) {
                 while (j <= end && 1L * A[i] > A[j] * 2L) {
@@ -20,10 +18,29 @@ public class Reversepairs {
                     count += j - (mid + 1);
                 }
             }
-//            merge(A,start,mid,end);
+            merge(A, start, mid, end);
             return count;
+        } else
+            return 0;
+    }
+
+    void merge(int[] A, int start, int mid, int end) {
+        int n1 = (mid - start + 1);
+        int n2 = (end - mid);
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+        for (int i = 0; i < n1; i++)
+            L[i] = A[start + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = A[mid + 1 + j];
+
+        int i = 0, j = 0;
+        for (int k = start; k <= end; k++) {
+            if (j >= n2 || i < n1 && L[i] <= R[j]) A[k] = L[i++];
+            else A[k] = R[j++];
+
         }
-        return 0;
     }
 }
 
