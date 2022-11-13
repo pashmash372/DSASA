@@ -14,8 +14,8 @@ public class SquareRootofIntegerTest {
         Assert.assertEquals(expected, ans);
     }@Test
     public void sqrt1() {
-        int A = 9;
-        int expected = 3;
+        int A = 100;
+        int expected = 10;
         SquareRootofInteger s = new SquareRootofInteger();
         int ans = s.sqrt(A);
         Assert.assertEquals(expected, ans);
