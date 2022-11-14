@@ -2,7 +2,20 @@ package com.scaler.homework;
 
 public class Minimizetheabsolutedifference {
     public int solve(int[] A, int[] B, int[] C) {
-        return 0;
+        int ans = Integer.MAX_VALUE;
+        int i = A.length - 1, j = B.length - 1, k = C.length - 1;
+        while (i >= 0 && j >= 0 && k >= 0) {
+            int mx = Integer.max(A[i], Integer.max(B[j], C[k]));
+            int mn = Integer.min(A[i], Integer.min(B[j], C[k]));
+            ans = Integer.min(ans, mx - mn);
+            if (A[i] == mx)
+                i--;
+            else if (B[j] == mx)
+                j--;
+            else if (C[k] == mx)
+                k--;
+        }
+        return ans;
     }
 }
 
