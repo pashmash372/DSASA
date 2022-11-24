@@ -1,7 +1,7 @@
 package com.scaler.dsa.assignment;
 
 
-import common.classes.ListNode;
+import com.scaler.dsa.common.classes.ListNode;
 
 public class DeletemiddlenodeofaLinkedList {
     public static ListNode solve(ListNode A) {
