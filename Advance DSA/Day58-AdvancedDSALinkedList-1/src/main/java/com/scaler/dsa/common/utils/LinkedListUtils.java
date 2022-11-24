@@ -1,7 +1,6 @@
 package com.scaler.dsa.common.utils;
 
 import com.scaler.dsa.common.classes.ListNode;
-//import common.classes.ListNode;
 
 import java.util.List;
 
