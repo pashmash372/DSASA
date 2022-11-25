@@ -12,6 +12,7 @@
         <module>Day56-AdvancedDSAProblemsonStringswithHashmaps</module>
         <module>Day58-AdvancedDSALinkedList-1</module>
         <module>Day59-AdvancedDSALinkedList-2</module>
+        <module>Day60-AdvancedDSALinkedList-3</module>
     </modules>
 
     <properties>
