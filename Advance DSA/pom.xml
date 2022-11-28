@@ -14,6 +14,7 @@
         <module>Day59-AdvancedDSALinkedList-2</module>
         <module>Day60-AdvancedDSALinkedList-3</module>
         <module>Day61-AdvancedDSAStacks-1</module>
+        <module>StreamsExample</module>
     </modules>
 
     <properties>
