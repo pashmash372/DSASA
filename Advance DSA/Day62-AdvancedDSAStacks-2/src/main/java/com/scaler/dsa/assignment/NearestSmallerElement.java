@@ -1,6 +1,20 @@
 package com.scaler.dsa.assignment;
 
+import java.util.Stack;
+
 public class NearestSmallerElement {
+    public int[] prevSmaller(int[] A) {
+        int[] ans = new int[A.length];
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < A.length; i++) {
+            /*pop all the elements from the stack greater than current element*/
+            while (!st.isEmpty() && st.peek() >= A[i]) st.pop();
+            if (st.isEmpty()) ans[i] = -1;
+            else ans[i] = st.peek();
+            st.push(A[i]);
+        }
+        return ans;
+    }
 }
 
 
