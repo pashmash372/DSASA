@@ -1,6 +1,34 @@
 package com.scaler.dsa.assignment;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class PerfectNumbers {
+    public String solve(int A) {
+        Queue<String> q = new LinkedList<>();
+        if (A == 1) return "11";
+        else if (A == 2) return "22";
+        q.add("1");
+        q.add("2");
+        int cur = 2;
+        String ans = "";
+        while (q.size() < A) {
+            StringBuilder sb = new StringBuilder(q.peek());
+            q.remove();
+            sb.append("1");
+            q.add(sb.toString());
+            cur++;
+            if (cur == A) ans = sb.toString();
+            sb.deleteCharAt(sb.length() - 1);
+            sb.append("2");
+            cur++;
+            if (cur == A) ans = sb.toString();
+            q.add(sb.toString());
+        }
+        /*ans has the first half of our final answer*/
+        StringBuilder sb = new StringBuilder(ans);
+        return ans + sb.reverse();
+    }
 }
 
 /*Q1. Perfect Numbers

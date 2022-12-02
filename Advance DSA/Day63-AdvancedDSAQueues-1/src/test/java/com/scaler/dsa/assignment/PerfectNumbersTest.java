@@ -1,14 +1,17 @@
 package com.scaler.dsa.assignment;
 
+import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class PerfectNumbersTest {
 
     @Test
-    public void solve(){
-        System.out.println("abhilash");
+    public void solve() {
+        PerfectNumbers p = new PerfectNumbers();
+        int A = 2;
+        String ans = p.solve(A);
+        String expected = "22";
+        Assert.assertEquals(expected, ans);
     }
 
 
