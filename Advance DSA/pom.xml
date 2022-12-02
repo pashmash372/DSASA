@@ -15,6 +15,7 @@
         <module>Day60-AdvancedDSALinkedList-3</module>
         <module>Day61-AdvancedDSAStacks-1</module>
         <module>Day63-AdvancedDSAQueues-1</module>
+        <module>Day64-AdvancedDSAQueueandDeque-2</module>
     </modules>
 
     <properties>
