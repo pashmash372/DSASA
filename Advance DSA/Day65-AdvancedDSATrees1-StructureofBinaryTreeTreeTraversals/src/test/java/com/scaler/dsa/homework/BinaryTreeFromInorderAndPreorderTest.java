@@ -1,7 +1,7 @@
 package com.scaler.dsa.homework;
 
-import com.scaler.dsa.TreeNode;
-import com.scaler.dsa.TreeUtils;
+import com.scaler.dsa.common.TreeNode;
+import com.scaler.dsa.common.TreeUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

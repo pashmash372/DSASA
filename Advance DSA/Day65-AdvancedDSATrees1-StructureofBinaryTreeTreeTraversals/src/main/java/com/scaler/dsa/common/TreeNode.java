@@ -1,4 +1,4 @@
-package com.scaler.dsa;
+package com.scaler.dsa.common;
 
 public class TreeNode {
     public int val;

@@ -1,6 +1,6 @@
 package com.scaler.dsa.assignment;
 
-import com.scaler.dsa.TreeNode;
+import com.scaler.dsa.common.TreeNode;
 
 import java.util.ArrayList;
 

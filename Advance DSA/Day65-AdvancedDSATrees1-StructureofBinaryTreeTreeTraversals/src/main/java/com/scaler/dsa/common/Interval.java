@@ -1,4 +1,4 @@
-package com.scaler.dsa;
+package com.scaler.dsa.common;
 
 /**
  * This is a class used by one OJ problem: MeetingRooms

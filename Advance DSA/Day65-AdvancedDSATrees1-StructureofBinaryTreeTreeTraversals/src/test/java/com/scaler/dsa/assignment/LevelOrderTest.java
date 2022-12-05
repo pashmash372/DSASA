@@ -1,7 +1,7 @@
 package com.scaler.dsa.assignment;
 
-import com.scaler.dsa.TreeNode;
-import com.scaler.dsa.TreeUtils;
+import com.scaler.dsa.common.TreeNode;
+import com.scaler.dsa.common.TreeUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.scaler.dsa;
+package com.scaler.dsa.common;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.scaler.dsa;
+package com.scaler.dsa.common;
 
 import java.util.*;
 
