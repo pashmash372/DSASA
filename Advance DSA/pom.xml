@@ -19,6 +19,7 @@
         <module>Day65-AdvancedDSATrees1-StructureofBinaryTreeTreeTraversals</module>
         <module>Day67-AdvancedDSATree3-BinarySearchTree</module>
         <module>Day68-AdvancedDSATrees4-LowestCommonAncestor</module>
+        <module>Day70-AdvancedDSATrees5-ProblemsonTrees</module>
     </modules>
 
     <properties>
