@@ -16,7 +16,7 @@
 
 - Q2. BST nodes in a range Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
 
-- Q3. Two Sum BST Hard Medium [![](https://img.shields.io/badge/-HARD-red)]()
+- Q3. Two Sum BST Hard   [![](https://img.shields.io/badge/-HARD-red)]()
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
 
