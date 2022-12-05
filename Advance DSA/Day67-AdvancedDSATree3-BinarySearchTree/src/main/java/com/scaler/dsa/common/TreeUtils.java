@@ -17,9 +17,7 @@ public class TreeUtils {
      * /
      * 1
      */
-    @Notes(context = "This is usually how Leetcode OJ passes a binary tree into testing: "
-            + "https://leetcode.com/faq/#binary-tree, I wrote this function for my own ease of testing when copying"
-            + "the test case from Leetcode in the form of [1, null, 2, 3].")
+    @Notes(context = "This is usually how Leetcode OJ passes a binary tree into testing: " + "https://leetcode.com/faq/#binary-tree, I wrote this function for my own ease of testing when copying" + "the test case from Leetcode in the form of [1, null, 2, 3].")
     public static TreeNode constructBinaryTree(List<Integer> treeValues) {
         TreeNode root = new TreeNode(treeValues.get(0));
         Queue<TreeNode> queue = new LinkedList<>();
@@ -52,12 +50,10 @@ public class TreeUtils {
             return 0;
         }
 
-        return Math.max(TreeUtils.maxLevel(root.left),
-                TreeUtils.maxLevel(root.right)) + 1;
+        return Math.max(TreeUtils.maxLevel(root.left), TreeUtils.maxLevel(root.right)) + 1;
     }
 
-    private static void printNodeInternal(
-            List<TreeNode> list, int level, int maxLevel) {
+    private static void printNodeInternal(List<TreeNode> list, int level, int maxLevel) {
         if (list.isEmpty() || CommonUtils.isAllElementsNull(list)) {
             return;
         }
@@ -89,8 +85,7 @@ public class TreeUtils {
             for (int j = 0; j < list.size(); j++) {
                 CommonUtils.printWhitespaces(firstSpaces - i);
                 if (list.get(j) == null) {
-                    CommonUtils.printWhitespaces(endgeLines + endgeLines + i
-                            + 1);
+                    CommonUtils.printWhitespaces(endgeLines + endgeLines + i + 1);
                     continue;
                 }
 
@@ -151,5 +146,27 @@ public class TreeUtils {
         root2 = constructBinaryTree(treeVals);
         //		inOrderTraversal(root2);
         printBinaryTree(root2);
+    }
+
+    public static TreeNode constructBinaryTree1(List<Integer> A) {
+        TreeNode root = new TreeNode(A.get(0));
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int i = 1;
+        while (q.size() != 0) {
+            TreeNode cur = q.peek();
+            q.remove();
+            if (cur == null) continue;
+            int val_left = A.get(i);
+            int val_right = A.get(i + 1);
+            i += 2;
+            if (val_left == -1) cur.left = null;
+            else cur.left = new TreeNode(val_left);
+            if (val_right == -1) cur.right = null;
+            else cur.right = new TreeNode(val_right);
+            q.add(cur.left);
+            q.add(cur.right);
+        }
+        return root;
     }
 }
