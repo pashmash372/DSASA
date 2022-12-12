@@ -28,6 +28,7 @@
         <module>Day79-AdvancedDSABacktracking-2</module>
         <module>Day81-AdvancedDSADynamicProgramming-1</module>
         <module>Day82-AdvancedDSADynamicProgramming-2</module>
+        <module>Day83-AdvancedDSADynamicProgramming-3</module>
     </modules>
 
     <properties>
