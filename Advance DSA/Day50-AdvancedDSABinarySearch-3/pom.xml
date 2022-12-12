@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.scaler.dsa</groupId>
-    <artifactId>Day49-AdvancedDSABinarySearch-2</artifactId>
+    <artifactId>Day50-AdvancedDSABinarySearch-3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Day49-AdvancedDSABinarySearch-2</name>
+    <name>Day50-AdvancedDSABinarySearch-3</name>
     <url>http://www.example.com</url>
 
     <properties>

@@ -63,6 +63,7 @@
         <module>Day47-AdvancedDSASorting-3</module>
         <module>Day48-AdvancedDSABinarySearch-1</module>
         <module>Day49-AdvancedDSABinarySearch-2</module>
+        <module>Day50-AdvancedDSABinarySearch-3</module>
     </modules>
 
     <properties>
