@@ -52,6 +52,7 @@
         <module>Day36-AdvancedDSAFollowUponBitManipulations</module>
         <module>Day37-AdvancedDSAMaths-ModularArithmetic</module>
         <module>Day38-AdvancedDSAMaths-GCD</module>
+        <module>Day39-AdvancedDSAMaths-PrimeNumbers</module>
     </modules>
 
     <properties>
