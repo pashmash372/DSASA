@@ -32,6 +32,7 @@
         <module>Day84-AdvancedDSADynamicProgramming-4</module>
         <module>Day86-AdvancedDSADynamicProgramming-6</module>
         <module>Day87-AdvancedDSADynamicProgramming-7</module>
+        <module>Day89-AdvancedDSAGraphs-1</module>
     </modules>
 
     <properties>
