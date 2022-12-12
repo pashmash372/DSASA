@@ -26,6 +26,7 @@
         <module>Day76-AdvancedDSAGreedyAlgorithms-1</module>
         <module>Day78-AdvancedDSABacktracking-1</module>
         <module>Day79-AdvancedDSABacktracking-2</module>
+        <module>Day81-AdvancedDSADynamicProgramming-1</module>
     </modules>
 
     <properties>
