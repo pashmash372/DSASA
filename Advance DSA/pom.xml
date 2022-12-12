@@ -36,6 +36,7 @@
         <module>Day90-AdvancedDSAGraphs-2</module>
         <module>Day91-AdvancedDSAGraphs-3</module>
         <module>Day92-AdvancedDSAGraphs-4</module>
+        <module>Day93-AdvancedDSAGraphs5</module>
     </modules>
 
     <properties>
