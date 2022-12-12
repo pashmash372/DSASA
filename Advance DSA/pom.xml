@@ -30,6 +30,8 @@
         <module>Day82-AdvancedDSADynamicProgramming-2</module>
         <module>Day83-AdvancedDSADynamicProgramming-3</module>
         <module>Day84-AdvancedDSADynamicProgramming-4</module>
+        <module>Day85-AdvancedDSADynamicProgramming-5</module>
+        <module>Day86-AdvancedDSADynamicProgramming-6</module>
     </modules>
 
     <properties>
