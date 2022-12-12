@@ -24,6 +24,7 @@
         <module>Day73-AdvancedDSAHeaps-1</module>
         <module>Day74-AdvancedDSAHeaps-2</module>
         <module>Day76-AdvancedDSAGreedyAlgorithms-1</module>
+        <module>Day78-AdvancedDSABacktracking-1</module>
     </modules>
 
     <properties>
