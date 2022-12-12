@@ -22,6 +22,7 @@
         <module>Day70-AdvancedDSATrees5-ProblemsonTrees</module>
         <module>Day71-AdvancedDSATrees6-TriesofCharacters</module>
         <module>Day73-AdvancedDSAHeaps-1</module>
+        <module>Day74-AdvancedDSAHeaps-2</module>
     </modules>
 
     <properties>
