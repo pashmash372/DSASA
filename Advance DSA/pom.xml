@@ -48,6 +48,7 @@
         <module>Day32-AdvancedDSAArrays-2</module>
         <module>Day33-AdvancedDSAArrays-3</module>
         <module>Day34-AdvancedDSABitManipulations-1</module>
+        <module>Day35-AdvancedDSABitManipulations-2</module>
     </modules>
 
     <properties>
