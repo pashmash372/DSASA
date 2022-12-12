@@ -21,6 +21,7 @@
         <module>Day68-AdvancedDSATrees4-LowestCommonAncestor</module>
         <module>Day70-AdvancedDSATrees5-ProblemsonTrees</module>
         <module>Day71-AdvancedDSATrees6-TriesofCharacters</module>
+        <module>Day73-AdvancedDSAHeaps-1</module>
     </modules>
 
     <properties>
