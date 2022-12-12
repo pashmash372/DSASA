@@ -49,6 +49,8 @@
         <module>Day33-AdvancedDSAArrays-3</module>
         <module>Day34-AdvancedDSABitManipulations-1</module>
         <module>Day35-AdvancedDSABitManipulations-2</module>
+        <module>Day36-AdvancedDSAFollowUponBitManipulations</module>
+        <module>Day37-AdvancedDSAMaths-ModularArithmetic</module>
     </modules>
 
     <properties>

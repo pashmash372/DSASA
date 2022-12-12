@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.scaler.dsa</groupId>
-    <artifactId>Day57-AdvancedDSAProblemSolvingSession</artifactId>
+    <artifactId>Day37-AdvancedDSAMaths-ModularArithmetic</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Day57-AdvancedDSAProblemSolvingSession</name>
+    <name>Day37-AdvancedDSAMaths-ModularArithmetic</name>
     <url>http://www.example.com</url>
 
     <properties>
