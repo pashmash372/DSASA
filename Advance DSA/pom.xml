@@ -14,6 +14,7 @@
         <module>Day59-AdvancedDSALinkedList-2</module>
         <module>Day60-AdvancedDSALinkedList-3</module>
         <module>Day61-AdvancedDSAStacks-1</module>
+        <module>Day62-AdvancedDSAStacks-2</module>
         <module>Day63-AdvancedDSAQueues-1</module>
         <module>Day64-AdvancedDSAQueueandDeque-2</module>
         <module>Day65-AdvancedDSATrees1-StructureofBinaryTreeTreeTraversals</module>
@@ -37,6 +38,14 @@
         <module>Day91-AdvancedDSAGraphs-3</module>
         <module>Day92-AdvancedDSAGraphs-4</module>
         <module>Day93-AdvancedDSAGraphs5</module>
+        <module>Day69-AdvancedDSATrees4-LowestCommonAncestorfollowupsession</module>
+        <module>Day75-AdvancedDSAHeapsFollowup</module>
+        <module>Day77-AdvanceDSAHeapsandGreedyFollowUp</module>
+        <module>Day80-AdvancedDSABacktrackingfollowupsession</module>
+        <module>Day85-AdvancedDSADynamicProgramming-5</module>
+        <module>Day88-AdvancedDSADynamicProgramming-8</module>
+        <module>Day31-AdvancedDSAArrays-1</module>
+        <module>Day32-AdvancedDSAArrays-2</module>
     </modules>
 
     <properties>
