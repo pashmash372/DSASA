@@ -46,6 +46,7 @@
         <module>Day88-AdvancedDSADynamicProgramming-8</module>
         <module>Day31-AdvancedDSAArrays-1</module>
         <module>Day32-AdvancedDSAArrays-2</module>
+        <module>Day33-AdvancedDSAArrays-3</module>
     </modules>
 
     <properties>
