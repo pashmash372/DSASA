@@ -53,6 +53,13 @@
         <module>Day37-AdvancedDSAMaths-ModularArithmetic</module>
         <module>Day38-AdvancedDSAMaths-GCD</module>
         <module>Day39-AdvancedDSAMaths-PrimeNumbers</module>
+        <module>Day40-AdvancedDSAMaths-Combinatorics</module>
+        <module>Day41-AdvancedDSAMaths-Combinatoricsfollowupsession</module>
+        <module>Day42-AdvancedDSARecursion-1</module>
+        <module>Day43-AdvancedDSARecursion-2</module>
+        <module>Day44-AdvancedDSAProblemSolvingSession</module>
+        <module>Day45-AdvancedDSASorting-1</module>
+        <module>Day46-AdvancedDSASorting-2</module>
     </modules>
 
     <properties>
