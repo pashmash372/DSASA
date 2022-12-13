@@ -24,6 +24,8 @@
         <module>Day17-IntermediateDSAMathsModularArithmeticIntroduction</module>
         <module>Day18-IntermediateDSAArraysandMaths</module>
         <module>Day19-IntermediateDSASorting</module>
+        <module>Day20-IntermediateDSAStrings</module>
+        <module>Day21-IntermediateDSAHashing-1</module>
     </modules>
 
     <properties>
