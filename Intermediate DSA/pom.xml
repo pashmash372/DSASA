@@ -18,6 +18,8 @@
         <module>Day11-IntermediateDSAArraysSubarrays</module>
         <module>Day12-IntermediateDSAArrays2DMatrices</module>
         <module>Day19-IntermediateDSASorting</module>
+        <module>Day13-IntermediateDSAArraysinterviewProblems</module>
+        <module>Day14-IntermediateDSABitManipulations-1</module>
     </modules>
 
     <properties>
