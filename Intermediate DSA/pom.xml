@@ -22,6 +22,8 @@
         <module>Day15-IntermediateDSABitManipulations-2</module>
         <module>Day16-IntermediateDSABitManipulation3</module>
         <module>Day17-IntermediateDSAMathsModularArithmeticIntroduction</module>
+        <module>Day18-IntermediateDSAArraysandMaths</module>
+        <module>Day19-IntermediateDSASorting</module>
     </modules>
 
     <properties>

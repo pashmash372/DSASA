@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.scaler.dsa</groupId>
-    <artifactId>Day17-IntermediateDSAMathsModularArithmeticIntroduction</artifactId>
+    <artifactId>Day18-IntermediateDSAArraysandMaths</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Day17-IntermediateDSAMathsModularArithmeticIntroduction</name>
+    <name>Day18-IntermediateDSAArraysandMaths</name>
     <url>http://www.example.com</url>
 
     <properties>
