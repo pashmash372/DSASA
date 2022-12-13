@@ -28,6 +28,7 @@
         <module>Day21-IntermediateDSAHashing-1</module>
         <module>Day22-IntermediateHashing-2</module>
         <module>Day23-IntermediateDSARecursion-1</module>
+        <module>Day24-IntermediateDSARecursion-2</module>
     </modules>
 
     <properties>
