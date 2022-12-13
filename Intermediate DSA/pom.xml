@@ -26,6 +26,7 @@
         <module>Day19-IntermediateDSASorting</module>
         <module>Day20-IntermediateDSAStrings</module>
         <module>Day21-IntermediateDSAHashing-1</module>
+        <module>Day22-IntermediateHashing-2</module>
     </modules>
 
     <properties>
