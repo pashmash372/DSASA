@@ -85,3 +85,20 @@ Explanation 1:
 Explanation 2:
 
  There is no need to turn any switches as all the bulbs are already on.*/
+
+/*The order in which you press the switch does not affect the final state.
+
+Example:
+
+Input : [0 1 0 1]
+
+Case 1:
+    Press switch 0 : [1 0 1 0]
+    Press switch 1 : [1 1 0 1]
+
+Case 2:
+    Press switch 1 : [0 0 1 0]
+    Press switch 0 : [1 1 0 1]
+Therefore we can choose a particular order. To make things easier, let’s go from left to right. At the current position, if the bulb is on, we move to the right, else we switch it on. This works because changing any switch to the right of it will not affect it anymore.*/
+
+/*The main idea to solve this problem is to traverse the string and when you encounter a vowel, add ( length(string) - position_of_curr_char ) to the answer.*/

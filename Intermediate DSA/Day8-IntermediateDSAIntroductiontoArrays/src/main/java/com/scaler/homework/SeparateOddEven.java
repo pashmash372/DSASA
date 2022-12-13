@@ -146,3 +146,9 @@ Explanation 2:
  There are no even elements in the array.
 
 */
+
+/*You can count the number of odds and evens by traversing through the array and checking each element.
+Now, you can make two new arrays having a size equal to the number of odds and number of evens, respectively.
+Now, you can fill the new arrays by traversing through the array and placing each odd element at the last unoccupied
+index of the first array and each even element at the last unoccupied index of the second array.
+After that, you can print the arrays.*/

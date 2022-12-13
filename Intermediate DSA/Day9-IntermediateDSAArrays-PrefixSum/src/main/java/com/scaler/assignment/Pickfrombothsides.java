@@ -115,3 +115,19 @@ Explanation 2:
 
 
 See Expected Output*/
+
+/*Approach using Prefix and Suffix Sums:
+
+Maintain two arrays prefix[i] and suffix[i] where prefix[i] denotes sum of elements from index [0,i] and suffix[i] denotes sum of elements from index [i,N-1].
+
+Now iterate from left and one by one pick elements from left for example: if you pick ‘a’ elements from left and remaining ‘k-a’ elements from right.
+So the sum in this case will be prefix[a-1] + suffix[n-(k-a)]
+
+Maintain the maximum among all and return it.
+
+Time Complexity: O(N)
+Space Complexity: O(N)
+
+where N is number of elements in array A
+
+Bonus: Try solving it in O(1) space.*/

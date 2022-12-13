@@ -67,3 +67,6 @@ Column 1 = 1+5+9 = 15
 Column 2 = 2+6+2 = 10
 Column 3 = 3+7+3 = 13
 Column 4 = 4+8+4 = 16*/
+
+/*Iterate the 2D vector column wise and by storing sum of a column in a variable and push it in a vector after the completion of each column.
+Still unable to solve the problem after this hint?*/

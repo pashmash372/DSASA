@@ -1,14 +1,15 @@
 package com.scaler.homework;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class ProductarraypuzzleTest {
 
+
     @Test
     public void solve() {
-        int A[] = {1, 2, 3, 4, 5};
+        int[] A = {1, 2, 3, 4, 5};
         Productarraypuzzle p = new Productarraypuzzle();
         int[] ans = p.solve(A);
         int[] expected = {120, 60, 40, 30, 24};
@@ -19,7 +20,7 @@ public class ProductarraypuzzleTest {
 
     @Test
     public void solve1() {
-        int A[] = {5, 1, 10, 1};
+        int[] A = {5, 1, 10, 1};
         Productarraypuzzle p = new Productarraypuzzle();
         int[] ans = p.solve(A);
         int[] expected = {10, 50, 5, 50};

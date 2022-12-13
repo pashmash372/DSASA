@@ -1,8 +1,8 @@
 package com.scaler.homework;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class MINIMUMPICKSTest {
 
@@ -10,9 +10,9 @@ public class MINIMUMPICKSTest {
     public void solve() {
         int[] A = {0, 2, 9};
         MINIMUMPICKS m = new MINIMUMPICKS();
-        int expected=-7;
+        int expected = -7;
         int ans = m.solve(A);
-        assertEquals("FAILED",ans,expected);
+        assertEquals("FAILED", ans, expected);
 
     }
 
@@ -20,9 +20,9 @@ public class MINIMUMPICKSTest {
     public void solve1() {
         int[] A = {5, 17, 100, 1};
         MINIMUMPICKS m = new MINIMUMPICKS();
-        int expected=99;
+        int expected = 99;
         int ans = m.solve(A);
-        assertEquals("FAILED",ans,expected);
+        assertEquals("FAILED", ans, expected);
 
     }
 }

@@ -86,3 +86,8 @@ The first anti diagonal of the matrix is [1 ], the rest spaces shoud be filled w
 The second anti diagonal of the matrix is [2, 4 ], the rest spaces shoud be filled with 0 making the row as [2, 4, 0].
 The third anti diagonal of the matrix is [3, 0, 0 ], the rest spaces shoud be filled with 0 making the row as [3, 0, 0].
 */
+
+/*Let’s look at how the coordinates change when you move from one element to the other in the anti-diagonal.
+With every movement, the row increases by one, and the column decreases by one ( or in other words, (1, -1) gets added to the current coordinates).
+Now, all we need to know is the start ( or the first element ) in each diagonal.
+Can you figure out which elements qualify as the first elements in each diagonal?*/

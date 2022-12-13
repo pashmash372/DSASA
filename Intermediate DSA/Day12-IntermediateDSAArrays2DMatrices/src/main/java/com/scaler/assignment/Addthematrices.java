@@ -69,3 +69,8 @@ Explanation 1:
 
 A + B = [[1+9, 2+8, 3+7],[4+6, 5+5, 6+4],[7+3, 8+2, 9+1]] = [[10, 10, 10], [10, 10, 10], [10, 10, 10]].
 */
+
+/*Run a outer loop from i = 1 to i = row - 1
+Run a inner loop from j = 1 to j = col - 1, and do A[i][j] += B[i][j]
+return the updated ans matrix.
+Still unable to solve the problem after this hi*/

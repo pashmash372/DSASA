@@ -86,3 +86,7 @@ Explanation 1:
 Explanation 2:
 
  [[1, 1]].[[2, 3]] = [[1 * 2 + 1 * 3]] = [[5]]*/
+
+/*If two matrices A (M x N) and B (N x P) are multiplied, then the order of the resultant matrix C will be (M x P).
+Define a matrix C with size M x P with initial values equal to 0.
+An individual (i, j)th element of resultant matrix is the sum of multiplications of elements of ith row of matrix A and all the elements of jth column of matrix B.*/

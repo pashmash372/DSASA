@@ -79,3 +79,13 @@ Explanation 2:
 
 
 See Expected Output*/
+
+/*If the element exists in the array, then the answer is the number of elements that are greater than B.
+
+If the element does not exist in the array, then the answer is -1.
+
+Just do a linear traversal to find both the conditions.
+
+Time complexity is O(N).
+
+Space complexity is O(1).*/

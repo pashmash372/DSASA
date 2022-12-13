@@ -79,3 +79,34 @@ Explanation 1:
 Explanation 2:
 
  There is no subsequence "AG" in the given string.*/
+
+/*Approach 1
+
+The main task is to find the number of times subsequence “AG” appears in a string.
+Simply find the number of G’s after any index i by taking suffix sum.
+Then traverse the string again, and when you encounter an ‘A’, add the number of G’s after that to the answer.
+
+Time Complexity : O(n)
+Space Complexity (extra) : O(n)
+
+where ‘n’ is the length of the string A.
+
+This solution is enough to pass the test casses.
+However , Do we really need O(n) space? Can you think of a solution with constant space?
+
+Approach 2(memory efficient)
+
+This is just a modification of the previous approach.
+Instead of keeping a suffix array for count of G’s , we can instead keep a variable ‘g’ storing count of G’s and iterate in the reverse order.
+If the current character is ‘G’ , increment g.
+If the current character is ‘A’ , add g to our answer.
+
+for i from n-1 to 0
+    if A[i]=='G'
+        g++
+    else
+        ans+=g
+        ans%=mod
+
+Time complexity : O(n)
+Space complexity : O(1)*/
