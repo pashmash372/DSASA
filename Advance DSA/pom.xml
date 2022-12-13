@@ -69,6 +69,7 @@
         <module>Day53-AdvancedDSAHashing-2</module>
         <module>Day54-FollowupsessiononHashing</module>
         <module>Day55-AdvancedDSAStringsPatternMatching</module>
+        <module>Day66-AdvancedDSATrees2-ViewsTypesofBinaryTree</module>
     </modules>
 
     <properties>
