@@ -67,6 +67,8 @@
         <module>Day51-AdvancedDSATwoPointers-1</module>
         <module>Day52-AdvancedDSAHashing-1</module>
         <module>Day53-AdvancedDSAHashing-2</module>
+        <module>Day54-FollowupsessiononHashing</module>
+        <module>Day55-AdvancedDSAStringsPatternMatching</module>
     </modules>
 
     <properties>
