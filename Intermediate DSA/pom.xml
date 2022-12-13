@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.scaler.dsa</groupId>
+    <artifactId>IntermediateDSA</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Day5-IntermediateDSAIntroductiontoProblemSolving</module>
+        <module>Day6-IntermediateDSATimeComplexity-1</module>
+        <module>Day7-IntermediateDSATimeComplexity-2</module>
+        <module>Day8-IntermediateDSAIntroductiontoArrays</module>
+        <module>Day9-IntermediateDSAArrays-PrefixSum</module>
+        <module>Day10-IntermediateDSAArrays-CarryForward</module>
+        <module>Day11-IntermediateDSAArraysSubarrays</module>
+        <module>Day12-IntermediateDSAArrays2DMatrices</module>
+        <module>Day19-IntermediateDSASorting</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>

@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.scaler.dsa</groupId>
-    <artifactId>Day19-IntermediateDSASorting</artifactId>
+    <artifactId>Day12-IntermediateDSAArrays2DMatrices</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Day19-IntermediateDSASorting</name>
+    <name>Day12-IntermediateDSAArrays2DMatrices</name>
     <dependencies>
 
         <dependency>

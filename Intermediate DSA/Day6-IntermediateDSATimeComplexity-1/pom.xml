@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.scaler.dsa</groupId>
-    <artifactId>Day19-IntermediateDSASorting</artifactId>
+    <artifactId>Day6-IntermediateDSATimeComplexity-1</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Day19-IntermediateDSASorting</name>
+    <name>Day6-IntermediateDSATimeComplexity-1</name>
     <dependencies>
 
         <dependency>
