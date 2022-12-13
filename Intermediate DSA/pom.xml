@@ -20,6 +20,7 @@
         <module>Day19-IntermediateDSASorting</module>
         <module>Day13-IntermediateDSAArraysinterviewProblems</module>
         <module>Day14-IntermediateDSABitManipulations-1</module>
+        <module>Day15-IntermediateDSABitManipulations-2</module>
     </modules>
 
     <properties>
