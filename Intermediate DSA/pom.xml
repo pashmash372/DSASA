@@ -29,6 +29,7 @@
         <module>Day22-IntermediateHashing-2</module>
         <module>Day23-IntermediateDSARecursion-1</module>
         <module>Day24-IntermediateDSARecursion-2</module>
+        <module>Day25-IntermediateDSALinkedListBasics</module>
     </modules>
 
     <properties>
