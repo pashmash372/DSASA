@@ -31,6 +31,7 @@
         <module>Day24-IntermediateDSARecursion-2</module>
         <module>Day25-IntermediateDSALinkedListBasics</module>
         <module>Day26-IntermediateDSAStacksandQueues-Basics</module>
+        <module>Day27-IntermediateDSATreesBasics-1</module>
     </modules>
 
     <properties>
