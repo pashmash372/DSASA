@@ -32,6 +32,9 @@
         <module>Day25-IntermediateDSALinkedListBasics</module>
         <module>Day26-IntermediateDSAStacksandQueues-Basics</module>
         <module>Day27-IntermediateDSATreesBasics-1</module>
+        <module>Day28-IntermediateDSAContest-1</module>
+        <module>Day29-IntermediateDSATreesBasics-2</module>
+        <module>Day30-IntermediateDSASubsequencesSubsets</module>
     </modules>
 
     <properties>
