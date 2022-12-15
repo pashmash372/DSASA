@@ -48,7 +48,6 @@ public class RunningMedian {
             add(A[i]);
             ans[i] = get_median();
         }
-
         return ans;
     }
 
@@ -61,13 +60,7 @@ class CustomComp1 implements Comparator<Integer> {
     }
 }
 
-class CustomComp implements Comparator<Integer> {
 
-    @Override
-    public int compare(Integer a, Integer b) {
-        return b - a;
-    }
-}
 /*Q1. Running Median
 Solved
 character backgroundcharacter
