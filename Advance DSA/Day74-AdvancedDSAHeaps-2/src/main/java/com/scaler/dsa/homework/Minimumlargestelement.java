@@ -13,7 +13,7 @@ public class Minimumlargestelement {
         //Let's keep a state array to keep track of the value of every element in the array after K operations.
         //Initially state array will be the same as the inital array.
         int[] state = new int[s];
-        System.arraycopy(A, 0, state, 0, s);
+        System.arraycopy(A, 0, state, 0, s);// same as copy of array
 
         //Consider a min heap. And initially push the next state of every element in the heap.
         //Note that you need to keep track of the indices of every element in the heap, present in the initial array.
@@ -45,7 +45,7 @@ class Pair {
         this.ss = d;
     }
 }
-
+/*increasing order*/
 class CustomComp2 implements Comparator<Pair> {
     @Override
     public int compare(Pair a, Pair b) {

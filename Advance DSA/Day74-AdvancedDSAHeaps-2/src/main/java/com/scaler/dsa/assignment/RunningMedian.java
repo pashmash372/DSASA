@@ -53,6 +53,7 @@ public class RunningMedian {
 
 }
 
+/*decreasing order*/
 class CustomComp1 implements Comparator<Integer> {
     @Override
     public int compare(Integer a, Integer b) {

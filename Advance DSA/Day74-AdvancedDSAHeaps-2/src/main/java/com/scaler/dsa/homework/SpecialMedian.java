@@ -41,6 +41,7 @@ public class SpecialMedian {
         }
     }
 }
+/*decreasing order*/
 class CustomComp3 implements Comparator< Integer > {
     @Override
     public int compare(Integer a, Integer b) {
