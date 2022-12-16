@@ -1,23 +1,21 @@
 package com.scaler.dsa.assignment;
 
+
 public class FlattenBinaryTreetoLinkedList {
-    public TreeNode flatten(TreeNode root) {
-        if (root != null) {
-            flatten(root.right);
-            if (root.left != null) {
-                flatten(root.left);
-                TreeNode node = root.left;
-                while (node.right != null) {
-                    node = node.right;
-                }
-                node.right = root.right;
-                root.right = root.left;
-                root.left = null;
-            }
-        }
-        return root;
+    TreeNode head=null;
+    public TreeNode flatten(TreeNode a) {
+        if(a==null)
+            return null;
+        flatten(a.right);
+        flatten(a.left);
+
+        a.right=head;
+        a.left=null;
+        head=a;
+        return head;
     }
 }
+
 
 class TreeNode {
     int val;
