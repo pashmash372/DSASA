@@ -11,7 +11,7 @@ public class AnotherCoinProblem {
         int val = 1;
 
         // Storing all denominations of coins
-        while (val <= 2000000000) {
+        while (val <= 2000-000-000) {
             v.add(val);
             val = val * 5;
         }
