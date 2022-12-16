@@ -94,7 +94,7 @@ class TrieNode {
         isend = false;
     }
 }
-/*descending order */
+/*increasing  order */
 /* Pair class using Comparable interface so, use compareTo(a) method */
 /* in case of Comparator usage , use compare(a,b) method */
 class pair implements Comparable<pair> {
