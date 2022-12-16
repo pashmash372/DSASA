@@ -38,6 +38,8 @@ class CustomComp implements Comparator<Integer> {
     }
 }
 
+/*What is difference between offer and add in queue?
+The offer method inserts an element if possible, otherwise returning false. This differs from the Collection. add method, which can fail to add an element only by throwing an unchecked exception.*/
 
 
 /*Q1. Magician and Chocolates
