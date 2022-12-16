@@ -9,8 +9,7 @@ public class DistributeCandy {
         int[] candies = new int[n + 1];
         Arrays.fill(candies, 1);
         for (int i = 2; i <= n; i++) {
-            if (A[i - 1] > A[i - 2])
-                candies[i] = candies[i - 1] + 1;
+            if (A[i - 1] > A[i - 2]) candies[i] = candies[i - 1] + 1;
         }
         for (int i = n - 1; i >= 1; i--) {
             if (A[i - 1] > A[i]) {
@@ -21,6 +20,7 @@ public class DistributeCandy {
         for (int i = 1; i <= n; i++) s += candies[i];
         return s;
     }
+
 }
 
 /*Q1. Distribute Candy

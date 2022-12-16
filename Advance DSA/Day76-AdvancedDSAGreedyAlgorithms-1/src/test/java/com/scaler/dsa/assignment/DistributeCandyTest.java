@@ -14,6 +14,7 @@ public class DistributeCandyTest {
         Assert.assertEquals(expected, ans);
     }
 
+
     @Test
     public void solve1() {
         int[] A = {1, 5, 2, 1};
@@ -22,5 +23,6 @@ public class DistributeCandyTest {
         int expected = 7;
         Assert.assertEquals(expected, ans);
     }
+
 
 }
