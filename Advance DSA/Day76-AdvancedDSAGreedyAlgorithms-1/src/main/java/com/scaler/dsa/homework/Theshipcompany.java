@@ -40,6 +40,7 @@ public class Theshipcompany {
         return res;
     }
 }
+/*decreasing order*/
 class CustomComp implements Comparator< Integer > {
     @Override
     public int compare(Integer a, Integer b) {
