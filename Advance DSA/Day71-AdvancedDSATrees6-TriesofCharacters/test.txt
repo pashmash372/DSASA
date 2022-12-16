@@ -1,0 +1,5 @@
+1
+6 3
+abcd aecd abaa abef acdcc acbcc
+2 1 3 4 6 5
+ab abc a

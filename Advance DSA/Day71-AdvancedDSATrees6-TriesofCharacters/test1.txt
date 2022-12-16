@@ -1,0 +1,5 @@
+1
+5 3
+aaaa aacd abaa abaa aadcc
+3 4 1 2 6
+aa aba abc

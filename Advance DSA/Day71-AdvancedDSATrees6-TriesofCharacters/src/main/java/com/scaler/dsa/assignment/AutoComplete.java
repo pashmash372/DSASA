@@ -28,7 +28,7 @@ public class AutoComplete {
 
     public static void solve(String[] A, int[] W, String[] B) {
         TrieNode root = new TrieNode();
-        ArrayList<pair> v = new ArrayList<pair>();
+        ArrayList<pair> v = new ArrayList<>();
         for (int i = 0; i < A.length; i++) {
             v.add(new pair(W[i], i));
         }
@@ -94,7 +94,9 @@ class TrieNode {
         isend = false;
     }
 }
-
+/*descending order */
+/* Pair class using Comparable interface so, use compareTo(a) method */
+/* in case of Comparator usage , use compare(a,b) method */
 class pair implements Comparable<pair> {
     int first;
     int second;
