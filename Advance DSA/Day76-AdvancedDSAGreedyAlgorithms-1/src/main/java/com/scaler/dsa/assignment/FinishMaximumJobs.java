@@ -19,6 +19,7 @@ public class FinishMaximumJobs {
             a[i] = new pair(A[i], B[i]);
             assert(A[i] != B[i]);
         }
+        /*increasing order*/
         Arrays.sort(a, (pair u, pair v) -> (u.E - v.E));
         int end = 0, ans = 0;
         for (pair job: a) {
