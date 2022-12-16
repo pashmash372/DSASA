@@ -3,52 +3,53 @@ package com.scaler.dsa.assignment;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class FreeCars {
     public int solve(int[] A, int[] B) {
-        int mod = (int)1e9 + 7;
-        int n = A.length;
-        PriorityQueue< Integer > pending = new PriorityQueue<Integer>(Collections.reverseOrder());
-
-        ArrayList<pair> v = new ArrayList<pair>();
-
-        for (int i = 0; i < n; i++){
-            v.add(new pair(A[i], B[i]));
+        ArrayList<Node> list = new ArrayList<Node>();
+        for (int i = 0; i < A.length; i++) {
+            list.add(new Node(A[i], B[i]));
         }
-
-        Collections.sort(v);
-
-        int ans = 0;
-        int tim = v.get(n-1).first - 1;
-        for (int i = n - 1; i >= 0; i--) {
-            while (tim >= v.get(i).first && pending.size() > 0) {
-                tim--;
-                ans = (ans + pending.poll()) % mod;
+        Collections.sort(list, new CustomComparator());
+//min heap
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+        int time = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (time <= list.get(i).time - 1) {
+                pq.add(list.get(i).profit);
+            } else {
+                time--;
+                if (pq.peek() < list.get(i).profit) {
+                    pq.poll();
+                    pq.add(list.get(i).profit);
+                }
             }
-            if (pending.size() == 0)
-                tim = v.get(i).first - 1;
-            pending.add(v.get(i).second);
+            time++;
         }
-        while (tim >= 0 && pending.size() > 0) {
-            tim--;
-            ans = (ans + pending.poll()) % mod;
+        long ans = 0, m = (1000 * 1000 * 1000) + 7;
+        while (!pq.isEmpty()) {
+//System.out.println(pq.peek()+"xx");
+            ans += pq.poll();
+            ans %= m;
         }
-        return ans;
+        return (int) ans;
     }
-    class pair implements Comparable <pair> {
-        int first;
-        int second;
-        public pair(int a, int b){
-            this.first = a;
-            this.second = b;
+
+    class Node {
+        int time;
+        int profit;
+
+        public Node(int time, int profit) {
+            this.time = time;
+            this.profit = profit;
         }
-        //@Override
-        public int compareTo(pair b){
-            if(this.first == b.first)
-                return -(b.second - this.second);
-            else
-                return -(b.first - this.first);
+    }
+
+    class CustomComparator implements Comparator<Node> {
+        public int compare(Node a, Node b) {
+            return a.time - b.time;
         }
     }
 }
