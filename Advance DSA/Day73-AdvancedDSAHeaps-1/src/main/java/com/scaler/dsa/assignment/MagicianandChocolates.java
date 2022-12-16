@@ -30,6 +30,7 @@ public class MagicianandChocolates {
     }
 }
 
+/*descending order */
 class CustomComp implements Comparator<Integer> {
     @Override
     public int compare(Integer a, Integer b) {
