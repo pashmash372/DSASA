@@ -2,12 +2,14 @@ package com.scaler.dsa.homework;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class BClosestPointstoOrigin {
     public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, int B) {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         /*sorts the list based on euclidean distance from origin */
+
+        /*increasing order sorting */
+
         Collections.sort(A, (a, b) -> {
             long d1 = (long) a.get(0) * a.get(0) + (long) a.get(1) * a.get(1);
             long d2 = (long) b.get(0) * b.get(0) + (long) b.get(1) * b.get(1);
