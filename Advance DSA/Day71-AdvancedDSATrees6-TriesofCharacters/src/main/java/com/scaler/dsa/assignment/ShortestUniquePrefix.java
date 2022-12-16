@@ -1,73 +1,91 @@
 package com.scaler.dsa.assignment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class ShortestUniquePrefix {
-    private Node root;
-    public ArrayList < String > prefix(ArrayList < String > A) {
-        ArrayList < String > res = new ArrayList < > ();
-        for (String str: A) {
-            put(str);
+
+    Node root = new Node('*');
+
+    public String[] prefix(String[] A) {
+
+        for (String word : A) {
+            insertInTries(word);
         }
-        for (String str: A) {
-            String prefix = getPrefix(str);
-            res.add(prefix);
+
+        List<String> list = new ArrayList<>();
+        for (String word : A) {
+            list.add(getShortestUniquePrefix(word));
         }
-        return res;
+
+        String[] arr = list.toArray(new String[0]);
+        return arr;
     }
 
-    public String getPrefix(String str) {
-        StringBuilder strB = new StringBuilder();
-        return get(root, str, 0, strB);
-    }
 
-    public String get(Node node, String str, int index, StringBuilder strB) {
-        char c = str.charAt(index);
-        if (c < node.c) {
-            return get(node.left, str, index, strB);
-        } else if (c > node.c) {
-            return get(node.right, str, index, strB);
-        } else if (node.val == 1) {
-            strB.append(node.c);
-            return strB.toString();
-        } else {
-            strB.append(node.c);
-            return get(node.mid, str, index + 1, strB);
+    private String getShortestUniquePrefix(String word) {
+
+        StringBuilder sb = new StringBuilder();
+        Node temp = root;
+
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            Node currentNode = temp.children.get(ch);
+
+            if (currentNode.count == 1) {
+                sb.append(currentNode.data);
+                return sb.toString();
+            }
+
+            //Adding the current Character in the  unique prefix string
+            sb.append(currentNode.data);
+
+            //Uodating the current temp with the next node.
+            temp = temp.children.get(ch);
         }
+
+        return word;
     }
 
-    public void put(String str) {
-        root = put(root, str, 0);
-    }
 
-    public Node put(Node node, String str, int index) {
-        if (index == str.length())
-            return node;
-        if (node == null)
-            node = new Node(str.charAt(index));
-        char c = str.charAt(index);
-        if (c < node.c) {
-            node.left = put(node.left, str, index);
-        } else if (c > node.c) {
-            node.right = put(node.right, str, index);
-        } else {
-            node.mid = put(node.mid, str, index + 1);
-            node.val += 1;
+    private void insertInTries(String word) {
+
+        Node temp = root;
+
+        for (int i = 0; i < word.length(); i++) {
+
+            char ch = word.charAt(i);
+
+            if (!temp.children.containsKey(ch)) {
+                temp.children.put(ch, new Node(ch));
+            }
+
+            // Keep tracking of the count of words going throug this Character
+            temp.count = temp.count + 1;
+
+            //Uodating the current temp with the next node.
+            temp = temp.children.get(ch);
         }
-        return node;
+
+        temp.isEnd = true;
     }
+
 
     class Node {
-        char c;
-        int val;
-        Node left, mid, right;
-        public Node() {}
-        public Node(char c) {
-            this.c = c;
-            this.val = 0;
+        char data;
+        Map<Character, Node> children = new HashMap<>();
+        int count = 0;
+        boolean isEnd = false;
+
+        public Node(char data) {
+            this.data = data;
         }
     }
 }
+
 
 
 /*Q3. Shortest Unique Prefix

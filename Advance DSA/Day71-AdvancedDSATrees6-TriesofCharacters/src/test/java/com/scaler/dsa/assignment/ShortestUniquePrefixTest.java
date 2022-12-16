@@ -3,17 +3,23 @@ package com.scaler.dsa.assignment;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShortestUniquePrefixTest {
 
     @Test
     public void solve() {
-        ArrayList<String> A = new ArrayList<>(List.of("zebra", "dog", "duck", "dove"));
+        String[] A = {"zebra", "dog", "duck", "dove"};
         ShortestUniquePrefix s = new ShortestUniquePrefix();
-        ArrayList<String> ans = s.prefix(A);
-        ArrayList<String> expected = new ArrayList<>(List.of("z", "dog", "du", "dov"));
+        String[] ans = s.prefix(A);
+        String[] expected = {"z", "dog", "du", "dov"};
+        Assert.assertEquals(expected, ans);
+    }
+
+    @Test
+    public void solve1() {
+        String[] A = {"apple", "ball", "cat"};
+        ShortestUniquePrefix s = new ShortestUniquePrefix();
+        String[] ans = s.prefix(A);
+        String[] expected = {"a", "b", "c"};
         Assert.assertEquals(expected, ans);
     }
 }
