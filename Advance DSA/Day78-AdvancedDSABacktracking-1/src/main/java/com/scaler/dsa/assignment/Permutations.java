@@ -5,20 +5,22 @@ import java.util.ArrayList;
 
 public class Permutations {
     private boolean[] marked;
-    private ArrayList <ArrayList< Integer >> res;
-    private ArrayList < Integer > A;
+    private ArrayList<ArrayList<Integer>> res;
+    private ArrayList<Integer> A;
     private int n;
-    public ArrayList < ArrayList < Integer >> permute(ArrayList < Integer > A) {
+
+    public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> A) {
         n = A.size();
         marked = new boolean[n];
-        res = new ArrayList < > ();
+        res = new ArrayList<>(); // 2d list
         this.A = A;
-        rec(0, new ArrayList < > ());
+        rec(0, new ArrayList<>());
         return res;
     }
-    public void rec(int idx, ArrayList < Integer > temp) {
+
+    public void rec(int idx, ArrayList<Integer> temp) {
         if (idx == n) {
-            res.add(new ArrayList < > (temp));
+            res.add(new ArrayList<>(temp));
             return;
         }
         // try all possible elements for the current position

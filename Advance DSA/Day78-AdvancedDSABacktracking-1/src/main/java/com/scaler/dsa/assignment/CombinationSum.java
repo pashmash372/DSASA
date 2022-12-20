@@ -9,7 +9,7 @@ public class CombinationSum {
 
     public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) {
         res = new ArrayList<>();
-        ArrayList<Integer> unique = new ArrayList<>();
+        ArrayList<Integer> unique = new ArrayList<>();  // Set can also been used here
         if (A == null) return res;
         Collections.sort(A);
         unique.add(A.get(0));
@@ -26,7 +26,7 @@ public class CombinationSum {
             this.res.add(new ArrayList(res));
             return;
         }
-        if (B < 0) return;
+        if (B < 0) return; // given in the question 1<=B< 50 constraints
         // try for all possible next candidate
         for (int i = index; i < A.size(); i++) {
             int num = A.get(i);

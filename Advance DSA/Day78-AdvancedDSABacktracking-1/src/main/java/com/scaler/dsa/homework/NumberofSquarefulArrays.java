@@ -6,26 +6,27 @@ import java.util.*;
 public class NumberofSquarefulArrays {
     boolean isPerfectSquare(int n) {
         int m = (int) Math.sqrt(n) - 2;
-        while (1L * m * m < n) m++;
+        while ((long) m * m < n) m++;
         return m * m == n;
     }
+
     public int solve(int[] A) {
-        HashMap < Integer, Integer > count = new HashMap< >();
+        HashMap<Integer, Integer> count = new HashMap<>();
         int N = A.length;
         for (int i = 0; i < N; i++) {
             count.put(A[i], count.getOrDefault(A[i], 0) + 1);
         }
-        HashMap < Integer, HashSet < Integer >> graph = new HashMap < > ();
+        HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
         for (int i = 0; i < N - 1; i++) {
             for (int j = i + 1; j < N; j++) {
                 if (isPerfectSquare(A[i] + A[j])) {
                     // add an edge from i to j and j to i
-                    HashSet < Integer > set = graph.getOrDefault(A[i], new HashSet < Integer > ());
+                    HashSet<Integer> set = graph.getOrDefault(A[i], new HashSet<Integer>());
                     if (!set.contains(A[j])) {
                         set.add(A[j]);
                         graph.put(A[i], set);
                     }
-                    set = graph.getOrDefault(A[j], new HashSet< Integer >());
+                    set = graph.getOrDefault(A[j], new HashSet<Integer>());
                     if (!set.contains(A[i])) {
                         set.add(A[i]);
                         graph.put(A[j], set);
@@ -33,25 +34,22 @@ public class NumberofSquarefulArrays {
                 }
             }
         }
-        ArrayList <ArrayList< Integer >> res = new ArrayList < > ();
-        for (int i: count.keySet()) {
-            backtrack(graph, count, N, i, new ArrayList < Integer > (), res);
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for (int i : count.keySet()) {
+            backtrack(graph, count, N, i, new ArrayList<Integer>(), res);
         }
         return res.size();
     }
 
-    public void backtrack(HashMap < Integer, HashSet < Integer >> graph, Map< Integer, Integer > count, int N, int value,
-                          List< Integer > temp, ArrayList < ArrayList < Integer >> res) {
-        if (count.get(value) == 0)
-            return;
-        if (!graph.containsKey(value))
-            return;
+    public void backtrack(HashMap<Integer, HashSet<Integer>> graph, Map<Integer, Integer> count, int N, int value, List<Integer> temp, ArrayList<ArrayList<Integer>> res) {
+        if (count.get(value) == 0) return;
+        if (!graph.containsKey(value)) return;
         count.put(value, count.get(value) - 1);
         temp.add(value);
         if (temp.size() == N) {
-            res.add(new ArrayList < Integer > (temp));
+            res.add(new ArrayList<Integer>(temp));
         } else {
-            for (int i: graph.get(value)) {
+            for (int i : graph.get(value)) {
                 // traverse all adjacent vertices
                 backtrack(graph, count, N, i, temp, res);
             }
@@ -60,6 +58,54 @@ public class NumberofSquarefulArrays {
         count.put(value, count.get(value) + 1);
     }
 }
+
+
+class Solution1 {
+    public int solve(ArrayList<Integer> A) {
+        int N = A.size();
+        if (N == 1) return 0;
+
+        int[] nums = new int[N];
+        for (int i = 0; i < N; i++) {
+            nums[i] = A.get(i);
+        }
+
+        HashSet<ArrayList<Integer>> set = new HashSet<>();
+        permutate(nums, 0, set);
+        return set.size();
+    }
+
+    private void permutate(int[] nums, int pos, HashSet<ArrayList<Integer>> set) {
+        if (pos == nums.length) {
+            ArrayList<Integer> list = new ArrayList<>();
+            for (int n : nums) {
+                list.add(n);
+            }
+            set.add(list);
+        }
+
+        for (int i = pos; i < nums.length; i++) {
+            //if(i != pos && nums[i] == nums[pos]) continue;
+            swap(nums, i, pos);
+            if (pos == 0 || (pos > 0 && checkPerfectSquare(nums[pos - 1] + nums[pos]))) {
+                permutate(nums, pos + 1, set);
+            }
+            swap(nums, i, pos);
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private boolean checkPerfectSquare(int num) {
+        double perfectSquare = Math.sqrt(num);
+        return Math.floor(perfectSquare) == Math.ceil(perfectSquare);
+    }
+}
+
 /*Q2. Number of Squareful Arrays
 Solved
 character backgroundcharacter
