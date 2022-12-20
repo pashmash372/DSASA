@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Subset {
-    ArrayList <ArrayList< Integer >> ans;
-    void solve(int idx, ArrayList < Integer > cur, ArrayList < Integer > A) {
+    ArrayList<ArrayList<Integer>> ans;
+
+    void solve(int idx, ArrayList<Integer> cur, ArrayList<Integer> A) {
         if (idx == A.size()) {
-            ans.add(new ArrayList < > (cur));
+            ans.add(new ArrayList<>(cur));
             return;
         }
         solve(idx + 1, cur, A); // not take
@@ -17,21 +18,19 @@ public class Subset {
         solve(idx + 1, cur, A); // take
         cur.remove(cur.size() - 1); // UNDO
     }
-    public ArrayList < ArrayList < Integer >> subsets(ArrayList < Integer > A) {
+
+    public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A) {
         Collections.sort(A);
-        ans = new ArrayList < > ();
-        ArrayList < Integer > cur = new ArrayList < > ();
+        ans = new ArrayList<>(); // 2d list
+        ArrayList<Integer> cur = new ArrayList<>();
         solve(0, cur, A);
         // sort the list of list
-        Collections.sort(ans, (ArrayList < Integer > first, ArrayList < Integer > second) -> {
+        Collections.sort(ans, (ArrayList<Integer> first, ArrayList<Integer> second) -> {
             for (int i = 0; i < first.size() && i < second.size(); i++) {
-                if (first.get(i) < second.get(i))
-                    return -1;
-                if (first.get(i) > second.get(i))
-                    return 1;
+                if (first.get(i) < second.get(i)) return -1;
+                if (first.get(i) > second.get(i)) return 1;
             }
-            if (first.size() > second.size())
-                return 1;
+            if (first.size() > second.size()) return 1;
             return -1;
         });
         return ans;
