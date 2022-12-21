@@ -2,6 +2,7 @@ package com.scaler.dsa.homework;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LetterPhone {
     public ArrayList< String > letterCombinations(String A) {
@@ -48,6 +49,41 @@ public class LetterPhone {
             i++;
         }
         return res;
+    }
+}
+
+
+/* Another solutions easy solution than previous one */
+  class Solution2 {
+    HashMap<Integer,String> map=new HashMap<Integer,String>();
+    ArrayList<String> res=new ArrayList<>();
+    StringBuilder sb=new StringBuilder();
+
+    public ArrayList<String> letterCombinations(String A) {
+        map.put(0,"0");
+        map.put(1,"1");
+        map.put(2,"abc");
+        map.put(3,"def");
+        map.put(4,"ghi");
+        map.put(5,"jkl");
+        map.put(6,"mno");
+        map.put(7,"pqrs");
+        map.put(8,"tuv");
+        map.put(9,"wxyz");
+        helper(A,0);
+        return res;
+    }
+    private void helper(String A, int k){
+        if(k==(A.length())){
+            res.add(sb.toString());
+            return;
+        }
+        String pr=map.get(Integer.parseInt(""+A.charAt(k)));
+        for(int i=0;i<pr.length();i++){
+            sb.append(pr.charAt(i));
+            helper(A,k+1);
+            sb.deleteCharAt(k);
+        }
     }
 }
 /*Q3. Letter Phone
