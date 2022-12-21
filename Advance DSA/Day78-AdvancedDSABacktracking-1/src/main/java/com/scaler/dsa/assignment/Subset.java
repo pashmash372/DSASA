@@ -37,6 +37,42 @@ public class Subset {
     }
 }
 
+/* Another solution bit masking approach*/
+  class Solution1 {
+    public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A) {
+        int n = A.size();
+        Collections.sort(A);
+        ArrayList<ArrayList<Integer>> sub = new ArrayList<>();
+
+        for (int i = 0; i < (1<<n) ; i++) {
+            ArrayList<Integer> temp = new ArrayList<>();
+            for ( int j =0; j < n; j++) {
+                if (checkbit(i,j)) {
+                    temp.add(A.get(j));
+                }
+            }
+            sub.add(temp);
+        }
+
+        Collections.sort(sub, (ArrayList < Integer > first, ArrayList < Integer > second) -> {
+            for (int i = 0; i < first.size() && i < second.size(); i++) {
+                if (first.get(i) < second.get(i))
+                    return -1;
+                if (first.get(i) > second.get(i))
+                    return 1;
+            }
+            if (first.size() > second.size())
+                return 1;
+            return -1;
+        });
+
+
+        return sub;
+    }
+    public boolean checkbit(int A, int i) {
+        return ((A & (1<<i)) != 0);
+    }
+}
 
 
 /*Q1. Subset

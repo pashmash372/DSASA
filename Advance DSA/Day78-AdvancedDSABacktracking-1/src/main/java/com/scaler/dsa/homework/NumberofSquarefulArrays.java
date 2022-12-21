@@ -59,7 +59,7 @@ public class NumberofSquarefulArrays {
     }
 }
 
-
+/* Another solutino easy appraochs*/
 class Solution1 {
     public int solve(ArrayList<Integer> A) {
         int N = A.size();

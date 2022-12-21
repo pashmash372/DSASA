@@ -31,6 +31,48 @@ public class CombinationSumII {
     }
 }
 
+/* Another solution easy approach*/
+
+class Solution12 {
+    ArrayList<ArrayList<Integer>> res;
+
+    public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) {
+//1. create a multi-dim ArrayList
+//2. create an array list
+//3. create a index
+//4. find the bounds of the given array
+//5. create a sum with the respective index
+//6. update the sum and use recursion for pos+1
+//7. add to res if sum==k. just plain return if it doesn’t
+//8. remove the integer at pos from sum and use recursion for the next pos+1
+        res = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.sort(A);
+        int n = A.size();
+        int k = B;
+        int sum = 0;
+        int pos = 0;
+        subsetSum(list, A, sum, k, pos, n);
+        return res;
+    }
+
+    public void subsetSum(ArrayList<Integer> list, ArrayList<Integer> A, int sum, int k, int pos, int n) {
+        if (pos == n) {
+            if (sum == k && !res.contains(list)) {
+                res.add(new ArrayList<Integer>(list));
+            }
+            return;
+        }
+        sum += A.get(pos);
+        list.add(A.get(pos));
+        subsetSum(list, A, sum, k, pos + 1, n);
+        sum -= A.get(pos);
+        list.remove(list.size() - 1);
+        subsetSum(list, A, sum, k, pos + 1, n);
+    }
+}
+
+
 /*Q1. Combination Sum II
 Solved
 character backgroundcharacter
