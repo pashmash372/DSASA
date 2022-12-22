@@ -2,6 +2,7 @@ package com.scaler.dsa.assignment;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Permutations {
     private boolean[] marked;
@@ -35,6 +36,37 @@ public class Permutations {
         }
     }
 }
+
+class Permutations1 {
+    ArrayList<ArrayList<Integer>> res = new ArrayList();
+
+    public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> A) {
+        allPermutations(A, 0, A.size());
+        return res;
+    }
+
+    void allPermutations(ArrayList<Integer> A, int i, int n) {
+
+        if (i == n) {
+            res.add(new ArrayList(A));
+        }
+
+        for (int j = i; j < n; j++) {
+            swap(i, j, A);
+            allPermutations(A, i + 1, n);
+            swap(j, i, A);
+        }
+    }
+
+    void swap(int x, int y, ArrayList<Integer> A) {
+        int temp = A.get(x);
+        A.set(x, A.get(y));
+        A.set(y, temp);
+    }
+
+}
+
+/* Another solution */
 /*Q4. Permutations
 Solved
 character backgroundcharacter

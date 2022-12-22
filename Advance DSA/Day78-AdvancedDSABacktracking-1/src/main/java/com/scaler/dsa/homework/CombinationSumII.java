@@ -33,7 +33,7 @@ public class CombinationSumII {
 
 /* Another solution easy approach*/
 
-class Solution12 {
+class CombinationSumII1 {
     ArrayList<ArrayList<Integer>> res;
 
     public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) {
