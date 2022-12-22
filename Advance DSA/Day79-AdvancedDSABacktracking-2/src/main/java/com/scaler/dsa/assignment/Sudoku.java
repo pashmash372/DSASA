@@ -2,21 +2,24 @@ package com.scaler.dsa.assignment;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Sudoku {
     private int n;
-    private ArrayList <ArrayList< Character >> A;
-    private HashSet< Character > hashSet;
-    public void solveSudoku(ArrayList < ArrayList < Character >> A) {
+    private ArrayList<ArrayList<Character>> A;
+    private HashSet<Character> hashSet;
+
+    public void solveSudoku(ArrayList<ArrayList<Character>> A) {
         n = A.size();
         this.A = A;
-        hashSet = new HashSet < > ();
+        hashSet = new HashSet<>();
         backtrack(0, 0);
+        System.out.println(this.A);
     }
+
     public boolean backtrack(int row, int col) {
-        if (row == n)
-            return true;
+        if (row == n) return true;
         char c = A.get(row).get(col);
         int rr, cc;
         rr = row;
@@ -31,8 +34,7 @@ public class Sudoku {
                 A.get(row).set(col, ch);
                 if (isValid(row, col)) {
                     boolean status = backtrack(rr, cc);
-                    if (status)
-                        return true;
+                    if (status) return true;
                 }
                 // Reset
                 A.get(row).set(col, '.');
@@ -42,23 +44,20 @@ public class Sudoku {
         }
         return false;
     }
+
     public boolean isValid(int row, int col) {
         hashSet.clear();
         char c;
         for (int i = 0; i < n; i++) {
             c = A.get(row).get(i);
-            if (hashSet.contains(c))
-                return false;
-            if (c != '.')
-                hashSet.add(c);
+            if (hashSet.contains(c)) return false;
+            if (c != '.') hashSet.add(c);
         }
         hashSet.clear();
         for (int i = 0; i < n; i++) {
             c = A.get(i).get(col);
-            if (hashSet.contains(c))
-                return false;
-            if (c != '.')
-                hashSet.add(c);
+            if (hashSet.contains(c)) return false;
+            if (c != '.') hashSet.add(c);
         }
         int sRow = (row / 3) * 3;
         int sCol = (col / 3) * 3;
@@ -69,10 +68,69 @@ public class Sudoku {
                 int cc = sCol + j;
                 c = A.get(rr).get(cc);
 
-                if (hashSet.contains(c))
-                    return false;
-                if (c != '.')
-                    hashSet.add(c);
+                if (hashSet.contains(c)) return false;
+                if (c != '.') hashSet.add(c);
+            }
+        }
+        return true;
+    }
+}
+
+class Sudoku1 {
+    public void solveSudoku(char[][] sudoku) {
+        solveSudoku(sudoku, 0, 0);
+        System.out.println(Arrays.deepToString(sudoku));
+    }
+
+    public boolean solveSudoku(char[][] sudoku, int row, int col) {
+        int n = sudoku.length;
+        // base condition
+        if (row >= n) {
+            return true;
+        }
+
+        int nextCol = ((col + 1) == n) ? 0 : col + 1;
+        int nextRow = ((col + 1) == n) ? row + 1 : row;
+
+        if (sudoku[row][col] != '.') {
+            return solveSudoku(sudoku, nextRow, nextCol);
+        }
+
+        for (char option = '1'; option <= '9'; option++) {
+            if (checkOption(sudoku, row, col, option)) {
+                sudoku[row][col] = option;
+                if (solveSudoku(sudoku, nextRow, nextCol)) {
+                    return true;
+                } else {
+                    sudoku[row][col] = '.';
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkOption(char[][] sudoku, int row, int col, char option) {
+        // check same row
+        for (int i = 0; i < sudoku.length; i++) {
+            if (sudoku[row][i] == option) {
+                return false;
+            }
+        }
+        // check same col
+
+        for (int i = 0; i < sudoku.length; i++) {
+            if (sudoku[i][col] == option) {
+                return false;
+            }
+        }
+
+        //check same square
+        int startRow = (row / 3) * 3, startCol = (col / 3) * 3;
+
+        for (int i = startRow; i < startRow + 3; i++) {
+            for (int j = startCol; j < startCol + 3; j++) {
+                if (sudoku[i][j] == option) return false;
             }
         }
         return true;
