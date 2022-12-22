@@ -1,14 +1,13 @@
 package com.scaler.dsa.assignment;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class NQueens {
     ArrayList<ArrayList<String>> res;
     ArrayList<Integer> mRow;
     ArrayList<Integer> mCol;
-    char board[][];
+    char[][] board;
     int N;
 
     public ArrayList<ArrayList<String>> solveNQueens(int A) {
@@ -51,10 +50,8 @@ public class NQueens {
             for (int j = i + 1; j < mRow.size(); j++) {
                 nextRow = mRow.get(j);
                 nextCol = mCol.get(j);
-                if (row == nextRow || col == nextCol)
-                    return false;
-                if (Math.abs(row - nextRow) == Math.abs(col - nextCol))
-                    return false;
+                if (row == nextRow || col == nextCol) return false;
+                if (Math.abs(row - nextRow) == Math.abs(col - nextCol)) return false;
             }
         }
         return true;
@@ -68,6 +65,55 @@ public class NQueens {
         res.add(state);
     }
 }
+/* Another solution easy approach*/
+class NQueens1 {
+
+    private final Set<Integer> colSet = new HashSet<>();
+    private final Set<Integer> diag1 = new HashSet<>();
+    private final Set<Integer> diag2 = new HashSet<>();
+
+    public ArrayList<ArrayList<String>> solveNQueens(int n) {
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        dfs(result, new ArrayList<Integer>(), 0, n);
+        return result;
+    }
+
+    private void dfs(ArrayList<ArrayList<String>> result, List<Integer> list, int row, int n) {
+        if (row == n) {
+            ArrayList<String> tempList = new ArrayList<>();
+            for (int x : list) {
+                char[] arr = new char[n];
+                Arrays.fill(arr, '.');
+                arr[x] = 'Q';
+                tempList.add(new String(arr));
+            }
+            result.add(tempList);
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            if (colSet.contains(col) || diag1.contains(row + col) || diag2.contains(row - col)) continue;
+
+            //do
+            list.add(col);
+            colSet.add(col);
+            diag1.add(row + col);
+            diag2.add(row - col);
+
+            //call
+            dfs(result, list, row + 1, n);
+
+
+            //undo
+            list.remove(list.size() - 1);
+            colSet.remove(col);
+            diag1.remove(row + col);
+            diag2.remove(row - col);
+
+        }
+    }
+}
+
 /*Q1. NQueens
 Solved
 character backgroundcharacter

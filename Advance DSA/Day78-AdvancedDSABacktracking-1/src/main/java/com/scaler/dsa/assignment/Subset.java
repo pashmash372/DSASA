@@ -38,7 +38,7 @@ public class Subset {
 }
 
 /* Another solution bit masking approach*/
-  class Solution1 {
+  class Subset1 {
     public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A) {
         int n = A.size();
         Collections.sort(A);
