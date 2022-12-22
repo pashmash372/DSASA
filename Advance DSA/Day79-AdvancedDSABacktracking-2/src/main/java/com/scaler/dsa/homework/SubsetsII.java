@@ -1,28 +1,24 @@
 package com.scaler.dsa.homework;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class SubsetsII {
-    ArrayList <ArrayList< Integer >> res;
-    public ArrayList < ArrayList < Integer >> subsetsWithDup(ArrayList < Integer > A) {
-        res = new ArrayList < > ();
-        if (A == null)
-            return null;
+    ArrayList<ArrayList<Integer>> res;
+
+    public ArrayList<ArrayList<Integer>> subsetsWithDup(ArrayList<Integer> A) {
+        res = new ArrayList<>();
+        if (A == null) return null;
         // to get same elements together
         Collections.sort(A);
-        rec(A, new ArrayList < > (), 0);
-        Collections.sort(res, new Comparator<List< Integer >>() {
+        rec(A, new ArrayList<>(), 0);
+        Collections.sort(res, new Comparator<List<Integer>>() {
             @Override
-            public int compare(List < Integer > a, List < Integer > b) {
+            public int compare(List<Integer> a, List<Integer> b) {
                 int size = Math.min(a.size(), b.size());
                 for (int i = 0; i < size; i++) {
                     int cmp = Integer.compare(a.get(i), b.get(i));
-                    if (cmp != 0)
-                        return cmp;
+                    if (cmp != 0) return cmp;
                 }
                 return Integer.compare(a.size(), b.size());
             }
@@ -30,14 +26,13 @@ public class SubsetsII {
         return res;
     }
 
-    public void rec(ArrayList < Integer > A, ArrayList < Integer > ans, int index) {
+    public void rec(ArrayList<Integer> A, ArrayList<Integer> ans, int index) {
         if (index >= A.size()) {
-            res.add(new ArrayList < > (ans));
+            res.add(new ArrayList<>(ans));
             return;
         }
         int curIndex = index + 1;
-        while (curIndex < A.size() && A.get(curIndex) == A.get(index))
-            curIndex++;
+        while (curIndex < A.size() && A.get(curIndex) == A.get(index)) curIndex++;
         // Take the element A[index] i times
         for (int i = 0; i <= (curIndex - index); i++) {
             for (int j = 0; j < i; j++)
@@ -47,7 +42,50 @@ public class SubsetsII {
                 ans.remove(ans.size() - 1);
         }
     }
+
 }
+
+/* Another Solution*/
+
+
+
+class SubsetsII1 {
+    ArrayList<ArrayList<Integer>> ans = new ArrayList();
+    HashSet<ArrayList<Integer>> set = new HashSet();
+
+    public ArrayList<ArrayList<Integer>> subsetsWithDup(ArrayList<Integer> A) {
+        Collections.sort(A);
+        ans.add(new ArrayList());
+        generateSubsets(A, 0, new ArrayList());
+
+        return ans;
+    }
+
+    void generateSubsets(ArrayList<Integer> A, int index, ArrayList<Integer> currList) {
+        ArrayList<Integer> temp = new ArrayList();
+        if (index == A.size()) {
+            return;
+        }
+
+        //Add array item into currentList
+        currList.add(A.get(index));
+        for (Integer x : currList) {
+            temp.add(x);
+        }
+
+        if (!set.contains(temp)) {
+            set.add(temp);
+            ans.add(temp);
+        }
+        generateSubsets(A, index + 1, currList);
+
+        //remove array item from currentList
+        currList.remove(A.get(index));
+        generateSubsets(A, index + 1, currList);
+    }
+}
+
+
 /*Q1. Subsets II
 Solved
 character backgroundcharacter
