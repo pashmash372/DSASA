@@ -1,21 +1,57 @@
 package com.scaler.dsa.assignment;
 
 
+import java.util.ArrayList;
+
 public class SIXLETS {
-    int sixlets(int a[], int i, int sum, int cnt) {
-        if (sum > 1000)
-            return 0;
-        if (cnt == 0)
-            return 1;
-        if (i == a.length)
-            return 0;
+    int sixlets(int[] a, int i, int sum, int cnt) {
+        if (sum > 1000) return 0;
+        if (cnt == 0) return 1;
+        if (i == a.length) return 0;
         // Take ith element or leave it.
         return sixlets(a, i + 1, sum, cnt) + sixlets(a, i + 1, sum + a[i], cnt - 1);
     }
+
     public int solve(int[] A, int B) {
         return sixlets(A, 0, 0, B);
     }
 }
+
+class SIXLETS1 {
+
+    public int solve(ArrayList<Integer> A, int B) {
+
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        return subsequences(0, A, temp, B, 0);
+    }
+
+    public int subsequences(int i, ArrayList<Integer> A, ArrayList<Integer> temp, int B, int sum) {
+
+        // base condition
+        if (i == A.size()) {
+            if (sum <= 1000 && temp.size() == B) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        int currEle = A.get(i);
+
+        // add
+        sum = sum + currEle;
+        temp.add(currEle);
+        int x = subsequences(i + 1, A, temp, B, sum);
+
+        // remove
+        sum = sum - currEle;
+        temp.remove(temp.size() - 1);
+        int y = subsequences(i + 1, A, temp, B, sum);
+
+        return x + y;
+    }
+}
+
 
 /*Q3. SIXLETS
 Solved
