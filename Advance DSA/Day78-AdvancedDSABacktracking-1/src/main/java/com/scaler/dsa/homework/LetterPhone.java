@@ -54,7 +54,7 @@ public class LetterPhone {
 
 
 /* Another solutions easy solution than previous one */
-  class Solution2 {
+  class LetterPhone1 {
     HashMap<Integer,String> map=new HashMap<Integer,String>();
     ArrayList<String> res=new ArrayList<>();
     StringBuilder sb=new StringBuilder();
