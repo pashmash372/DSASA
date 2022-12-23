@@ -3,6 +3,7 @@ package com.scaler.dsa.homework;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AllUniquePermutations {
     private boolean[] marked;
@@ -24,7 +25,7 @@ public class AllUniquePermutations {
             res.add(new ArrayList<>(temp));
             return;
         }
-        HashMap repeat = new HashMap();
+        Map<Integer, Integer> repeat = new HashMap<>();
         // try all possible elements for the current position
         for (int i = 0; i < n; i++) {
             if (!marked[i] && repeat.get(A.get(i)) == null) { // to avoid duplicates
