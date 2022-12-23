@@ -1,5 +1,6 @@
 package com.scaler.dsa.homework;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +72,46 @@ public class Waystohavefun {
     }
 
 }
+
+/*Another Solution easy approach */
+
+
+/*dp[i][0] = number of ways when you can have fun by sleeping today
+dp[i][1] = number of ways when you can have fun by eating pizza today
+dp[i][2] = number of ways when you can have fun by watching TV shows today
+
+for A=2 the combinations are
+sleep sleep
+sleep pizza
+sleep TV
+pizza sleep
+pizza TV
+TV sleep
+Tv pizza
+
+total # ways = 7   similarly for A=3 #ways = 15*/
+
+class Waystohavefun1 {
+    public int solve(int A) {
+        long[][] dp = new long[A + 1][3];
+        int mod = 1000000007;
+        for (long[] row : dp) {
+            Arrays.fill(row, 0);
+        }
+        //1 based index Problem Constraints 1 <= A <= 10^5
+        dp[1][0] = dp[1][1] = dp[1][2] = 1;
+        for (int i = 2; i <= A; i++) {
+            dp[i][0] = (dp[i - 1][0] + dp[i - 1][1] + dp[i - 1][2]) % mod; //can sleep everyday
+            dp[i][1] = (dp[i - 1][0] + dp[i - 1][2]) % mod;//eat pizza alternate day
+            dp[i][2] = (dp[i - 1][0] + dp[i - 1][1] - 2 * dp[i - 2][2] + mod) % mod;//watch TV every two days
+        }
+        int val = (int) ((dp[A][0] + dp[A][1] + dp[A][2]) % mod); //ans will store at the last index of the dp Arrays
+
+        return val;
+    }
+}
+
+
 
 
 /*Q3. Ways to have fun
