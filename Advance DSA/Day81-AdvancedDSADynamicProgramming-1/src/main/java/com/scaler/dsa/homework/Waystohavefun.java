@@ -104,6 +104,9 @@ class Waystohavefun1 {
             dp[i][0] = (dp[i - 1][0] + dp[i - 1][1] + dp[i - 1][2]) % mod; //can sleep everyday
             dp[i][1] = (dp[i - 1][0] + dp[i - 1][2]) % mod;//eat pizza alternate day
             dp[i][2] = (dp[i - 1][0] + dp[i - 1][1] - 2 * dp[i - 2][2] + mod) % mod;//watch TV every two days
+            /* f(i,T) = f(i-1,P) + f(i-1,S) -2*f(i-1,T). Now why we are subtracting 2*f(i-1,T) because if a person is watching TV on ith day, he cant watch TV in earlier 2 days. Now if you see the Reccurence Relation for
+Pizza and Sleep. It is already calculating TV for (i-1)th day but we dont want it. */
+
         }
         int val = (int) ((dp[A][0] + dp[A][1] + dp[A][2]) % mod); //ans will store at the last index of the dp Arrays
 
