@@ -66,29 +66,6 @@ class UniquePathsinaGrid1 {
     }
 }
 
-class UniquePathsinaGrid2 {
-    public int uniquePathsWithObstacles(int[][] A) {
-        int rows = A.length;
-        int cols = A[0].length;
-        Boolean[][] visited = new Boolean[rows][cols];
-        Integer[][] dp = new Integer[rows][cols];
-        return uniquePathsHelper(A, 0, 0, rows, cols, visited, dp);
-    }
-
-    int uniquePathsHelper(int[][] A, int i, int j, int endRow, int endCol, Boolean[][] visited, Integer[][] dp) {
-
-        if (i == endRow - 1 && j == endCol - 1 && A[i][j] == 0) {
-            return 1;
-        } else if (i < 0 || i == endRow || j < 0 || j == endCol || visited[i][j] != null && visited[i][j] || A[i][j] == 1) {
-            return 0;
-        } else if (dp[i][j] != null) {
-            return dp[i][j];
-        }
-        int right = uniquePathsHelper(A, i, j + 1, endRow, endCol, visited, dp);
-        int down = uniquePathsHelper(A, i + 1, j, endRow, endCol, visited, dp);
-        return dp[i][j] = right + down;
-    }
-}
 
 /*Q2. Unique Paths in a Grid
 Solved
