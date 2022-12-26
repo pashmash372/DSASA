@@ -6,7 +6,9 @@ public class RegularExpressionMatch {
     /* best possible solution */
     public int isMatch(final String s, final String p) {
         /* s -> string p -> pattern */
-        boolean[][] d = new boolean[s.length() + 1][p.length() + 1]; // y axis -> string , x axis - > pattern
+        int N = s.length();
+        int M = p.length();
+        boolean[][] d = new boolean[N + 1][M + 1]; // y axis -> string , x axis - > pattern
 
         d[0][0] = true;
 
@@ -14,25 +16,26 @@ public class RegularExpressionMatch {
             d[0][1] = true;
         }
 
-        for (int i = 0; i < p.length(); ++i) { // column wise traversal
+        for (int i = 0; i < M; ++i) { // column wise traversal right direction
+
             if (p.charAt(i) == '*') {
                 d[0][i + 1] = d[0][i];
-                for (int j = 0; j < s.length(); ++j) {
+                for (int j = 0; j < N; ++j) { // row wise traversal downward direction
                     d[j + 1][i + 1] = d[j][i] || d[j + 1][i] || d[j][i + 1];
                 }
             } else if (p.charAt(i) == '?') {
-                for (int j = s.length() - 1; j >= 0; --j) {
+                for (int j = N - 1; j >= 0; --j) { // row wise traversal upward direction
                     d[j + 1][i + 1] = d[j][i];
                 }
             } else {
-                for (int j = 0; j < s.length(); ++j) {
-                    if (p.charAt(i) == s.charAt(j)) {
+                for (int j = 0; j < N; ++j) { // row wise traveral downward direction
+                    if (p.charAt(i) == s.charAt(j)) { // string letter matches with pattern letter
                         d[j + 1][i + 1] = d[j][i];
                     }
                 }
             }
         }
-        return d[s.length()][p.length()] ? 1 : 0;
+        return d[N][M] ? 1 : 0;
     }
 }
 
@@ -66,6 +69,30 @@ class RegularExpressionMatch1 {
         }
 
         return first[m];
+    }
+}
+
+/* Another solution  best solution for this question*/
+
+class RegularExpressionMatch2 {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int isMatch(final String s, final String p) {
+        int N = s.length();
+        int M = p.length();
+        boolean[][] dp = new boolean[N + 1][M + 1];
+//        Arrays.fill(dp, false);
+        dp[0][0] = true;
+        for (int i = 1; i <= M; i++) {
+            if (p.charAt(i - 1) == '*') dp[0][i] = true;
+            else break;
+        }
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= M; j++) {
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') dp[i][j] = dp[i - 1][j - 1];
+                else if (p.charAt(j - 1) == '*') dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+            }
+        }
+        return dp[N][M] ? 1 : 0;
     }
 }
 

@@ -44,4 +44,24 @@ public class RegularExpressionMatchTest {
         int expected = 0;
         Assert.assertEquals(expected, ans);
     }
+
+    @Test
+    public void solve4() {
+        RegularExpressionMatch2 r = new RegularExpressionMatch2();
+        String A = "aaa";
+        String B = "a*";
+        int ans = r.isMatch(A, B);
+        int expected = 1;
+        Assert.assertEquals(expected, ans);
+    }
+
+    @Test
+    public void solve5() {
+        RegularExpressionMatch2 r = new RegularExpressionMatch2();
+        String A = "acz";
+        String B = "a?a";
+        int ans = r.isMatch(A, B);
+        int expected = 0;
+        Assert.assertEquals(expected, ans);
+    }
 }
