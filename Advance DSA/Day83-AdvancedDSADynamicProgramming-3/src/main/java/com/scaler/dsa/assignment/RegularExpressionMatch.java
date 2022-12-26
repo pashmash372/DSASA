@@ -82,7 +82,7 @@ class RegularExpressionMatch2 {
         boolean[][] dp = new boolean[N + 1][M + 1];
 //        Arrays.fill(dp, false);
         dp[0][0] = true;
-        for (int i = 1; i <= M; i++) {
+        for (int i = 1; i <= M; i++) { /* column traversing */
             if (p.charAt(i - 1) == '*') dp[0][i] = true;
             else break;
         }
