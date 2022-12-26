@@ -2,6 +2,8 @@ package com.scaler.dsa.assignment;
 
 
 public class RegularExpressionMatch {
+
+    /* best possible solution */
     public int isMatch(final String s, final String p) {
         boolean[][] d = new boolean[s.length() + 1][p.length() + 1];
         d[0][0] = true;
