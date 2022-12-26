@@ -9,12 +9,12 @@ public class LongestCommonSubsequence {
         for (i = 0; i <= m; i++) {
             for (j = 0; j <= n; j++) {
                 //Base condition
-                if (i == 0 || j == 0)
+                if (i == 0 || j == 0) /* row 0 and column 0 valued 0 intitally*/
                     L[i][j] = 0;
-                else if (A.charAt(i - 1) == B.charAt(j - 1))
+                else if (A.charAt(i - 1) == B.charAt(j - 1)) /* matching */
                     L[i][j] = L[i - 1][j - 1] + 1;
                 else
-                    L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]);
+                    L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]); /* not matching*/
             }
         }
         return L[m][n];

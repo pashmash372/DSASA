@@ -4,39 +4,36 @@ package com.scaler.dsa.assignment;
 import java.util.Arrays;
 
 public class EditDistance {
-    private int dp[][];
+    private int[][] dp;
     private String A, B;
+
     public int minDistance(String A, String B) {
-        if (A == null && B == null)
-            return 0;
+        if (A == null && B == null) return 0;
         int nA, nB;
         nA = A.length();
         nB = B.length();
-        if (nA == 0)
-            return nB;
-        if (nB == 0)
-            return nA;
+        if (nA == 0) return nB;
+        if (nB == 0) return nA;
         dp = new int[nA][nB];
-        this.A = A;
-        this.B = B;
+        this.A = A; // global
+        this.B = B; // global
         for (int i = 0; i < nA; i++)
-            Arrays.fill(dp[i], -1);
-        int res = rec(nA - 1, nB - 1);
+            Arrays.fill(dp[i], -1); // intialized to -1
+        int res = rec(nA - 1, nB - 1); // start from end of A and B indices
         return res;
     }
 
     public int rec(int iA, int iB) {
-        if (iA < 0 && iB < 0)
+        if (iA < 0 && iB < 0) // out
             return 0;
-        if (iA < 0)
-            return iB + 1;
-        if (iB < 0)
-            return iA + 1;
-        if (dp[iA][iB] != -1)
-            return dp[iA][iB];
+        if (iA < 0) return iB + 1;
+        if (iB < 0) return iA + 1;
+        if (dp[iA][iB] != -1) return dp[iA][iB];
+
         int res = Integer.MAX_VALUE;
-        if (A.charAt(iA) == B.charAt(iB))
-            res = rec(iA - 1, iB - 1);
+
+        if (A.charAt(iA) == B.charAt(iB)) res = rec(iA - 1, iB - 1);
+
         int temp = 1 + rec(iA - 1, iB - 1);
         temp = Math.min(temp, 1 + rec(iA - 1, iB));
         temp = Math.min(temp, 1 + rec(iA, iB - 1));
@@ -44,6 +41,44 @@ public class EditDistance {
         return dp[iA][iB] = res;
     }
 }
+
+/* another solution */
+
+class EditDistance1 {
+    public int minDistance(String A, String B) {
+
+        if (A.length() < B.length()) return minDistance(B, A); // for good measure
+
+        int A_len = A.length();
+        int B_len = B.length();
+
+        int[] first_arr = new int[B_len + 1];
+        int[] second_arr = new int[B_len + 1];
+
+        for (int i = 0; i <= B_len; i++) {
+            first_arr[i] = i;
+        }
+
+        for (int i = 1; i <= A_len; i++) {
+            for (int j = 0; j <= B_len; j++) {
+                if (j == 0) second_arr[j] = i;
+                else {
+                    if (A.charAt(i - 1) == B.charAt(j - 1)) {
+                        second_arr[j] = first_arr[j - 1];
+                    } else {
+                        second_arr[j] = 1 + Math.min(first_arr[j - 1], Math.min(first_arr[j], second_arr[j - 1]));
+                    }
+                }
+            }
+            int[] temp = first_arr;
+            first_arr = second_arr;
+            second_arr = temp;
+        }
+        return first_arr[B_len];
+    }
+}
+
+
 
 /*Q2. Edit Distance
 Solved
