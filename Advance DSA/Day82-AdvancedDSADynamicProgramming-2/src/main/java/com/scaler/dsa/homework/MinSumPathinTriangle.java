@@ -4,12 +4,14 @@ package com.scaler.dsa.homework;
 import java.util.ArrayList;
 
 public class MinSumPathinTriangle {
-    public int minimumTotal(ArrayList <ArrayList< Integer >> A) {
+    public int minimumTotal(ArrayList<ArrayList<Integer>> A) {
         int m, n;
-        m = A.size();
-        n = A.get(m - 1).size();
+        m = A.size(); /* row*/
+        n = A.get(m - 1).size(); /* column*/
         int[] dp = new int[n + 1];
         int size = n;
+        /* Starting from last row and first column */
+        /* size getting decrease as moving upwards*/
         for (int i = m - 1; i >= 0; i--) {
             for (int j = 0; j < size; j++) {
                 dp[j] = Math.min(dp[j], dp[j + 1]) + A.get(i).get(j);
@@ -19,6 +21,8 @@ public class MinSumPathinTriangle {
         return dp[0];
     }
 }
+
+
 
 
 /*
