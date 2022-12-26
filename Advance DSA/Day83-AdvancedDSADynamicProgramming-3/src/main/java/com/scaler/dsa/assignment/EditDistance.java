@@ -24,20 +24,20 @@ public class EditDistance {
     }
 
     public int rec(int iA, int iB) {
-        if (iA < 0 && iB < 0) // out
+        if (iA < 0 && iB < 0) // out of bound
             return 0;
-        if (iA < 0) return iB + 1;
-        if (iB < 0) return iA + 1;
-        if (dp[iA][iB] != -1) return dp[iA][iB];
+        if (iA < 0) return iB + 1; // plus 1 add because index are 0 based idx
+        if (iB < 0) return iA + 1; // plus 1 add because index are 0 based idx
+        if (dp[iA][iB] != -1) return dp[iA][iB];  // already computed
 
-        int res = Integer.MAX_VALUE;
+        int res = Integer.MAX_VALUE; // for min possible answer
 
-        if (A.charAt(iA) == B.charAt(iB)) res = rec(iA - 1, iB - 1);
+        if (A.charAt(iA) == B.charAt(iB)) res = rec(iA - 1, iB - 1); // when both letters match
 
-        int temp = 1 + rec(iA - 1, iB - 1);
-        temp = Math.min(temp, 1 + rec(iA - 1, iB));
-        temp = Math.min(temp, 1 + rec(iA, iB - 1));
-        res = Math.min(res, temp);
+        int temp = 1 + rec(iA - 1, iB - 1); // for replace
+        temp = Math.min(temp, 1 + rec(iA - 1, iB));  // for delete
+        temp = Math.min(temp, 1 + rec(iA, iB - 1)); // for insert
+        res = Math.min(res, temp); // mininum of all
         return dp[iA][iB] = res;
     }
 }
