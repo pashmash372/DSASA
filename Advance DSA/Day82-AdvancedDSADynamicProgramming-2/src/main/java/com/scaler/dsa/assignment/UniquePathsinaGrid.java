@@ -33,6 +33,7 @@ public class UniquePathsinaGrid {
     }
 
 }
+
 /* Another solution */
 class UniquePathsinaGrid1 {
     public int uniquePathsWithObstacles(int[][] A) {
@@ -63,6 +64,31 @@ class UniquePathsinaGrid1 {
             firstRow = secondRow;
         }
         return secondRow[secondRow.length - 1];
+    }
+}
+
+/* Another solution*/
+
+class UniquePathsinaGrid2 {
+    public int uniquePathsWithObstacles(int[][] A) {
+        int N = A.length;
+        int M = A[0].length;
+        int[][] dp = new int[N + 1][M + 1];
+        for (int i = 0; i <= N; i++) {
+            dp[i][0] = 0;
+        }
+        for (int j = 0; j <= N; j++) {
+            dp[0][j] = 0;
+        }
+        dp[1][1] = 0;
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= M; j++) {
+                if (i == 1 && j == 1) continue;
+                if (A[i - 1][j - 1] == 0) dp[i][j] = 0;
+                else dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[N][M];
     }
 }
 

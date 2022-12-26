@@ -50,6 +50,60 @@ public class DungeonPrincess {
     }
 }
 
+/* Another Solution*/
+
+class DungeonPrincess1 {
+    public int calculateMinimumHP(int[][] A) {
+        int N = A.length;
+        int M = A[0].length;
+        int[][] dp = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            Arrays.fill(dp[i], -1);
+        }
+        return minH(0, 0, dp, A, N, M);
+    }
+
+    public int minH(int i, int j, int[][] dp, int[][] mat, int N, int M) {
+        if (i >= N || j >= M) {
+            return Integer.MAX_VALUE;
+        }
+        if (i == N - 1 && j == M - 1) {
+            return Math.max(1, 1 - mat[i][j]);
+        }
+        if (dp[i][j] == -1) {
+            int a = minH(i + 1, j, dp, mat, N, M);
+            int b = minH(i, j + 1, dp, mat, N, M);
+            dp[i][j] = Math.max(1, Math.min(a, b) - mat[i][j]);
+        }
+        return dp[i][j];
+    }
+}
+
+/* Easy solution similiar to lecture solutions*/
+class DungeonPrincess2 {
+
+    public int calculateMinimumHP(int[][] A) {
+        int rows = A.length;
+        int cols = A[0].length;
+
+        int[][] dpArray = new int[rows + 1][cols + 1];
+        for (int[] m : dpArray) {
+            Arrays.fill(m, Integer.MAX_VALUE);
+        }
+        //  init values positions after princess cell
+        dpArray[rows][cols - 1] = 1; //below cell from last cell  (BR cell)
+        dpArray[rows - 1][cols] = 1; // right cell from last cell  (BR cell)
+
+        for (int i = rows - 1; i >= 0; i--) {
+            for (int j = cols - 1; j >= 0; j--) {
+                dpArray[i][j] = Math.max(1, Math.min(dpArray[i + 1][j], dpArray[i][j + 1]) - A[i][j]);
+            }
+        }
+        return dpArray[0][0];
+    }
+}
+
+
 /*Q1. Dungeon Princess
 Solved
 character backgroundcharacter
