@@ -6,29 +6,28 @@ import java.util.Arrays;
 public class MinimumFallingPathSumII {
     public int solve(int[][] A) {
         int[][] dp = new int[A.length][A[0].length];
-        for(int i=0;i<A.length;i++){
-            Arrays.fill(dp[i],1000000000);
+        for (int i = 0; i < A.length; i++) { /* row wise array filling with infinity number*/
+            Arrays.fill(dp[i], 1000000000);
         }
-        return paths(A,0,0,dp);
+        return paths(A, 0, 0, dp);
     }
-    public int paths(int[][] A, int r,int prevInd,int[][] dp){
-        if(r>=A.length){
+
+    public int paths(int[][] A, int r, int prevInd, int[][] dp) {
+        if (r >= A.length) { /* out of rows */
             return 0;
         }
 
         int sum = Integer.MAX_VALUE;
-        for(int i=0;i<A[r].length;i++){
-            if(r==0 || i!=prevInd){
-                if(dp[r][i]!=1000000000){
-                    sum=Math.min(sum,dp[r][i]);
-                }
-                else{
-                    int s = A[r][i] + paths(A,r+1,i,dp);
-                    dp[r][i]=s;
-                    sum=Math.min(sum,s);
+        for (int i = 0; i < A[r].length; i++) {  /* traversing a current row element column wise */
+            if (r == 0 || i != prevInd) { /* i!=prevInd because to avoid same column of the current row with previous row*/
+                if (dp[r][i] != 1000000000) { /*dp[r][i] already calculated */
+                    sum = Math.min(sum, dp[r][i]);
+                } else {
+                    int s = A[r][i] + paths(A, r + 1, i, dp);
+                    dp[r][i] = s;
+                    sum = Math.min(sum, s);
                 }
             }
-
         }
         return sum;
     }

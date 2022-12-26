@@ -26,6 +26,7 @@ public class MaxRectangleinBinaryMatrix {
         return ans;
     }
 
+    /*Histogram calculation refer LargestRectangleinHistogram solution */
     public int getMaxRect(ArrayList<Integer> arr) {
         arr.add(0);
         Stack<Integer> st = new Stack<Integer>();
@@ -94,7 +95,7 @@ class MaxRectangleinBinaryMatrix1 {
         int[] ans = new int[N];
         Arrays.fill(ans, N);
 
-        for (int i = N - 1; i >= 0; i--){
+        for (int i = N - 1; i >= 0; i--) {
             while (!stack.isEmpty() && A[i] <= A[stack.peek()]) {
                 stack.pop();
             }
