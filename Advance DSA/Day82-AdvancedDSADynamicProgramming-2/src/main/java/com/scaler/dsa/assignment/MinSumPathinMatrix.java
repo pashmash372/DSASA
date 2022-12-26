@@ -32,6 +32,31 @@ public class MinSumPathinMatrix {
     }
 }
 
+class MinSumPathinMatrix1 {
+    public int minPathSum(int[][] A) {
+
+        int N = A.length;
+        int M = A[0].length;
+        int[][] dp = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (i == 0 && j == 0) {
+                    dp[i][j] = A[i][j];
+                } else if (i == 0) {
+                    dp[i][j] = A[i][j] + dp[i][j - 1];
+                } else if (j == 0) {
+                    dp[i][j] = A[i][j] + dp[i - 1][j];
+                } else {
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + A[i][j];
+                }
+            }
+        }
+        return dp[N - 1][M - 1];
+    }
+}
+
+
+
 /*Q4. Min Sum Path in Matrix
 Solved
 character backgroundcharacter
