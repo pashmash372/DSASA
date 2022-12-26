@@ -5,12 +5,16 @@ public class RegularExpressionMatch {
 
     /* best possible solution */
     public int isMatch(final String s, final String p) {
-        boolean[][] d = new boolean[s.length() + 1][p.length() + 1];
+        /* s -> string p -> pattern */
+        boolean[][] d = new boolean[s.length() + 1][p.length() + 1]; // y axis -> string , x axis - > pattern
+
         d[0][0] = true;
-        if (p.charAt(0) == '*') {
+
+        if (p.charAt(0) == '*') { // handle edge case where pattern starts with '*'
             d[0][1] = true;
         }
-        for (int i = 0; i < p.length(); ++i) {
+
+        for (int i = 0; i < p.length(); ++i) { // column wise traversal
             if (p.charAt(i) == '*') {
                 d[0][i + 1] = d[0][i];
                 for (int j = 0; j < s.length(); ++j) {
@@ -31,6 +35,40 @@ public class RegularExpressionMatch {
         return d[s.length()][p.length()] ? 1 : 0;
     }
 }
+
+/* Another solution */
+
+class RegularExpressionMatch1 {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int isMatch(final String A, final String B) {
+
+        int n = A.length();
+        int m = B.length();
+        int[] first = new int[m + 1];
+        int[] second = new int[m + 1];
+
+        for (int i = 1; i <= m; i++) {
+            if (B.charAt(i - 1) == '*') first[i] = 1;
+            else break;
+        }
+
+        first[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (A.charAt(i - 1) == B.charAt(j - 1) || B.charAt(j - 1) == '?') second[j] = first[j - 1];
+                else if (B.charAt(j - 1) == '*') second[j] = (first[j] == 1 || second[j - 1] == 1) ? 1 : 0;
+                else second[j] = 0;
+            }
+            first[0] = 0;
+            int[] temp = first;
+            first = second;
+            second = temp;
+        }
+
+        return first[m];
+    }
+}
+
 
 /*Q3. Regular Expression Match
 Solved
