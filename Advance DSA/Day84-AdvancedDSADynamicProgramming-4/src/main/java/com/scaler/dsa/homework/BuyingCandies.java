@@ -15,6 +15,28 @@ public class BuyingCandies {
         return dp[D];
     }
 }
+
+class BuyingCandies1 {
+    /*The idea is that if we select a packet, its quantity gets multiplied with the happiness, so we just updated happiness array with the number of candies in corresponding packets array. Now its standard unbounded knapsack problem, where we have to maximize happiness*/
+    public int solve(int[] A, int[] B, int[] C, int D) {
+        int[] dp = new int[D + 1];
+        dp[0] = 0;
+        dp[1] = Integer.MIN_VALUE;
+        for (int i = 0; i < B.length; i++) {
+            B[i] = B[i] * A[i];
+        }
+
+        for (int j = 1; j <= D; j++) {
+            dp[j] = 0;
+            for (int i = 0; i < C.length; i++) {
+                if (j >= C[i]) {
+                    dp[j] = Math.max(dp[j], dp[j - C[i]] + B[i]);
+                }
+            }
+        }
+        return dp[D];
+    }
+}
 /*Q1. Buying Candies
 Solved
 character backgroundcharacter

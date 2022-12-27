@@ -7,8 +7,9 @@ public class TusharsBirthdayParty {
     // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
     static int INF = 10000000;
     static int[][] dp = new int[1005][1005];
+
     public int solve(final int[] A, final int[] B, final int[] C) {
-        ArrayList< Pair > dish = new ArrayList < Pair > ();
+        ArrayList<Pair> dish = new ArrayList<Pair>();
         int n = C.length;
         for (int i = 0; i < n; i++)
             dish.add(new Pair(B[i], C[i]));
@@ -17,15 +18,12 @@ public class TusharsBirthdayParty {
             m = Math.max(m, A[i]);
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= n; j++) {
-                if (i == 0)
-                    dp[i][j] = 0;
-                else if (j == 0)
-                    dp[i][j] = INF;
+                if (i == 0) dp[i][j] = 0;
+                else if (j == 0) dp[i][j] = INF;
                 else {
                     if (i >= dish.get(j - 1).ff) {
                         dp[i][j] = Math.min(dp[i][j - 1], dp[i - dish.get(j - 1).ff][j] + dish.get(j - 1).ss);
-                    } else
-                        dp[i][j] = dp[i][j - 1];
+                    } else dp[i][j] = dp[i][j - 1];
                 }
             }
         }
@@ -37,14 +35,40 @@ public class TusharsBirthdayParty {
         return ans;
     }
 }
+
 class Pair {
     int ff;
     int ss;
+
     public Pair(int a, int b) {
         this.ff = a;
         this.ss = b;
     }
 }
+
+class TusharsBirthdayParty1 {
+    public int solve(final int[] A, final int[] B, final int[] C) {
+        int ans = 0;
+        int maxCapacity = 0;
+
+        for (int i = 0; i < A.length; i++) {
+            maxCapacity = Math.max(maxCapacity, A[i]);
+        }
+        int[] dp = new int[maxCapacity + 1];
+
+        for (int i = 1; i <= maxCapacity; i++) {
+            dp[i] = Integer.MAX_VALUE;
+            for (int j = 1; j <= B.length; j++) {
+                if (i >= B[j - 1]) dp[i] = Math.min(dp[i], C[j - 1] + dp[i - B[j - 1]]);
+            }
+        }
+        for (int i = 0; i < A.length; i++) {
+            ans += dp[A[i]];
+        }
+        return ans;
+    }
+}
+
 
 /*Q2. Tushar's Birthday Party
 Solved
