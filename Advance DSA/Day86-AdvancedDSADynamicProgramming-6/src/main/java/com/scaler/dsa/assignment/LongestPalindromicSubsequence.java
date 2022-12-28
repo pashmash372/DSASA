@@ -24,6 +24,7 @@ public class LongestPalindromicSubsequence {
     }
 }
 
+/* another solution present in lecture notes*/
 class LongestPalindromicSubsequence1 {
     static int lps(String S) {
         int N = S.length();

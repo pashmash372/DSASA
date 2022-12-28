@@ -1,5 +1,7 @@
 package com.scaler.dsa.assignment;
 
+import java.util.Arrays;
+
 public class MatrixChainMultiplication {
     public int solve(int[] A) {
         int n = A.length;
@@ -14,14 +16,77 @@ public class MatrixChainMultiplication {
                 // try to divide at every i<=k<=j-1
                 for (k = i; k <= j - 1; k++) {
                     q = m[i][k] + m[k + 1][j] + A[i - 1] * A[k] * A[j];
-                    if (q < m[i][j])
-                        m[i][j] = q;
+                    if (q < m[i][j]) m[i][j] = q;
                 }
             }
         }
         return m[1][n - 1];
     }
 }
+
+/*Approach 1: Memoization (Recursion + DP array)
+TC: O(n^3)
+SC: O(n^2) for dp array + recursion stack space (2n = max width of recursion tree)
+*/
+
+class MatrixChainMultiplication1 {
+    public int solve(int[] A) {
+        int n = A.length;
+        int[][] dp = new int[n][n];
+        for (int[] row : dp)
+            Arrays.fill(row, -1);
+        return minCost(A, 1, n - 1, dp);
+    }
+
+    // recursion + DP
+    public int minCost(int[] A, int i, int j, int[][] dp) {
+        if (i == j) return 0;
+
+        if (dp[i][j] != -1) return dp[i][j];
+
+        dp[i][j] = Integer.MAX_VALUE;
+        for (int k = i; k < j; k++) {
+            dp[i][j] = Math.min(dp[i][j], minCost(A, i, k, dp) + minCost(A, k + 1, j, dp) + (A[i - 1] * A[k] * A[j]));
+        }
+        return dp[i][j];
+    }
+}
+
+/*Approach 2: Tabulation (Iterative approach)
+Iterations: no of cells in grid/2 => n*n/2 as only half matrix is being used
+TC: O(n^3)
+SC: O(n^2) for dp array*/
+
+class MatrixChainMultiplication2 {
+    public int solve(int[] A) {
+        return tabulation_mcm(A);
+    }
+
+    public int tabulation_mcm(int[] A) {
+        int n = A.length;
+        // initialize dp array with max value as we need to find the min value
+        int[][] dp = new int[n][n];
+        for (int[] row : dp)
+            Arrays.fill(row, Integer.MAX_VALUE);
+
+        // start from bottom row to top row
+        for (int i = n; i >= 1; i--) {
+            // start from left column to right column
+            for (int j = i; j < n; j++) {
+                // base case
+                if (i == j) dp[i][j] = 0;
+                // recursive relation converted to iterative code
+                for (int k = i; k < j; k++) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + (A[i - 1] * A[k] * A[j]));
+                }
+            }
+        }
+        // answer will be stored at dp[1][n-1]
+        return dp[1][n - 1];
+    }
+}
+
+
 
 /*Q2. Matrix Chain Multiplication
 Solved
