@@ -2,29 +2,51 @@ package com.scaler.dsa.assignment;
 
 
 public class LongestPalindromicSubsequence {
-    public int solve(String A) {
-        return lps(A);
-    }
     static int lps(String seq) {
         int n = seq.length();
         int i, j, cl;
-        int L[][] = new int[n][n];
+        int[][] L = new int[n][n];
         for (i = 0; i < n; i++)
             L[i][i] = 1;
         for (cl = 2; cl <= n; cl++) {
             for (i = 0; i < n - cl + 1; i++) {
                 j = i + cl - 1;
-                if (seq.charAt(i) == seq.charAt(j) && cl == 2)
-                    L[i][j] = 2;
-                else if (seq.charAt(i) == seq.charAt(j))
-                    L[i][j] = L[i + 1][j - 1] + 2;
-                else
-                    L[i][j] = Math.max(L[i][j - 1], L[i + 1][j]);
+                if (seq.charAt(i) == seq.charAt(j) && cl == 2) L[i][j] = 2;
+                else if (seq.charAt(i) == seq.charAt(j)) L[i][j] = L[i + 1][j - 1] + 2;
+                else L[i][j] = Math.max(L[i][j - 1], L[i + 1][j]);
             }
         }
         return L[0][n - 1];
     }
+
+    public int solve(String A) {
+        return lps(A);
+    }
 }
+
+class LongestPalindromicSubsequence1 {
+    static int lps(String S) {
+        int N = S.length();
+        int[][] dp = new int[N][N];
+        for (int i = 0; i < N; i++)
+            dp[i][i] = 1;
+        for (int l = 2; l <= N; l++) {
+            int i = 0, j = l - 1;
+            while (j < N) {
+                if (S.charAt(i) == S.charAt(j)) dp[i][j] = 2 + dp[i + 1][j - 1];
+                else dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+                i++;
+                j++;
+            }
+        }
+        return dp[0][N - 1];
+    }
+
+    public int solve(String A) {
+        return lps(A);
+    }
+}
+
 
 /*Q1. Longest Palindromic Subsequence
 Solved
