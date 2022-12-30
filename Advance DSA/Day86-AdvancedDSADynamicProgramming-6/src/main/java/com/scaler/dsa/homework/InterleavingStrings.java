@@ -6,19 +6,18 @@ import java.util.Arrays;
 public class InterleavingStrings {
 
     int nA, nB, nC;
-    private int mem[][];
+    private int[][] mem;
     private String A, B, C;
 
     public int isInterleave(String A, String B, String C) {
 
-        if (A == null || B == null || C == null)
-            return 0;
+        if (A == null || B == null || C == null) return 0;
 
         nA = A.length();
         nB = B.length();
         nC = C.length();
 
-        if (nA + nB != nC)
+        if (nA + nB != nC) // length not same
             return 0;
 
         mem = new int[nA + 1][nB + 1];
@@ -36,11 +35,9 @@ public class InterleavingStrings {
 
     public int rec(int nA, int nB) {
 
-        if (nA + nB == nC)
-            return 1;
+        if (nA + nB == nC) return 1;
 
-        if (mem[nA][nB] != -1)
-            return mem[nA][nB];
+        if (mem[nA][nB] != -1) return mem[nA][nB];
 
         char a = nA < this.nA ? A.charAt(nA) : '~';
         char b = nB < this.nB ? B.charAt(nB) : '~';
@@ -49,7 +46,7 @@ public class InterleavingStrings {
         int status = 0;
 
         if (a == c) {
-            status = rec(nA + 1, nB);
+            status |= rec(nA + 1, nB);
         }
 
         if (b == c) {
@@ -62,6 +59,43 @@ public class InterleavingStrings {
 
 }
 
+/* solution TC(N*M) SC(N*M)*/
+
+class InterleavingStrings1 {
+    public int isInterleave(String A, String B, String C) {
+        int m = A.length();
+        int n = B.length();
+        int z = C.length();
+        int l = m + 1;
+        int k = n + 1;
+        int[][] dp = new int[l][k];
+
+        if ((m + n) != z) return 0;
+
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i == 0 && j == 0) dp[i][j] = 1;
+
+                else if (i == 0 && B.charAt(j - 1) == C.charAt(j - 1)) dp[i][j] = dp[i][j - 1];
+                else if (i == 0 && B.charAt(j - 1) != C.charAt(j - 1)) dp[i][j] = 0;
+
+
+                else if (j == 0 && A.charAt(i - 1) == C.charAt(i - 1)) dp[i][j] = dp[i - 1][j];
+                else if (j == 0 && A.charAt(i - 1) != C.charAt(i - 1)) dp[i][j] = 0;
+
+                else if (A.charAt(i - 1) == C.charAt(i + j - 1) && B.charAt(j - 1) != C.charAt(i + j - 1))
+                    dp[i][j] = dp[i - 1][j];
+                else if (B.charAt(j - 1) == C.charAt(i + j - 1) && A.charAt(i - 1) != C.charAt(i + j - 1))
+                    dp[i][j] = dp[i][j - 1];
+                else if (B.charAt(j - 1) == C.charAt(i + j - 1) && A.charAt(i - 1) == C.charAt(i + j - 1))
+                    dp[i][j] = dp[i - 1][j] | dp[i][j - 1];
+
+            }
+        }
+        return dp[m][n];
+    }
+
+}
 
 /*Q1. Interleaving Strings
 Solved
