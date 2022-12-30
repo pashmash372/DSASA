@@ -2,14 +2,15 @@ package com.scaler.dsa.assignment;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class RussianDollEnvelopes {
     public int solve(int[][] A) {
-        ArrayList< Pair > v = new ArrayList < Pair > ();
+        ArrayList<Pair> v = new ArrayList<Pair>();
         int n = A.length;
         for (int i = 0; i < n; i++)
-            v.add(new Pair(A[i][0], -A[i][1]));
+            v.add(new Pair(A[i][0], -A[i][1])); // A[i][0] -> height , A[i][1] -> width
         Collections.sort(v);
         int[] dp = new int[n];
         dp[0] = 1;
@@ -17,26 +18,60 @@ public class RussianDollEnvelopes {
         for (int i = 1; i < n; i++) {
             dp[i] = 1;
             for (int j = i - 1; j >= 0; j--) {
-                if (v.get(j).ff < v.get(i).ff && v.get(j).ss > v.get(i).ss)
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                if (v.get(j).ff < v.get(i).ff && v.get(j).ss > v.get(i).ss) dp[i] = Math.max(dp[i], dp[j] + 1);
             }
             maxe = Math.max(maxe, dp[i]);
         }
         return maxe;
     }
 }
-class Pair implements Comparable < Pair > {
+
+class Pair implements Comparable<Pair> {
     int ff;
     int ss;
+
     public Pair(int c, int d) {
         this.ff = c;
         this.ss = d;
     }
+
     @Override
     public int compareTo(Pair a) {
         return this.ff - a.ff;
+    }  // increasing order
+}
+
+
+/*Extension of LIS problem,could be a follow up problem*/
+
+class RussianDollEnvelopes1 {
+    public int solve(int[][] A) {
+        int max = 0;
+        int n = A.length;
+        Arrays.sort(A, (a, b) -> Integer.compare(a[0], b[0]));
+//lis array
+        int[] lis = new int[n];
+        for (int i = 0; i < n; i++) {
+            lis[i] = 1;
+        }
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (A[i][0] > A[j][0] && A[i][1] > A[j][1] && lis[i] <= lis[j]) {
+                    lis[i] = lis[j] + 1;
+                }
+            }
+        }
+//pick max among lis values
+        for (int i = 0; i < n; i++) {
+            if (max < lis[i]) {
+                max = lis[i];
+            }
+        }
+        return max;
     }
 }
+
+
 
 /*Q3. Russian Doll Envelopes
 Solved
