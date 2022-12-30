@@ -39,8 +39,8 @@ public class InterleavingStrings {
 
         if (mem[nA][nB] != -1) return mem[nA][nB];
 
-        char a = nA < this.nA ? A.charAt(nA) : '~';
-        char b = nB < this.nB ? B.charAt(nB) : '~';
+        char a = nA < this.nA ? A.charAt(nA) : '~'; // this.nA  -> global nA
+        char b = nB < this.nB ? B.charAt(nB) : '~'; // this.nB  -> global nB
         char c = C.charAt(nA + nB);
 
         int status = 0;
