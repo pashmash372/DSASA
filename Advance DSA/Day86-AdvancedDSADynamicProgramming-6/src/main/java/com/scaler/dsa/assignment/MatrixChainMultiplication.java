@@ -5,22 +5,22 @@ import java.util.Arrays;
 public class MatrixChainMultiplication {
     public int solve(int[] A) {
         int n = A.length;
-        int[][] m = new int[n][n];
+        int[][] dp = new int[n][n];
         int i, j, k, L, q;
         for (i = 1; i < n; i++)
-            m[i][i] = 0;
+            dp[i][i] = 0;
         for (L = 2; L < n; L++) {
             for (i = 1; i < n - L + 1; i++) {
                 j = i + L - 1;
-                m[i][j] = Integer.MAX_VALUE;
+                dp[i][j] = Integer.MAX_VALUE;
                 // try to divide at every i<=k<=j-1
                 for (k = i; k <= j - 1; k++) {
-                    q = m[i][k] + m[k + 1][j] + A[i - 1] * A[k] * A[j];
-                    if (q < m[i][j]) m[i][j] = q;
+                    q = dp[i][k] + dp[k + 1][j] + A[i - 1] * A[k] * A[j];  // A[i-1] is used to match the A[] to dp[] as dp is 1 based index
+                    if (q < dp[i][j]) dp[i][j] = q;
                 }
             }
         }
-        return m[1][n - 1];
+        return dp[1][n - 1];
     }
 }
 
