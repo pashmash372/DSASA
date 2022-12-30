@@ -1,7 +1,7 @@
 package com.scaler.dsa.homework;
 
 
-public class IntersectingChordsinaCircle {
+public class IntersectingChordsinaCircle {  // refer video hints for clarity
     static long mod = 1000000007;
     public int chordCnt(int A) {
         return catalanDP(A);
