@@ -8,28 +8,16 @@ import java.util.Queue;
 public class PathinDirectedGraph {
     static int maxn = 100009;
     static int[] visited = new int[maxn];
-    static ArrayList <ArrayList< Integer >> adj;
-    public int solve(int A, int[][] B) {
-        adj = new ArrayList < ArrayList < Integer > > (maxn);
-        for (int i = 0; i < maxn; i++) {
-            visited[i] = 0;
-            adj.add(new ArrayList < Integer > ());
-        }
-        for (int[] edge: B)
-            adj.get(edge[0]).add(edge[1]);
-        if (isReachable(1, A) == true)
-            return 1;
-        return 0;
-    }
+    static ArrayList<ArrayList<Integer>> adj;
+
     public static boolean isReachable(int s, int d) {
-        if (s == d)
-            return true;
-        Queue< Integer > q = new ArrayDeque< >();
+        if (s == d) return true;
+        Queue<Integer> q = new ArrayDeque<>();
         q.offer(s);
         visited[s] = 1;
         while (q.size() > 0) {
             s = q.poll();
-            for (int v: adj.get(s)) {
+            for (int v : adj.get(s)) {
                 if (v == d) return true;
                 if (visited[v] == 0) {
                     visited[v] = 1;
@@ -38,6 +26,44 @@ public class PathinDirectedGraph {
             }
         }
         return false;
+    }
+
+    public int solve(int A, int[][] B) {
+        adj = new ArrayList<ArrayList<Integer>>(maxn);
+        for (int i = 0; i < maxn; i++) {
+            visited[i] = 0;
+            adj.add(new ArrayList<Integer>());
+        }
+        for (int[] edge : B)
+            adj.get(edge[0]).add(edge[1]);
+        if (isReachable(1, A)) return 1;
+        return 0;
+    }
+}
+
+/*Java Adjacency List Solution*/
+class PathinDirectedGraph1 {
+    public int solve(int A, ArrayList<ArrayList<Integer>> B) {
+        ArrayList<Integer>[] adjList = new ArrayList[A + 1];
+        for (int i = 0; i < adjList.length; i++) {
+            adjList[i] = new ArrayList<Integer>();
+        }
+        for (int i = 0; i < B.size(); i++) {
+            adjList[B.get(i).get(0)].add(B.get(i).get(1));
+        }
+        int[] visitedArr = new int[A + 1];
+        dfs(1, adjList, visitedArr);
+        return (visitedArr[A] == 1) ? 1 : 0;
+    }
+
+    public void dfs(int node, ArrayList<Integer>[] adjlist, int[] visited) {
+        visited[node] = 1;
+        for (int i = 0; i < adjlist[node].size(); i++) {
+            int neigh = adjlist[node].get(i);
+            if (visited[neigh] != 1) {
+                dfs(neigh, adjlist, visited);
+            }
+        }
     }
 }
 
