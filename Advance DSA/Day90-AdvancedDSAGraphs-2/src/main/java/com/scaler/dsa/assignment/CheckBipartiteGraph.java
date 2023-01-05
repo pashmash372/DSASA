@@ -9,6 +9,7 @@ import java.util.Queue;
 public class CheckBipartiteGraph {
     static int maxn = 100009;
     static ArrayList <ArrayList< Integer >> graph;
+    /* Adjacency List Creation */
     public static void graphC() {
         graph = new ArrayList < ArrayList < Integer > > (maxn);
         for (int i = 0; i < maxn; i++) {

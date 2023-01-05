@@ -3,7 +3,7 @@ package com.scaler.dsa.assignment;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/* Best solution MULTIPLE BFS*/
 public class RottenOranges {
     public int solve(int[][] grid) {
         Queue< int[] > queue = new LinkedList< >();

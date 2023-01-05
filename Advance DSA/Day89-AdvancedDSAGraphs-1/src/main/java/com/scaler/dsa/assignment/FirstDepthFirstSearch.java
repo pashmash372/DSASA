@@ -1,42 +1,113 @@
 package com.scaler.dsa.assignment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FirstDepthFirstSearch {
     // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
     static int maxn = 100009;
     static int[] vis = new int[maxn];
-    static ArrayList <ArrayList< Integer >> adj;
+    static ArrayList<ArrayList<Integer>> adj;
+
     public static void graph() {
-        adj = new ArrayList < ArrayList < Integer > > (maxn);
+        adj = new ArrayList<ArrayList<Integer>>(maxn);
         for (int i = 0; i < maxn; i++) {
             vis[i] = 0;
-            adj.add(new ArrayList < Integer > ());
+            adj.add(new ArrayList<Integer>());
         }
     }
+
+    public static boolean dfs(int s, int x) {
+        if (s == x) return true;
+        vis[s] = 1;
+        int i, j, k = adj.get(s).size();
+        for (i = 0; i < k; i++) {
+            j = adj.get(s).get(i);
+            if (vis[j] == 0 && dfs(j, x)) return true;
+        }
+        return false;
+    }
+
     public int solve(int[] A, final int B, final int C) {
         graph();
         int n = A.length;
         for (int i = 1; i < n; i++) {
             adj.get(A[i]).add(i + 1);
         }
-        if (dfs(C, B) == true)
-            return 1;
+        if (dfs(C, B)) return 1;
         return 0;
     }
-    public static boolean dfs(int s, int x) {
-        if (s == x)
-            return true;
-        vis[s] = 1;
-        int i, j, k = adj.get(s).size();
-        for (i = 0; i < k; i++) {
-            j = adj.get(s).get(i);
-            if (vis[j] == 0 && dfs(j, x) == true)
-                return true;
+}
+
+/* Dfs || tc o(n+e) */
+
+class FirstDepthFirstSearch1 {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    boolean[] visited;
+
+    public int solve(ArrayList<Integer> A, final int B, final int C) {
+        ArrayList<ArrayList<Integer>> in = new ArrayList<>();
+        int N = A.size();
+        for (int i = 0; i <= N; i++) {
+            in.add(new ArrayList<Integer>());
         }
-        return false;
+        constructAdjacency(A, in);
+        visited = new boolean[N + 1];
+        Arrays.fill(visited, false);
+        dfs(in, B, C);
+        return !visited[B] ? 0 : 1;
+    }
+
+    private void constructAdjacency(ArrayList<Integer> A, ArrayList<ArrayList<Integer>> in) {
+        for (int i = 1; i < A.size(); i++) {
+            ArrayList<Integer> temp = in.get(A.get(i));
+            temp.add(i + 1);
+        }
+    }
+
+    private void dfs(ArrayList<ArrayList<Integer>> in, int B, int C) {
+        visited[C] = true;
+        for (int i = 0; i < in.get(C).size(); i++) {
+            int node = in.get(C).get(i);
+            if (!visited[node]) {
+                visited[node] = true;
+                dfs(in, B, node);
+            }
+        }
     }
 }
+
+/*Simple Java DFS Approach*/
+class FirstDepthFirstSearch2 {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    boolean[] Vis;
+
+    public int solve(int[] A, final int B, final int C) {
+        int n = A.length;
+        Vis = new boolean[n + 1];
+        ArrayList<Integer>[] arr = new ArrayList[n + 1];
+        for (int i = 0; i <= n; i++) {
+            arr[i] = new ArrayList<Integer>();
+        }
+        for (int i = 1; i < n; i++) {
+            arr[A[i]].add(i + 1);
+        }
+        dfs(arr, C, B);
+        if (Vis[B]) return 1;
+        return 0;
+    }
+
+    public void dfs(ArrayList<Integer>[] arr, int s, int d) {
+        if (Vis[s]) return;
+        Vis[s] = true;
+        for (int i = 0; i < arr[s].size(); i++) {
+            int x = arr[s].get(i);
+            dfs(arr, x, d);
+        }
+    }
+}
+
+
 /*Q2. First Depth First Search
 Solved
 character backgroundcharacter
