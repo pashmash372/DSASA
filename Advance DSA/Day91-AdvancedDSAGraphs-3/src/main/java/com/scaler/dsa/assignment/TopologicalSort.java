@@ -7,43 +7,88 @@ import java.util.PriorityQueue;
 public class TopologicalSort {
     static int maxn = 10009;
     static int[] in = new int[maxn];
-    static ArrayList <ArrayList< Integer >> adj;
+    static ArrayList<ArrayList<Integer>> adj;
+
     public static void graph() {
-        adj = new ArrayList < ArrayList < Integer > > (maxn);
+        adj = new ArrayList<ArrayList<Integer>>(maxn);
         for (int i = 0; i < maxn; i++) {
-            in [i] = 0;
-            adj.add(new ArrayList < Integer > ());
+            in[i] = 0;
+            adj.add(new ArrayList<Integer>());
         }
     }
+
     public int[] solve(int A, int[][] B) {
         graph();
-        for (int[] edge: B) {
+        for (int[] edge : B) {
             adj.get(edge[0]).add(edge[1]);
             in[edge[1]]++;
         }
-        PriorityQueue < Integer > pq = new PriorityQueue< >();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // min heap
         for (int i = 1; i <= A; i++) {
-            if ( in [i] == 0)
-                pq.offer(i);
+            if (in[i] == 0) pq.offer(i);
         }
-        ArrayList < Integer > ans = new ArrayList < Integer > ();
+        ArrayList<Integer> ans = new ArrayList<Integer>();
         while (pq.size() > 0) {
             int temp = pq.poll();
             ans.add(temp);
-            for (int v: adj.get(temp)) {
-                in [v]--;
-                if (in[v] == 0)
-                    pq.offer(v);
+            for (int v : adj.get(temp)) {
+                in[v]--;
+                if (in[v] == 0) pq.offer(v);
             }
         }
-        if (ans.size() != A)
-            ans.clear();
+        if (ans.size() != A) ans.clear();
         int[] res = new int[ans.size()];
         for (int i = 0; i < ans.size(); i++)
             res[i] = ans.get(i);
         return res;
     }
 }
+
+/* Java: Using Kahn's Algo: TC: O(V+E) and SC: (V+E) */
+class TopologicalSort1 {
+    public int[] solve(int A, int[][] B) {
+        int[] inDegreeArr = new int[A + 1];
+        ArrayList<Integer>[] list = new ArrayList[A + 1];
+        createListAndInDegreeArr(A, B, list, inDegreeArr);
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for (int i = 1; i < inDegreeArr.length; i++) {
+            if (inDegreeArr[i] == 0) {
+                queue.add(i);
+            }
+        }
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        while (!queue.isEmpty()) {
+            int front = queue.poll();
+            ans.add(front);
+            for (int i = 0; i < list[front].size(); i++) {
+                int neighbour = list[front].get(i);
+                inDegreeArr[neighbour]--;
+                if (inDegreeArr[neighbour] == 0) {
+                    queue.add(neighbour);
+                }
+            }
+        }
+        if (ans.size() < A) {
+            return new int[]{};
+        }
+        int[] res = new int[A];
+        for (int i = 0; i < ans.size(); i++) {
+            res[i] = ans.get(i);
+        }
+        return res;
+    }
+
+    public void createListAndInDegreeArr(int A, int[][] B, ArrayList<Integer>[] list, int[] inDegreeArr) {
+        for (int i = 0; i < list.length; i++) {
+            list[i] = new ArrayList<Integer>();
+        }
+        for (int i = 0; i < B.length; i++) {
+            list[B[i][0]].add(B[i][1]);
+            inDegreeArr[B[i][1]]++;
+        }
+    }
+}
+
 /*Q1. Topological Sort
 Solved
 character backgroundcharacter
