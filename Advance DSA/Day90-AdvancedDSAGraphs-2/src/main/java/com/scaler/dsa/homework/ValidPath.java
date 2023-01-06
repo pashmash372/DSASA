@@ -6,26 +6,28 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ValidPath {
-    static int[] x = {1,1,1,-1,-1,-1,0,0};
-    static int[] y = {-1,1,0,-1,1,0,1,-1};
-    public String solve(int A, int B, int C, int D, ArrayList< Integer > E, ArrayList < Integer > F) {
+    static int[] x = {1, 1, 1, -1, -1, -1, 0, 0};
+    static int[] y = {-1, 1, 0, -1, 1, 0, 1, -1};
+
+    public String solve(int A, int B, int C, int D, ArrayList<Integer> E, ArrayList<Integer> F) {
         int[][] valid = new int[A + 1][B + 1];
         int n = C;
         int r = D;
         for (int i = 0; i <= A; i++) {
             for (int j = 0; j <= B; j++) {
                 for (int z = 0; z < n; z++) {
-                    if (Math.sqrt(Math.pow(E.get(z) - i, 2) + Math.pow(F.get(z) - j, 2)) <= r)
+                    if (Math.sqrt(Math.pow(E.get(z) - i, 2) + Math.pow(F.get(z) - j, 2)) <= r) {
                         valid[i][j] = -1;
+                        break;
+                    }
                 }
             }
         }
-        if (valid[0][0] == -1 || valid[A][B] == -1)
-            return "NO";
+        if (valid[0][0] == -1 || valid[A][B] == -1) return "NO";
         //System.out.println("startng ending no problem");
         boolean[][] v = new boolean[A + 1][B + 1];
         v[0][0] = true;
-        Queue< Integer > q = new LinkedList< Integer >();
+        Queue<Integer> q = new LinkedList<Integer>();
         q.add(0);
         q.add(0);
         while (!q.isEmpty()) {
@@ -47,6 +49,69 @@ public class ValidPath {
             }
         }
         return "NO";
+    }
+}
+
+
+/*Valid Path || DFS || Commented*/
+
+class ValidPath1 {
+    public String solve(int A, int B, int C, int D, int[] E, int[] F) {
+        int[][] mat = new int[A + 1][B + 1];
+//travese the graph
+        for (int i = 0; i <= A; i++) {
+            for (int j = 0; j <= B; j++) {
+
+//check all the circle points
+                int res = 1;//initially marked as 1
+                for (int k = 0; k < C; k++) {
+
+//we are checking if the current cell is lying under the circle
+//boundary or not
+                    int distance = (int) (Math.pow(i - E[k], 2) + Math.pow(j - F[k], 2));
+                    if (distance <= D * D) {
+
+                        res = 0;//if distance less than the radius then set the cell to 0
+                        break;
+                    }
+                }
+                mat[i][j] = res;
+            }
+        }
+
+//edge case if the (0,0)/(X,Y) cell is occupied with circle
+//boundary then no traversal is possible
+//so then and there return no;
+        if (mat[0][0] == 0 || mat[A][B] == 0) return "NO";
+
+//take a visited array
+        boolean[][] visited = new boolean[A + 1][B + 1];
+//as we have to start from(0,0) i.e different components won't matter here as
+//there will be only 1 connected component
+        dfs(0, 0, visited, mat);
+
+        if (visited[A][B]) return "YES";
+        else return "NO";
+
+    }
+
+    public void dfs(int row, int col, boolean[][] vis, int[][] mat) {
+        int n = mat.length;
+        int m = mat[0].length;
+
+        vis[row][col] = true;
+
+//lookup to all 8 directions
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                int nrow = row + dx;
+                int ncol = col + dy;
+
+                if (nrow < 0 || nrow >= n || ncol < 0 || ncol >= m || vis[nrow][ncol] || mat[nrow][ncol] == 0) continue;
+
+                dfs(nrow, ncol, vis, mat);
+            }
+        }
     }
 }
 
