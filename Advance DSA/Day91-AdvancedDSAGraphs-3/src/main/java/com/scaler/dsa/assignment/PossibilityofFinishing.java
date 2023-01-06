@@ -3,18 +3,30 @@ package com.scaler.dsa.assignment;
 
 import java.util.ArrayList;
 
+
 public class PossibilityofFinishing {
     static int maxn = 100009;
-    static ArrayList <ArrayList< Integer >> g;
+    static ArrayList<ArrayList<Integer>> g;
     static int[] visited = new int[maxn];
     static int f = 0;
+
     public static void graph() {
-        g = new ArrayList < ArrayList < Integer > > (maxn);
+        g = new ArrayList<ArrayList<Integer>>(maxn);
         for (int i = 0; i < maxn; i++) {
-            visited[i] = 0;
-            g.add(new ArrayList < Integer > ());
+            visited[i] = 0; // 0 -> not visited
+            g.add(new ArrayList<Integer>());
         }
     }
+
+    public static void check_cycle(int u) {
+        visited[u] = 1; // 1 ->  visited
+        for (int v : g.get(u)) {
+            if (visited[v] == 0) check_cycle(v);
+            else if (visited[v] == 1) f = 1;
+        }
+        visited[u] = 2; // 2 -> completed
+    }
+
     public int solve(int A, int[] B, int[] C) {
         graph();
         for (int i = 0; i < B.length; i++) {
@@ -24,24 +36,96 @@ public class PossibilityofFinishing {
             if (visited[i] == 0) {
                 f = 0;
                 check_cycle(i);
-                if (f == 1)
-                    break;
+                if (f == 1) break;
             }
         }
         f = 1 - f;
         return f;
     }
-    public static void check_cycle(int u) {
-        visited[u] = 1;
-        for (int v: g.get(u)) {
-            if (visited[v] == 0)
-                check_cycle(v);
-            else if (visited[v] == 1)
-                f = 1;
+}
+
+
+/* Using DFS : Cycle Detection in Directed Graph */
+
+class PossibilityofFinishing1 {
+    int[] visited;
+    int[] process;
+    boolean isCyclic;
+
+    public int solve(int A, int[] B, int[] C) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+// Create adjacency list
+        adj = createAdj(A, B, C);
+
+        visited = new int[A + 1];
+        process = new int[A + 1];
+        isCyclic = false;
+
+        for (int i = 1; i <= A; i++) {
+            if (process[i] != 2) DFS(i, adj);
         }
-        visited[u] = 2;
+        return isCyclic ? 0 : 1;
+    }
+
+    // Do DFS on all the nodes
+    void DFS(int course, ArrayList<ArrayList<Integer>> adj) {
+        if (isCyclic) return;
+
+        visited[course] = 1;
+        process[course] = 1;
+
+        for (int i = 0; i < adj.get(course).size(); i++) {
+            if (isCyclic) break;
+            int dependent = adj.get(course).get(i);
+
+            if (visited[dependent] == 0) {
+                DFS(dependent, adj);
+            } else if (process[dependent] == 1) {
+                isCyclic = true;
+            }
+        }
+        if (!isCyclic) process[course] = 2;
+    }
+
+    public ArrayList<ArrayList<Integer>> createAdj(int A, int[] B, int[] C) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+
+        for (int i = 0; i <= A; i++) {
+            adj.add(new ArrayList<Integer>());
+        }
+
+        for (int i = 0; i < B.length; i++) {
+            adj.get(C[i]).add(B[i]);
+        }
+        return adj;
     }
 }
+// Observation
+// Total number of courses and its dependent courses will be  given
+// We have to find whether a person can complete all the courses
+// Dependent course means ex: take A and B course
+//      to complete B we have first complete A
+//      This will represented as pair of (A, B)
+
+// To complete all the courses there should not be any cyclic dependency
+// So detect the cycle in the graph if there is a cycle then we cannot complete else we can
+
+// Approach:
+// 1. Detect cycle in directed graph
+// 2. Here we are gonna use DFS method
+// 3. First we need visited array and process array
+//     process[i] = 0 - not started
+//     process[i] = 1 - in process
+//     process[i] = 2 - completed
+
+// 4. during dfs if any node has already visited node as a neigh and the process for that node is not completed
+//     means we are having a loop
+// 5. If we have a loop then we can break;
+
+// T.C O(V + E)
+// S.C O(V + E)
+
+
 /*Q2. Possibility of Finishing
 Solved
 character backgroundcharacter
