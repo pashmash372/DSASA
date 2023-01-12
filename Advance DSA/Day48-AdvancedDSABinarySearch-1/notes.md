@@ -18,4 +18,3 @@
 | - Q4. | Rotated Sorted Array Search    | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/homework/RotatedSortedArraySearch.java)   |
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
-)
