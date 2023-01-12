@@ -18,17 +18,4 @@
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
 
-
-[//]: # (https://img.shields.io/badge/-EASY-green)
-
-[//]: # ()
-
-[//]: # ()
-
-[//]: # (https://img.shields.io/badge/-MEDIUM-yellow)
-
-[//]: # ()
-
-[//]: # ()
-
-[//]: # (https://img.shields.io/badge/-HARD-red)
+ 
