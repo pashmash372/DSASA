@@ -1,41 +1,28 @@
 # Assignment
- 
- 
 
-- Q1. First Missing Integer Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
 
-- Q2. Maximum Absolute Difference Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
 
-- Q3. Merge Intervals Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
+| No. | Name                        | Type                                                        | Solution link                                                                        |
+|-----|-----------------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Q1. | First Missing Integer       | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignement/FirstMissingInteger.java)        |
+| Q2. | Maximum Absolute Difference | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignement/MaximumAbsoluteDifference.java ) |
+| Q3. | Merge Intervals             | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignement/MergeIntervals.java)             |
+
+
 
 
 *** 
 
 # Homework
- 
- 
-- Q1. Max Distance Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
 
-- Q2. Minimum Swaps 2 asy [![](https://img.shields.io/badge/-EASY-green)]()
-- Q3. Spiral Order Matrix II asy [![](https://img.shields.io/badge/-EASY-green)]()
-
-- Q4. Max Chunks To Make Sorted asy [![](https://img.shields.io/badge/-EASY-green)]()
-
-- Q5. IsSorted Subarray asy [![](https://img.shields.io/badge/-EASY-green)]()
+| No. | Name                      | Type                                                        | Solution link                                                                 |
+|-----|---------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------------|
+| Q1. | Max Distance              | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/homework/MaxDistance.java )           |
+| Q2. | Minimum Swaps 2           | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/MinimumSwaps2.java )         |
+| Q3. | Spiral Order Matrix II    | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/SpiralOrderMatrixII.java )   |
+| Q4. | Max Chunks To Make Sorted | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/MaxChunksToMakeSorted.java ) |
+| Q5. | IsSorted Subarray         | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/IsSortedSubarray.java )      |  
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
 
-
-[//]: # (https://img.shields.io/badge/-EASY-green)
-
-[//]: # ()
-
-[//]: # ()
-
-[//]: # (https://img.shields.io/badge/-MEDIUM-yellow)
-
-[//]: # ()
-
-[//]: # ()
-
-[//]: # (https://img.shields.io/badge/-HARD-red)
+ 
