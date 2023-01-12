@@ -1,32 +1,21 @@
 # Assignment
 
-- Q1. Is It Prime? Easy [![](https://img.shields.io/badge/-EASY-green)]()
-
-- Q2. Is It Perfect? Easy [![](https://img.shields.io/badge/-EASY-green)]()
-
-- Q3. Summation Game Easy [![](https://img.shields.io/badge/-EASY-green)]()
-
-- Q4. Square root of a number Easy [![](https://img.shields.io/badge/-EASY-green)]()
+| No.   | Name                    | Type                                                   | Solution link                                                            |
+|-------|-------------------------|--------------------------------------------------------|--------------------------------------------------------------------------|
+| - Q1. | Is It Prime?            | Easy [![](https://img.shields.io/badge/-EASY-green)]() | [SOLUTION](src/main/java/com/scaler/assignment/IsItPrime.java)           |
+| - Q2. | Is It Perfect?          | Easy [![](https://img.shields.io/badge/-EASY-green)]() | [SOLUTION](src/main/java/com/scaler/assignment/IsItPerfect.java)         |
+| - Q3. | Summation Game          | Easy [![](https://img.shields.io/badge/-EASY-green)]() | [SOLUTION](src/main/java/com/scaler/assignment/SummationGame.java)       |
+| - Q4. | Square root of a number | Easy [![](https://img.shields.io/badge/-EASY-green)]() | [SOLUTION](src/main/java/com/scaler/assignment/Squarerootofanumber.java) |
 
 ***
 
 # Homework
 
-- Q1. Armstrong Numbers! Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
-
-- Q2. Multiplication Table! Easy [![](https://img.shields.io/badge/-EASY-green)]()
-
-
-
+| No.   | Name                  | Type                                                        | Solution link                                                          |
+|-------|-----------------------|-------------------------------------------------------------|------------------------------------------------------------------------|
+| - Q1. | Armstrong Numbers!    | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/homework/ArmstrongNumbers.java)    |
+| - Q2. | Multiplication Table! | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/homework/MultiplicationTable.java) |
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
 
-
-
-[//]: # (Hard [![]&#40;https://img.shields.io/badge/-HARD-red&#41;]&#40;&#41;)
-
-[//]: # ()
-[//]: # (Easy [![]&#40;https://img.shields.io/badge/-EASY-green&#41;]&#40;&#41;)
-
-[//]: # ()
-[//]: # (Medium [![]&#40;https://img.shields.io/badge/-MEDIUM-yellow&#41;]&#40;&#41;)
+=
