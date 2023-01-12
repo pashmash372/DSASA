@@ -1,6 +1,6 @@
 package com.scaler.dsa.homework;
 
-public class ImplementPowerFunction {
+    public class ImplementPowerFunction {
 
     //    Method 1:
     public class Solution {
