@@ -1,14 +1,19 @@
 # Assignment
 
-- Q1. Longest Common Subsequence Easy [![](https://img.shields.io/badge/-EASY-green)]()
-- Q2. Edit Distance Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
-- Q3. Regular Expression Match Hard Hard [![](https://img.shields.io/badge/-HARD-red)]()
+| No.   | Name               | Type                                                        | Solution link                                                              |
+|-------|--------------------|-------------------------------------------------------------|----------------------------------------------------------------------------|
+| - Q1. | Unbounded Knapsack | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/UnboundedKnapsack.java) |
+| - Q2. | 0-1 Knapsack       | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/Knapsack01.java)        |
 
 *** 
 
 # Homework
- 
-- Q1. Distinct Subsequences Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
-- Q2. Repeating Subsequence Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]()
+
+| No.   | Name                    | Type                                                        | Solution link                                                               |
+|-------|-------------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------|
+| - Q1. | Buying Candies          | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/homework/BuyingCandies.java)        |
+| - Q2. | Tushar's Birthday Party | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/homework/TusharsBirthdayParty.java) |
+| - Q3. | Ways to send the signal | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/Waystosendthesignal.java)  |
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
+
