@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+// Nodes
 class UndirectedGraphNode {
     int label;
     List<UndirectedGraphNode> neighbors;

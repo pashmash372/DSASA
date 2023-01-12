@@ -32,7 +32,7 @@ public class Batches {
             adj.get(edge[0]).add(edge[1]);
             adj.get(edge[1]).add(edge[0]);
         }
-        System.arraycopy(B, 0, a, 1, B.length);
+        System.arraycopy(B, 0, a, 1, B.length); // copy array B to array a where array a follows 1-based index
         int ans = 0;
         for (int i = 1; i <= A; i++) {
             if (vis[i] == 0) {
