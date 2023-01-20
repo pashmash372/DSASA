@@ -5,7 +5,7 @@ public class RangeSumQuery {
     public long[] rangeSum(int[] A, int[][] B) {
         int n = A.length;
         int m = B.length;
-        long[] pref = new long[n + 1];
+        long[] pref = new long[n + 1]; // 1-based index array adjustment
         for (int i = 1; i <= n; i++) {
             pref[i] = pref[i - 1] + A[i - 1];   //Sum from the 0th to the i-1'th index
         }
