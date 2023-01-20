@@ -13,6 +13,8 @@ public class StarPatternI {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int i, j;
+
+        // first half
         for (i = 1; i <= n; i++) {
             for (j = i; j <= n; j++)
                 System.out.print("*");
@@ -22,6 +24,8 @@ public class StarPatternI {
                 System.out.print("*");
             System.out.print("\n");
         }
+
+        // second half
         for (i = 1; i <= n; i++) {
             for (j = 1; j <= i; j++)
                 System.out.print("*");
