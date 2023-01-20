@@ -1,6 +1,6 @@
 package com.scaler.assignment;
 
-
+// best solution available
 public class ClosestMinMax {
     public int solve(int[] A) {
 
