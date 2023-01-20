@@ -11,7 +11,9 @@ public class RangeSumQuery {
         }
         long[] ans = new long[m];
         for (int i = 0; i < m; i++) {
+            // sum[s,e] = ps[e]+ps[s-1] , s->start, e->end
             ans[i] = pref[B[i][1]] - pref[B[i][0] - 1];
+
         }
         return ans;
     }
