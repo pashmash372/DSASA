@@ -3,20 +3,20 @@ package com.scaler.assignment;
 
 public class SpecialSubsequencesAG {
     public int solve(String A) {
-        int n = A.length(), ans = 0, MOD = 1000*1000*1000 + 7;
-        int cnt_G[] = new int[n], count = 0;
+        int n = A.length(), ans = 0, MOD = 1000 * 1000 * 1000 + 7;
+        int[] cnt_G = new int[n];
+        int count = 0;
 
         //Suffix count of G
-        for(int i = n - 1 ; i >= 0 ; i--){
-            if(A.charAt(i) == 'G')
-                count = count + 1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (A.charAt(i) == 'G') count = count + 1;
             cnt_G[i] = count;
         }
 
         // traverse the string again from beginning
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             // if current character is "A" then add number of G's after that
-            if(A.charAt(i) == 'A') {
+            if (A.charAt(i) == 'A') {
                 ans = ans + cnt_G[i];
                 ans = ans % MOD;
             }
@@ -24,6 +24,24 @@ public class SpecialSubsequencesAG {
         return ans;
     }
 }
+
+/*Best  solution*/
+
+class SpecialSubsequencesAG1 {
+    public int solve(String A) {
+        int Gcount = 0, A_Gcount = 0;
+        int modulo = (int) Math.pow(10, 9) + 7;
+        for (int i = A.length() - 1; i >= 0; i--) {
+            if (A.charAt(i) == 'G') {
+                Gcount++;
+            } else if (A.charAt(i) == 'A') {
+                A_Gcount = (A_Gcount + Gcount) % modulo;
+            }
+        }
+        return A_Gcount;
+    }
+}
+
 /*Q1. Special Subsequences "AG"
 Solved
 character backgroundcharacter
