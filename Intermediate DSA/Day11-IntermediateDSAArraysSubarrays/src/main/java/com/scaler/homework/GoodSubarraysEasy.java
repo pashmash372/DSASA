@@ -7,12 +7,14 @@ public class GoodSubarraysEasy {
         int pref[] = new int[n];
         pref[0] = A[0];
         int ans = 0;
+        // calculate prefix sum
         for(int i = 1 ; i < n ; i++){
             pref[i] = pref[i - 1] + A[i];
         }
+
         for(int i = 0 ; i < n ; i++){
             for (int j = i ; j < n ; j++){
-                int sz = j - i + 1;
+                int sz = j - i + 1; // length
                 int sum;
                 if(i == 0){
                     sum = pref[j];
