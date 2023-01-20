@@ -7,11 +7,15 @@ public class CountingSubarraysEasy {
         int pref[] = new int[n];
         pref[0]=A[0];
         int ans=0;
+
+        // calculate prefix sum array
         for(int i=1;i<n;i++)pref[i]=pref[i-1]+A[i];
+
+
         for(int i=0;i<n;i++){
             for (int j=i;j<n;j++){
                 int sum = pref[j];
-                if(i>0){
+                if(i>0){ // s is not 0, [s,e]=pf[e]+pf[s-1]
                     sum -= pref[i-1];
                 }
                 if(sum < B) ans++;
