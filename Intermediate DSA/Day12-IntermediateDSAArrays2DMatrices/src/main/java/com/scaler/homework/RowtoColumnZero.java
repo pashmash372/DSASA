@@ -4,6 +4,8 @@ package com.scaler.homework;
 public class RowtoColumnZero {
     public int[][] solve(int[][] A) {
         int n = A.length, m = A[0].length;
+
+        // row-wise zeroing
         for(int i = 0; i < n; i++){
             int flag = 0;
             for(int j = 0; j < m; j++){
@@ -15,6 +17,8 @@ public class RowtoColumnZero {
                 }
             }
         }
+
+        // column -wise zeroing
         for(int j = 0; j < m; j++){
             int flag = 0;
             for(int i = 0; i < n; i++){
@@ -26,6 +30,8 @@ public class RowtoColumnZero {
                 }
             }
         }
+
+        // compiling
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
                 if(A[i][j] == -1)A[i][j] = 0;
