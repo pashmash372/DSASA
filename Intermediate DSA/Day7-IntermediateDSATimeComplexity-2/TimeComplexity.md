@@ -188,3 +188,5 @@ public static void fun(int n) {
 }
  
 ```
+
+O(√n)
