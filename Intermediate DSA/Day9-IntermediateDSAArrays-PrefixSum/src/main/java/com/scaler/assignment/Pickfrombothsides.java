@@ -23,20 +23,20 @@ public class Pickfrombothsides {
     }
 
 
-//Method 2:
+//Method 2: better solution
 
     static class Pickfrombothsides1 {
         public int solve(int[] A, int B) {
             int n = A.length;
             int cur = 0;
             for (int i = 0; i < B; i++) {
-                cur += A[i];
+                cur += A[i]; // calculate cur with all first B elements
             }
-            int back = B - 1;
+            int back = B - 1; // idx for left side sum
             int ans = cur;
             for (int j = n - 1; j >= n - B; j--) {
-                cur += A[j];
-                cur -= A[back];
+                cur += A[j]; // adding right side value to sum
+                cur -= A[back]; // subtracting  left side sum using back ptr
                 back--;
                 ans = Math.max(ans, cur);
             }
