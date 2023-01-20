@@ -20,6 +20,26 @@ public class SecondLargest {
     }
 }
 
+  class SecondLargest1 {
+    public int solve(int[] A) {
+        int max = A[0];
+        int secMax = -1;
+//find out the max first
+        for(int i=0;i<A.length;i++) {
+            if(A[i] > max) {
+                max = A[i];
+            }
+        }
+//find out the maximum again excluding the max value found in above iteration
+        for(int i=0;i<A.length;i++) {
+            if(A[i]!=max && A[i] > secMax) {
+                secMax = A[i];
+            }
+        }
+        return secMax;
+    }
+}
+
 /*Q2. Second Largest
 Solved
 character backgroundcharacter
