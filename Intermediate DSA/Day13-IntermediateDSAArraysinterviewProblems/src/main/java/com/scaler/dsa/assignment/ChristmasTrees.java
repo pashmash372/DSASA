@@ -6,19 +6,28 @@ public class ChristmasTrees {
         final int inf = (int)(1e9 + 10);
         int n = A.length;
         int ans = inf;
+
+        // i -> center
         for(int i = 0 ; i < n ; i++){
+
             int left_min = inf , right_min = inf;
+
+            // left min calculated
             for(int j = 0 ; j < i ; j++){
                 if(A[j] < A[i]){
                     left_min = Math.min(left_min, B[j]);
                 }
             }
+
+            // right min calculated
             for(int j = i + 1 ; j < n ; j++){
                 if(A[j] > A[i]){
                     right_min = Math.min(right_min, B[j]);
                 }
             }
+
             int temp_ans = left_min + B[i] + right_min;
+
             ans = Math.min(ans , temp_ans);
         }
         if(ans == inf) ans = -1;
