@@ -2,54 +2,42 @@ package com.scaler.dsa.assignment;
 
 
 public class Lengthoflongestconsecutiveones {
-    public static int maximum_one(String s)
-    {
+    public static int maximum_one(String s) {
         // To count all 1's in the string
         int cnt_one = 0;
-        int n=s.length();
+        int n = s.length();
         for (int i = 0; i < n; i++) {
-            if (s.charAt(i) == '1')
-                cnt_one++;
+            if (s.charAt(i) == '1') cnt_one++;
         }
         // To store cumulative 1's
-        int left[] = new int[n];
-        int right[] = new int[n];
-        if (s.charAt(0) == '1')
-            left[0] = 1;
-        else
-            left[0] = 0;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        if (s.charAt(0) == '1') left[0] = 1;
+        else left[0] = 0;
 
-        if (s.charAt(n-1) == '1')
-            right[n - 1] = 1;
-        else
-            right[n - 1] = 0;
+        if (s.charAt(n - 1) == '1') right[n - 1] = 1;
+        else right[n - 1] = 0;
         for (int i = 1; i < n; i++) {
-            if (s.charAt(i) == '1')
-                left[i] = left[i - 1] + 1;
-            else
-                left[i] = 0;
+            if (s.charAt(i) == '1') left[i] = left[i - 1] + 1;
+            else left[i] = 0;
         }
 
         for (int i = n - 2; i >= 0; i--) {
-            if (s.charAt(i) == '1')
-                right[i] = right[i + 1] + 1;
+            if (s.charAt(i) == '1') right[i] = right[i + 1] + 1;
 
-            else
-                right[i] = 0;
+            else right[i] = 0;
         }
 
         int cnt = 0, max_cnt = 0;
-        for(int i=0; i<n; ++i )
-            max_cnt=Math.max(max_cnt,Math.max(right[i],left[i]));
+        for (int i = 0; i < n; ++i)
+            max_cnt = Math.max(max_cnt, Math.max(right[i], left[i]));
         for (int i = 1; i < n - 1; i++) {
             if (s.charAt(i) == '0') {
                 int sum = left[i - 1] + right[i + 1];
 
-                if (sum < cnt_one)
-                    cnt = sum + 1;
+                if (sum < cnt_one) cnt = sum + 1; // 0 replaced with 1 resulting 1 addition to total 1's
 
-                else
-                    cnt = sum;
+                else cnt = sum; // this is to handle 1 test case
 
                 max_cnt = Math.max(max_cnt, cnt);
                 cnt = 0;
@@ -58,10 +46,44 @@ public class Lengthoflongestconsecutiveones {
 
         return max_cnt;
     }
+
     public int solve(String A) {
         return maximum_one(A);
 
     }
+
+}
+
+/*Tc: o(n^2) sc: o(1)*/
+class Lengthoflongestconsecutiveones1 {
+
+    public int solve(String A) {
+        //Using middle index approach
+        int count = 0, one = 0;
+        //Counting the number of 1 present in total
+        for (int i = 0; i < A.length(); i++) {
+            if (A.charAt(i) == '1') one++;
+        }
+
+        for (int i = 0; i < A.length(); i++) {
+            int left = 0, right = 0;
+            //finding the number of 1 on the Left side
+            for (int j = i - 1; j >= 0; j--) {
+                if (A.charAt(j) == '0') break;
+                else left++;
+            }
+            //Finding the number of 1 on the Right side
+            for (int j = i + 1; j < A.length(); j++) {
+                if (A.charAt(j) == '0') break;
+                else right++;
+            }
+            int sum = left + right + 1; //Total size of the array: (1's on left) + (1's on Right) + Current Index;
+            if (sum > count) count = sum;
+        }
+        if (count > one) return one;//For the cases such as 000111
+        return count;
+    }
+
 }
 
 
