@@ -1,25 +1,51 @@
 package com.scaler.assignment;
 
+import java.util.ArrayList;
+
 public class Equilibriumindexofanarray {
-    public int solve(int[] A) {
+    public int solve(int[] A) { // good solution
         long sum1 = 0;
-        for(int i = 0; i < A.length ; i++)
+        for (int i = 0; i < A.length; i++)
             sum1 += A[i];
-        long sum2 = 0;  // sum of elements at lower indexes
+        long sum2 = 0;  // sum of elements at lower indexes (left sum)
         int ans = Integer.MAX_VALUE;
-        for(int i = 0 ; i < A.length ; i++){
-            sum1 -= A[i];   // sum of elements at higher indexes
-            if(sum1 == sum2){
+        for (int i = 0; i < A.length; i++) {
+            sum1 -= A[i];   // sum of elements at higher indexes (right sum)
+            if (sum1 == sum2) {
                 ans = i;
                 break;
             }
             sum2 += A[i];
         }
-        if(ans == Integer.MAX_VALUE)
-            ans =- 1;   // If no equilibrium index found, then return -1
+        if (ans == Integer.MAX_VALUE) ans = -1;   // If no equilibrium index found, then return -1
         return ans;
     }
 }
+/* another solution TC - O(N) and SC - O(N)*/
+class Equilibriumindexofanarray1 {
+    public int solve(ArrayList<Integer> A) {
+        int n = A.size();
+        ArrayList<Integer> pf = new ArrayList<>();
+        pf.add(A.get(0));
+
+        for (int i = 1; i < n; i++) {
+            int temp = pf.get(i - 1) + A.get(i);
+            pf.add(temp);
+        }
+
+        for (int i = 0; i < n; i++) {
+            int sL = (i == 0) ? 0 : pf.get(i - 1);
+            int sR = (i == n - 1) ? 0 : pf.get(n - 1) - pf.get(i);
+
+            if (sL == sR) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
 
 /*Q1. Equilibrium index of an array
 Solved

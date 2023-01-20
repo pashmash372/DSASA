@@ -2,23 +2,21 @@ package com.scaler.assignment;
 
 public class SpecialIndex {
 
-    private int cntIndexesToMakeBalance(int arr[], int n)
-    {
+    private int cntIndexesToMakeBalance(int[] arr, int n) {
         if (n == 1) {
             return 1;
         }
 
-        if (n == 2)
-            return 0;
+        if (n == 2) return 0;
 
         int sumEven = 0;
         int sumOdd = 0;
 
+        // calculate sum of all even nos and sum of all odd nos
         for (int i = 0; i < n; i++) {
             if (i % 2 == 0) {
                 sumEven += arr[i];
-            }
-            else {
+            } else {
                 sumOdd += arr[i];
             }
         }
@@ -30,33 +28,30 @@ public class SpecialIndex {
         int newOddSum = 0;
 
         for (int i = 1; i < n - 1; i++) {
-            if (i % 2 == 1) {
-                currOdd += arr[i];
-                newEvenSum = currEven + sumOdd
-                        - currOdd;
-                newOddSum = currOdd + sumEven
-                        - currEven - arr[i];
-            }
-            else {
-                currEven += arr[i];
-                newOddSum = currOdd + sumEven
-                        - currEven;
-                newEvenSum = currEven + sumOdd
-                        - currOdd - arr[i];
+            if (i % 2 == 1) { // odd index
+                currOdd += arr[i];  // current odd elements sumation till  ith index without any deletion
+                newEvenSum = currEven + sumOdd - currOdd;   // currEven till ith  + (sumOdd-currOdd) -> (total odd sum - odd sum till ith)
+                newOddSum = currOdd + sumEven - currEven - arr[i]; // currOdd till ith  + (sumEven-currEven) -> (total Even sum - even sum till ith) and current i th index
+            } else {
+                currEven += arr[i]; // current even elements sumation till  ith index without any deletion
+                newOddSum = currOdd + sumEven - currEven;
+                newEvenSum = currEven + sumOdd - currOdd - arr[i];
             }
             if (newEvenSum == newOddSum) {
                 res++;
             }
         }
+        // edge cases handle for 0 th index
         if (sumOdd == sumEven - arr[0]) {
             res++;
         }
+
+        // edge cases handle for N th index
         if (n % 2 == 1) {
             if (sumOdd == sumEven - arr[n - 1]) {
                 res++;
             }
-        }
-        else {
+        } else {
             if (sumEven == sumOdd - arr[n - 1]) {
                 res++;
             }
