@@ -10,17 +10,33 @@ public class AntiDiagonals {
         for (int i = 0; i < 2 * l - 1; ++i) {
             int offset = i < l ? 0 : i - l + 1;
             ArrayList<Integer> row = new ArrayList<Integer>();
-            int k=0;
+            int k = 0;
             for (int j = offset; j <= i - offset; ++j) {
                 row.add(A.get(j).get(i - j));
                 k++;
             }
-            for(int j = k; j< l ;j++){
+            for (int j = k; j < l; j++) {
                 row.add(0);
             }
             res.add(row);
         }
         return res;
+    }
+}
+
+/*Anti Diagonals Java optimized solution and more readable*/
+class AntiDiagonals1 {
+    public int[][] diagonal(int[][] A) {
+        int n = A.length;
+        int[][] result = new int[2 * n - 1][n];
+        for (int i = 0; i < 2 * n - 1; i++) {
+            int row = i < n ? 0 : i - n + 1;
+            int col = i < n ? i : n - 1;
+            for (int j = 0; j < n && row < n && col >= 0; j++, row++, col--) { // row ++ , col -- ,gets diagonal elements of original array
+                result[i][j] = A[row][col];
+            }
+        }
+        return result;
     }
 }
 
