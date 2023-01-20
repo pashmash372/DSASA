@@ -4,15 +4,16 @@ package com.scaler.dsa.homewokr;
 public class Maximumpositivity {
     public int[] solve(int[] A) {
         int size = 0, left = 0, right = 0;
+
         for (int l = -1, r = 0; r < A.length; r++) {
-            if (A[r] >= 0) {
+            if (A[r] >= 0) { // for positive ele
                 if (size < r - l) {
                     size = r - l;
                     left = l;
                     right = r;
                 }
             } else {
-                l = r;
+                l = r; // for negative ele , start l from r , r increment
             }
         }
         int ans[] = new int[size];
