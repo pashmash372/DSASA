@@ -10,10 +10,10 @@ public class SingleNumberIII {
         int intA = 0, intB = 0;
         for (int item: A) {
             // based on the last bit, group the items into groupA (include a) and groupB
-            if ((item & lastBit) != 0)
+            if ((item & lastBit) != 0) // item contains the last bit
                 intA = intA ^ item;
             else
-                intB = intB ^ item;
+                intB = intB ^ item; // not contains
         }
         int x = Math.min(intA, intB), y = Math.max(intA, intB);
         int[] ans = new int[2];
