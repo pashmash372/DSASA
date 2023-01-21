@@ -5,8 +5,8 @@ public class Numberof1Bits {
     public int numSetBits(long A) {
         int total_ones = 0;
         while (A != 0) {
-            // rightmost set bit becomes unset
-            A = A & (A - 1);
+            // rightmost set bit becomes unset (good solution)
+            A = A & (A - 1); // one by one gathers right most bit setbit
             total_ones++;
         }
         return total_ones;
