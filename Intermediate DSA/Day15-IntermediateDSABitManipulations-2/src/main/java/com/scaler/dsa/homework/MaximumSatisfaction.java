@@ -2,24 +2,53 @@ package com.scaler.dsa.homework;
 
 
 public class MaximumSatisfaction {
+    public static boolean check(int x, int[] a) {
+        int y = 0;
+        for (int it : a)
+            if ((it & x) == x) ++y;
+        return (y > 3);
+    }
+
     public int solve(int[] A) {
         int n = A.length;
         int ans = 0;
         for (int i = 30; i >= 0; --i) {
             int temp = ans | (1 << i);
-            if (check(temp, A))
-                ans = temp;
+            if (check(temp, A)) ans = temp;
         }
         return ans;
     }
-    public static boolean check(int x, int[] a) {
-        int y = 0;
-        for (int it: a)
-            if ((it & x) == x)
-                ++y;
-        return (y > 3);
+}
+
+/**/
+
+class MaximumSatisfaction1 {
+    public int solve(int[] A) {
+        if (A.length == 4) {
+            return (A[0] & A[1] & A[2] & A[3]);
+        }
+        int ans = 0;
+        for (int i = 31; i >= 0; i--) {
+            int count1 = 0;
+            for (int j = 0; j < A.length; j++) {
+                if ((A[j] & (1 << i)) != 0) {
+                    count1++;
+                }
+            }
+            if (count1 >= 4) {
+                ans = ans + (1 << i);
+                for (int j = 0; j < A.length; j++) { // ignoring un set elements in array
+                    if ((A[j] & (1 << i)) == 0) {
+                        A[j] = 0;
+                    }
+                }
+            }
+
+        }
+        return ans;
     }
 }
+
 
 /*Q2. Maximum Satisfaction
 Solved
