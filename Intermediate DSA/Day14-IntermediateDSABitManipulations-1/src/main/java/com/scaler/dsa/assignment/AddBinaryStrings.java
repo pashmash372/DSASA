@@ -4,7 +4,7 @@ package com.scaler.dsa.assignment;
 public class AddBinaryStrings {
     public String addBinary(String A, String B) {
         int nA, nB;
-        char res[];
+        char[] res;
         int i, j, k;
         nA = A.length();
         nB = B.length();
@@ -16,20 +16,44 @@ public class AddBinaryStrings {
         // we add bits from the rightmost bit to the leftmost bit
         while (i >= 0 || j >= 0 || carry != 0) {
             sum = carry;
-            if (i >= 0)
-                sum += (A.charAt(i) - '0');
-            if (j >= 0)
-                sum += (B.charAt(j) - '0');
+            if (i >= 0) sum += (A.charAt(i) - '0');
+            if (j >= 0) sum += (B.charAt(j) - '0');
             res[k] = (char) ((sum % 2) + '0');
             carry = sum / 2;
             i--;
             j--;
             k--;
         }
-        if (res[0] == '1')
-            return new String(res);
+        if (res[0] == '1') return new String(res);
         int len = Math.max(nA, nB);
         return new String(res, 1, len);
+    }
+}
+
+/*Java solution using while loop, sum and carry variable*/
+
+class AddBinaryStrings1 {
+    public String addBinary(String A, String B) {
+        int Alen = A.length() - 1;
+        int Blen = B.length() - 1;
+        int carry = 0;
+        StringBuilder sb = new StringBuilder();
+        while (Alen >= 0 || Blen >= 0 || carry > 0) {
+            int sum = 0;
+            if (Alen >= 0) {
+                sum += A.charAt(Alen) - '0';
+                Alen--;
+            }
+            if (Blen >= 0) {
+                sum += B.charAt(Blen) - '0';
+                Blen--;
+            }
+            sum += carry;
+            int cur = sum % 2;
+            carry = sum / 2;
+            sb.append(cur);
+        }
+        return sb.reverse().toString();
     }
 }
 

@@ -13,6 +13,18 @@ public class Numberof1Bits {
     }
 }
 
+/*Java Solution with TC & SC - O(1)*/
+
+class Numberof1Bits1 {
+    public int numSetBits(int A) {
+        int countSetBit = 0;
+        for (int i = 0; i < 32; i++) {
+            if (((A >> i) & 1) == 1) countSetBit++;
+        }
+        return countSetBit;
+    }
+}
+
 /*Q1. Number of 1 Bits
 Solved
 character backgroundcharacter
