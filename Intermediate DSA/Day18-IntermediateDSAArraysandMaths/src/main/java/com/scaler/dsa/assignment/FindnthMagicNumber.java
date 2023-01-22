@@ -1,16 +1,31 @@
 package com.scaler.dsa.assignment;
 
 
-
 public class FindnthMagicNumber {
     public int solve(int A) {
         int ans = 0, x = 1;
         // converting to binary representation
-        while(A > 0) {
+        while (A > 0) {
             x *= 5;
-            if(A % 2 == 1)
-                ans += x;
+            if (A % 2 == 1) ans += x;
             A /= 2;
+        }
+        return ans;
+    }
+}
+
+/**/
+class FindnthMagicNumber1 {
+    public int solve(int A) {
+        int ans = 0;
+        int base = 5;
+
+        while (A > 0) {
+            int last_digit = A & 1;
+            A = A >> 1;
+
+            ans += last_digit * base;
+            base *= 5;
         }
         return ans;
     }
@@ -84,3 +99,25 @@ Else we can use a much faster approach.
 We can represent A in its binary representation.
 If the ith bit(1 based indexing) is set we will add 5i to our answer.
 Time Complexity:- O(log(A))*/
+
+
+/*
+
+
+    The whole problem could be divided into two steps.
+
+        Convert the given number A in Binary.
+        Multiply each binary number in powers of 5.
+        For example.
+        A       A in Binary      Ans in powers of 5
+        1	      1			 5^1=5
+        2          10                      5^2=25
+        3          11                     5^2+5^1=30
+        4          100                   5^3=125
+        5          101                   5^3+5^1=130
+        And so on…
+        10	    1010            5^4+5^2=650
+
+
+
+ */
