@@ -17,10 +17,10 @@ public class LongestPalindromicSubstring {
             return "";
         String longest = A.substring(0, 1); // a single char itself is a palindrome
         for (int i = 0; i < n - 1; i++) {
-            String p1 = expandAroundCenter(A, i, i);
+            String p1 = expandAroundCenter(A, i, i); // for odd length
             if (p1.length() > longest.length())
                 longest = p1;
-            String p2 = expandAroundCenter(A, i, i + 1);
+            String p2 = expandAroundCenter(A, i, i + 1); // for even length
             if (p2.length() > longest.length())
                 longest = p2;
         }
