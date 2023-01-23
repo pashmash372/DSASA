@@ -9,8 +9,11 @@ public class NobleInteger {
         Collections.sort(A);
         int size = A.size();
         for(int i = 0; i < size; i++){
+
+            // duplicate handling
             while(i+1<size && A.get(i)==A.get(i+1))
                 i++;
+
             if(A.get(i) == size-1-i)
                 return 1;
         }
