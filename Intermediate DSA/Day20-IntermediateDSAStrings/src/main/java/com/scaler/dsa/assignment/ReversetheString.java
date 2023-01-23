@@ -6,10 +6,9 @@ public class ReversetheString {
         StringBuilder res = new StringBuilder();
         StringBuilder buf = new StringBuilder();
 
-        for(int i = s.length()-1; i>=0; i--)
-        {
+        for (int i = s.length() - 1; i >= 0; i--) {
             char c = s.charAt(i);
-            if(c!=' ') buf.append(c);
+            if (c != ' ') buf.append(c);
             else create(res, buf);
         }
 
@@ -17,12 +16,11 @@ public class ReversetheString {
         return res.toString();
     }
 
-    private void create(StringBuilder res, StringBuilder buf)
-    {
-        int i = buf.length()-1;
+    private void create(StringBuilder res, StringBuilder buf) {
+        int i = buf.length() - 1;
 
-        while(i>=0){
-            if(i==buf.length()-1 && res.length()>0) res.append(' ');
+        while (i >= 0) {
+            if (i == buf.length() - 1 && res.length() > 0) res.append(' ');
             res.append(buf.charAt(i));
             i--;
         }
@@ -30,6 +28,23 @@ public class ReversetheString {
     }
 }
 
+/*Reverse the String - Easy solution in java*/
+class ReversetheString1 {
+    public String solve(String A) {
+        StringBuffer sb = new StringBuffer();
+        int i = A.length() - 1;
+        while (i >= 0) {
+            while (i >= 0 && A.charAt(i) == ' ') i--;
+            int j = i;
+            while (i >= 0 && A.charAt(i) != ' ') i--;
+            for (int p = i + 1; p <= j; p++) {
+                sb.append(A.charAt(p));
+            }
+            sb.append(" ");
+        }
+        return sb.toString().trim();
+    }
+}
 /*Q1. Reverse the String
 Solved
 character backgroundcharacter
