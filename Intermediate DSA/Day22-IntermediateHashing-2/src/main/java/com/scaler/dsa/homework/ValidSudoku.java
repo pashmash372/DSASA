@@ -3,17 +3,16 @@ package com.scaler.dsa.homework;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ValidSudoku {
     public int isValidSudoku(final List<String> A) {
 
-        if (A == null)
-            return 0;
+        if (A == null) return 0;
 
         int n = A.size();
 
-        if (n != 9 || A.get(0).length() != 9)
-            return 0;
+        if (n != 9 || A.get(0).length() != 9) return 0;
 
         HashSet<Character> hashSet = new HashSet<>();
 
@@ -21,10 +20,8 @@ public class ValidSudoku {
             hashSet.clear();
             for (int j = 0; j < 9; j++) {
                 char c = A.get(i).charAt(j);
-                if (c == '.')
-                    continue;
-                if (hashSet.contains(c))
-                    return 0;
+                if (c == '.') continue;
+                if (hashSet.contains(c)) return 0;
                 hashSet.add(c);
             }
         }
@@ -33,10 +30,8 @@ public class ValidSudoku {
             hashSet.clear();
             for (int j = 0; j < 9; j++) {
                 char c = A.get(j).charAt(i);
-                if (c == '.')
-                    continue;
-                if (hashSet.contains(c))
-                    return 0;
+                if (c == '.') continue;
+                if (hashSet.contains(c)) return 0;
                 hashSet.add(c);
             }
         }
@@ -49,10 +44,8 @@ public class ValidSudoku {
             for (int i = 3 * x; i < 3 * x + 3; i++) {
                 for (int j = y * 3; j < y * 3 + 3; j++) {
                     char c = A.get(j).charAt(i);
-                    if (c == '.')
-                        continue;
-                    if (hashSet.contains(c))
-                        return 0;
+                    if (c == '.') continue;
+                    if (hashSet.contains(c)) return 0;
                     hashSet.add(c);
                 }
             }
@@ -64,6 +57,27 @@ public class ValidSudoku {
 
     }
 }
+
+/*Java Solution with HashSet*/
+
+class ValidSudoku1 {
+    public int isValidSudoku(final String[] A) {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char currentChar = A[i].charAt(j);
+                if (currentChar != '.') {
+                    if (!(set.add(currentChar + "in the row " + i)) || !(set.add(currentChar + "in the column " + j)) || !(set.add(currentChar + "in the grid " + i / 3 + "-" + j / 3))) {
+                        return 0;
+                    }
+                }
+            }
+        }
+        return 1;
+    }
+
+}
+
 
 
 /*Q3. Valid Sudoku
