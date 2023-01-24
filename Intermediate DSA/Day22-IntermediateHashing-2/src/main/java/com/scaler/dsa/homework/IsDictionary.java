@@ -2,6 +2,7 @@ package com.scaler.dsa.homework;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class IsDictionary {
     public int solve(ArrayList<String> A, String B) {
@@ -28,6 +29,32 @@ public class IsDictionary {
             }
             if (fl == 0 && x.length() > y.length()) {
                 return 0;
+            }
+        }
+        return 1;
+    }
+}
+
+
+/*Java hashmap solution*/
+
+class IsDictionary1 {
+    public int solve(ArrayList<String> A, String B) {
+        HashMap<Character, Integer> alphabetMaping = new HashMap<>();
+        for (int i = 0; i < B.length(); i++) {
+            alphabetMaping.put(B.charAt(i), i);
+        }
+        for (int j = 1; j < A.size(); j++) {
+            String str1 = A.get(j - 1), str2 = A.get(j);
+            for (int i = 0; i < Math.min(str1.length(), str2.length()); i++) {
+                if (alphabetMaping.get(str1.charAt(i)) < alphabetMaping.get(str2.charAt(i))) {
+                    break;
+                } else if (alphabetMaping.get(str1.charAt(i)) > alphabetMaping.get(str2.charAt(i))) {
+                    return 0;
+                } else {
+                    if (i == Math.min(str1.length(), str2.length()) - 1 && str1.length() > str2.length()) return 0;
+                    continue;
+                }
             }
         }
         return 1;
