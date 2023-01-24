@@ -3,7 +3,7 @@ package com.scaler.dsa.assignment;
 public class ImplementPowerFunction {
 
 //    Method 1:
-    public class Solution {
+    public static class Solution {
         public int pow(int x, int n, int d) {
             long a = x;
             long res = 1L;
@@ -22,7 +22,7 @@ public class ImplementPowerFunction {
     }
 
 //    Method 2:
-    public class Solution1 {
+    public static class Solution1 {
         public int pow(int A, int B, int C) {
             if(A == 0)
                 return 0;
