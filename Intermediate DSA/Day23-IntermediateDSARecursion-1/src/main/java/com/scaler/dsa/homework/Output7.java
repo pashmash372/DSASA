@@ -1,5 +1,7 @@
 package com.scaler.dsa.homework;
 
+
+/*Binary Exponentation*/
 public class Output7 {
     public int fun(int x, int n) {
         if (n == 0)
