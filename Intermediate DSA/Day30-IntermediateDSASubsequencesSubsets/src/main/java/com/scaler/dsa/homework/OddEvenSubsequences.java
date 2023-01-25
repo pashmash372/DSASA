@@ -9,10 +9,10 @@ public class OddEvenSubsequences {
         int x=1,y=0;
         for(int i = 0; i < n; i++){
             int it = A[i];
-            it=(it&1);
+            it=(it&1); // last bit of the number
             if(it==x){
                 ++ans1;
-                x^=1;
+                x^=1; // toggle
             }
             if(it==y){
                 y^=1;
