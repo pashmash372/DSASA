@@ -8,8 +8,8 @@ public class SubsequenceSumProblem {
             else return 0;
         }
         int ans = 0;
-        ans |= subsequenceSum(A, B, i-1);
-        ans |= subsequenceSum(A, B - A[i], i-1);
+        ans |= subsequenceSum(A, B, i-1); // not take
+        ans |= subsequenceSum(A, B - A[i], i-1); // take
         return ans;
     }
     public int solve(int[] A, int B) {
