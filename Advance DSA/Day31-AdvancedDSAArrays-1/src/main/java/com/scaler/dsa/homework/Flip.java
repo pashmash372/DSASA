@@ -30,6 +30,66 @@ public class Flip {
         } else return ans;
     }
 }
+
+//JAVA - Kadane's Algo - Same approach as Maximum sum contiguous array
+
+  class Flip1 {
+    public int[] flip(String A) {
+        //create an empty array
+        int ans [] = new int [0];
+        // if String is empty then return empty array
+        if(A.length()==0)
+        {
+            return ans;
+        }
+        //create an array with values 0 as "1" ans 1 as "-1". because we need to find maximum 0 present in the array
+        int Bin [] = new int [A.length()];
+        // initializing a count variable  to count number of 1's present in the array
+        int count =0;
+        for (int i=0; i<A.length(); i++)
+        {
+            if (A.charAt(i)=='0')
+            {
+                Bin[i]= 1;
+            }
+            else if (A.charAt(i)=='1')
+            {
+                Bin[i]= -1;
+                count++;
+            }
+        }
+        //Test: -System.out.println (Arrays.toString (Bin));
+        // if the number of 1's count is equal to string length then no change required return empty array
+        if (count ==A.length())
+        {
+            return ans;
+        }
+        // now find the maximum using kadane algorithm, store Start and end of subarray in s, e
+        int sum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int s=0, sc=0, e=0; // s- start, e- end, sc- temporary start
+        for (int i=0;i<Bin.length;i++)
+        {
+            if (sum<0)
+            {
+                sc=i;
+                sum=0;
+            }
+            sum+=Bin[i];
+            if (maxSum<sum)
+            {
+                maxSum=sum;
+                s=sc;
+                e=i;
+            }
+        }
+        // storing the start in array
+        ans = new int [2];
+        ans[0]=s+1;
+        ans[1]=e+1;
+        return ans;
+    }
+}
 /*Q4. Flip
 Solved
 character backgroundcharacter

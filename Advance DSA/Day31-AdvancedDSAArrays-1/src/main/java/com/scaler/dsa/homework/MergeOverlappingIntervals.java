@@ -62,7 +62,7 @@ public class MergeOverlappingIntervals {
         @Override
         public int compare(Interval interval1, Interval interval2) {
             int cmp = Integer.compare(interval1.start, interval2.start);
-            if (cmp != 0) return cmp;
+            if (cmp != 0) return cmp; // equal
             cmp = Integer.compare(interval1.end, interval2.end);
             return cmp;
         }
