@@ -21,7 +21,7 @@ public class SubmatrixSumQueries {
         for(int i = 0; i < B.length; i++){
             int x1 = B[i], y1 = C[i], x2 = D[i], y2 = E[i];
             long ans = preSum[x2][y2] - preSum[x2][y1 - 1] - preSum[x1 - 1][y2] + preSum[x1 - 1][y1 - 1];
-            while(ans < 0)
+            while(ans < 0) // handling negative ans
                 ans += mod;
             ans = ans % mod;
             res[i] = (int)ans;
