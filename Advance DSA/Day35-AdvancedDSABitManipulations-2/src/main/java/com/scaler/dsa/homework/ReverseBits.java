@@ -4,11 +4,13 @@ package com.scaler.dsa.homework;
 public class ReverseBits {
     public long reverse(long A) {
         long rev = 0;
-
+        System.out.println(Long.toBinaryString(rev));
         for (int i = 0; i < 32; i++) {
             rev <<= 1;
-            if ((A & (1 << i)) != 0)
+            if ((A & (1 << i)) != 0) {
                 rev |= 1;
+            }
+            System.out.println("rev : "+Long.toBinaryString(rev));
         }
 
         return rev;
