@@ -1,7 +1,6 @@
 package com.scaler.dsa.homework;
 
 
-
 public class StrangeEquality {
     public int solve(int A) {
         int bit = 0, x = 0;
@@ -16,6 +15,50 @@ public class StrangeEquality {
         // y equals the power of 2 just greater than A
         int y = (1 << bit);
         return x ^ y;
+    }
+}
+/*Java - O(1) - commented and explained solution*/
+
+  class StrangeEquality1 {
+    public boolean checkBit(int A, int i){
+        if((A & (1<<i)) != 0)
+            return true;
+        else
+            return false;
+    }
+
+    public int solve(int A) {
+        int n1 = 0;
+        int n2 = 0;
+        //the formula which guides this questions is A+B = A^B + 2*(A&B).
+        //if A+B = A^B, then 2*(A&B) = 0 or A & B =0
+
+        //for greatest smaller number
+
+        //idea is to find the countOfBits and then make the exact reverse of the number so that
+        // the bitwise And gives 0.
+        // for example if A=5 (in bits 101), the greatest smaller number to give bitwise and as zero is 010.
+        int lastOneBit = 0;
+        for(int i=0; i<32; i++){
+            if(checkBit(A,i)){
+                lastOneBit = i;
+            }
+        }
+
+        int countOfBits = lastOneBit+1;
+
+        for(int i=0; i<countOfBits; i++){
+            if(!checkBit(A,i)){
+                n1 = n1 + (1<<i);
+            }
+        }
+
+        //for smallest greater number
+        // the smallest number greater than number to give an bitwise and as zero is 2^countOfBits.
+        // for example if A=5 (in bits 101), the smallest greater number to give bitwise and as zero is 1000.
+        n2 = (1<<countOfBits);
+
+        return n1 ^ n2;
     }
 }
 /*Q1. Strange Equality
