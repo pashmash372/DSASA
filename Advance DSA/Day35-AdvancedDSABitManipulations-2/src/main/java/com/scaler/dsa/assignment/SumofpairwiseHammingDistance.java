@@ -2,22 +2,48 @@ package com.scaler.dsa.assignment;
 
 public class SumofpairwiseHammingDistance {
 }
+/**/
 
-/*int Solution::hammingDistance(const vector<int> &A) {
-    int inputSize = A.size();
-    int mod = 1000000007;
-    int sum = 0;
-    for (int bitPosition = 0; bitPosition < 31; bitPosition++) {
-        int cntBitOne = 0, cntBitZero = 0;
-        for(int i = 0; i < inputSize; i++) {
-            if (A[i] & (1 << bitPosition)) cntBitOne++;
-            else cntBitZero++;
+class SumofpairwiseHammingDistance1 {
+
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+
+    public int hammingDistance(final int[] A) {
+
+        int N = A.length, set = 0;
+
+        long ans = 0, con = 0;
+
+        long m = 1000000007;
+
+        for (int i = 0; i <= 30; i++) {
+
+            set = 0;
+
+            for (int j = 0; j < N; j++) {
+
+                if (((A[j] >> i) & 1) == 1)
+
+                    set++;
+
+            }
+
+            con = (2L * set * (N - set)) % m;
+
+            ans = ans + con;
+
+            if (ans >= m)
+
+                ans = ans - m;
+
         }
-        sum = sum + ((2LL * cntBitOne * cntBitZero) % mod);
-        if (sum >= mod) sum = sum - mod;
+
+        return (int) ans;
+
     }
-    return sum;
-}*/
+
+}
+
 
 
 /*Q1. Sum of pairwise Hamming Distance

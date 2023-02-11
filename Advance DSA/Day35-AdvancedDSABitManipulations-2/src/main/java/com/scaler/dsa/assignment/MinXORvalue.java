@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MinXORvalue {
-    public int findMinXor(ArrayList< Integer > A) {
+    public int findMinXor(ArrayList<Integer> A) {
         // sort the array A in ascending order
         Collections.sort(A);
         // the answer will be the min of XOR of each adjacent elements
@@ -16,6 +16,9 @@ public class MinXORvalue {
         return ans;
     }
 }
+
+/**/
+
 /*Q2. Min XOR value
 Solved
 character backgroundcharacter
