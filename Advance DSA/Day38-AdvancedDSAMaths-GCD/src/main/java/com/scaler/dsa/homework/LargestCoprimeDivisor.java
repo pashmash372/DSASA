@@ -16,6 +16,15 @@ public class LargestCoprimeDivisor {
     }
 }
 
+/*1) X lies in the range [1, A] both inclusive
+2) X will also be a factor of A as A % X == 0.
+Suppose X has possible values. i.e. factors as {X1, X2, X3, …, Xn}
+3) If GCD of (A, B) is Xk Then Xk can never be our answer as GCD(Xk, B) != 1
+4) So our aim is to eliminate all the common factors amongst A,B
+5) To achieve step 4 we will iteratively keep dividing A / GCD(A, B) until we get GCD(Ai, B) as 1.
+Note: When we divide A with some factor of A, then the new value that we get is also a factor of A.
+Therefore we are still maintaining some factor of A at the A position*/
+
 
 /*Q2. Largest Coprime Divisor
 Solved

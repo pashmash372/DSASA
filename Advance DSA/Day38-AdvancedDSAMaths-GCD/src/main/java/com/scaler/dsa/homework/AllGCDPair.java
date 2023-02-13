@@ -34,6 +34,35 @@ public class AllGCDPair {
         return ans;
     }
 }
+/**/
+
+class AllGCDPair1 {
+    public static ArrayList<Integer> solve(ArrayList<Integer> A) {
+        int n = A.size();
+        int sqrt = (int) Math.sqrt(n);
+
+        int max = A.get(0);
+
+        ArrayList<Integer> outArr = new ArrayList<Integer>();
+
+        for (int i = 1; i <= n; i++) {
+            int curr = A.get(i - 1);
+            if (max < curr) {
+                max = curr;
+            }
+
+            if (i % sqrt == 0) {
+                outArr.add(max);
+                max = 0;
+            }
+        }
+
+        return outArr;
+    }
+}
+
+
+
 /*Q4. All GCD Pair
 Solved
 character backgroundcharacter
