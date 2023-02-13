@@ -20,6 +20,31 @@ public class PrimeModuloInverse {
         return (int)power(A, B - 2, B);
     }
 }
+
+/*powerFunctionRecursion*/
+
+class powerFunctionRecursion{
+    private double power(double x, int n)
+    {
+        if(n == 0)
+            return 1;
+        if(x == 0.0)
+            return x;
+        if(n == 1)
+            return x;
+
+        double ans = power(x, n/2);
+        if(n%2 == 0)
+            return ans*ans;
+        else
+            return x*ans*ans;
+    }
+
+    public double myPow(double x, int n) {
+        return n > 0 ? power(x,n) : 1/power(x,n);
+    }
+}
+
 /*Q3. Prime Modulo Inverse
 Solved
 character backgroundcharacter
