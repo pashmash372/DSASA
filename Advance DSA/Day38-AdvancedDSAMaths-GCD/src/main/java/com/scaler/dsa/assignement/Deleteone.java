@@ -3,11 +3,11 @@ package com.scaler.dsa.assignement;
 
 public class Deleteone {
     public int gcd(int a, int b) {
-        if (a == 0)
-            return b;
+        if (a == 0) return b;
         return gcd(b % a, a);
     }
-    public int[]suffixGCD(int[] A){
+
+    public int[] suffixGCD(int[] A) {
         int n = A.length;
         int[] suf = new int[n];
         int g = 0;
@@ -17,21 +17,68 @@ public class Deleteone {
         }
         return suf;
     }
+
     public int solve(int[] A) {
         int n = A.length, ans = 1;
         // suf stores the suffix gcd of the array
         int[] suf = suffixGCD(A);
         int curGcd = 0;
         for (int i = 0; i < n; i++) {
-            if (i != n - 1)
-                ans = Math.max(ans, gcd(suf[i + 1], curGcd));
-            else
-                ans = Math.max(ans, curGcd);
+            if (i != n - 1) ans = Math.max(ans, gcd(suf[i + 1], curGcd));
+            else ans = Math.max(ans, curGcd);
             curGcd = gcd(curGcd, A[i]);
         }
         return ans;
     }
 }
+/*Java| using prefix and suffix GCD array*/
+
+class Deleteone1 {
+    public static int gcd(int a, int b) {
+        //base codition
+        if (b == 0) return a;
+
+        return gcd(b, a % b);
+    }
+
+    //method to find GCD of 2 numbers
+
+    public int solve(int[] A) {
+        int n = A.length;
+        int[] prefixGCD = new int[n];
+        int[] suffixGCD = new int[n];
+
+        //Creating the prefix GCD Array
+        prefixGCD[0] = A[0];
+        for (int i = 1; i < n; i++) {
+            prefixGCD[i] = gcd(prefixGCD[i - 1], A[i]);
+        }
+
+        //Creating the suffix GCD Array
+        suffixGCD[n - 1] = A[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            suffixGCD[i] = gcd(suffixGCD[i + 1], A[i]);
+        }
+
+        //if 1st array element is removed
+        int zero = suffixGCD[1];
+        //if last element is removed
+        int last = prefixGCD[n - 2];
+
+        int ans = Math.max(zero, last);
+
+        //if any of the element from index 1 to n-2 is removed
+        for (int i = 1; i < n - 1; i++) {
+            int temp = gcd(prefixGCD[i - 1], suffixGCD[i + 1]);
+            ans = Math.max(temp, ans);
+        }
+
+        return ans;
+    }
+}
+
+
+
 /*Q1. Delete one
 Solved
 character backgroundcharacter

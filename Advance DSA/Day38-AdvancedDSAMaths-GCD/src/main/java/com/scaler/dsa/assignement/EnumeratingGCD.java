@@ -10,6 +10,18 @@ public class EnumeratingGCD {
             return "1";
     }
 }
+/*Proof that the GCD of any two consecutive numbers is 1.
+
+Any Integer that divides two numbers should also divide their difference.
+
+Therefore gcd(A, A+1) = X implies gcd(A, A+1-A) = X. i.e gcd(A, 1) = X.
+GCD of any number with 1 is 1. Therefore X = 1.
+
+By same logic, gcd(A, A+1, A+2, ... , B) becomes 1.
+
+Edge case: When A == B. In that case, we return A.*/
+
+
 /*Q2. Enumerating GCD
 Solved
 character backgroundcharacter
