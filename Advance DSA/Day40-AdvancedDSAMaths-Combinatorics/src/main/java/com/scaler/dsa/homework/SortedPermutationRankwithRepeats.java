@@ -5,11 +5,12 @@ import java.util.ArrayList;
 
 public class SortedPermutationRankwithRepeats {
 
-    private final int MOD = 1000003;
+    private final int MOD = 1000003;  // Problem Constraint 1 <= len(A) <= 1000000
 
     public int findRank(String A) {
 
         // Initializations
+        // frequency map
         ArrayList<Integer> charCount = new ArrayList<Integer>(256);
 
         for (int i = 0; i < 256; i++)
@@ -82,6 +83,16 @@ public class SortedPermutationRankwithRepeats {
         return pow(num, MOD - 2, MOD);
     }
 }
+
+
+/*T.C. :- n * 52 * logm,
+        n = len of string,
+        m = given prime num for mod(1000003)
+
+        S.C. :- O(52)
+        for maintain freq of all posible characters (a-z A-Z)*/
+
+
 /*Q2. Sorted Permutation Rank with Repeats
 Solved
 character backgroundcharacter
