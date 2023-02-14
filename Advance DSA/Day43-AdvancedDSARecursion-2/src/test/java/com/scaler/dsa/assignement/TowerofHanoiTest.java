@@ -18,4 +18,15 @@ public class TowerofHanoiTest {
 
     }
 
+    @Test
+    public void solve1() {
+        TowerofHanoi t = new TowerofHanoi();
+        int A = 8;
+        int[][] ans = t.towerOfHanoi(A);
+//        int[][] expected = {{1, 1, 3}, {2, 1, 2}, {1, 3, 2}, {3, 1, 3}, {1, 2, 1}, {2, 2, 3}, {1, 1, 3}};
+        System.out.println(Arrays.deepToString(ans));
+//        Assert.assertArrayEquals(expected, ans);
+
+    }
+
 }
