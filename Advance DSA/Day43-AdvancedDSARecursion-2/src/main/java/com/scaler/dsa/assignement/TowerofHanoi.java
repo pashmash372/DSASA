@@ -1,19 +1,20 @@
 package com.scaler.dsa.assignement;
 
 
-
 class TowerofHanoi {
     int curr;
-    int[][]ans;
+    int[][] ans;
+
     public int[][] towerOfHanoi(int A) {
         curr = 0;
-        int m = (1 << A) - 1;
+        int m = (1 << A) - 1; // (2^A)-1
         ans = new int[m][3];
-        rec(A, 1, 3);
+        rec(A, 1, 3); // 1=> source , 2=> intermeditate , 3=> destination
         return ans;
     }
-    public void rec(int disk, int start, int end){
-        if(disk == 1){
+
+    public void rec(int disk, int start, int end) {
+        if (disk == 1) {
             ans[curr++] = new int[]{disk, start, end};
             return;
         }
@@ -25,6 +26,31 @@ class TowerofHanoi {
         rec(disk - 1, 6 - start - end, end);
     }
 }
+/*Tower of Hanoi <Java(Array)>*/
+
+class TowerofHanoi1 {
+    int ind = 0;
+    int[][] ans;
+
+    public int[][] towerOfHanoi(int A) {
+        int M = (1 << A) - 1;
+        ans = new int[M][3];
+        toh(A, 1, 2, 3);
+        return ans;
+    }
+
+    public void toh(int A, int S, int T, int D) {
+        if (A == 0) return;
+        toh(A - 1, S, D, T);
+        ans[ind][0] = A;
+        ans[ind][1] = S;
+        ans[ind][2] = D;
+        ind++;
+        toh(A - 1, T, S, D);
+    }
+}
+
+
 /*
 Solved
 character backgroundcharacter
