@@ -1,31 +1,66 @@
 package com.scaler.dsa.assignment;
 
 
+import java.util.Arrays;
+
 public class PrimeSum {
-    public int[] sieve(int N){
+    public int[] sieve(int N) {
         // Generate isPrime List less equal than N
         int[] isPrime = new int[N + 1];
         isPrime[0] = 0;
         isPrime[1] = 0;
-        for(int i = 2; i <= N; i++){
+        for (int i = 2; i <= N; i++) {
             isPrime[i] = 1;
         }
         // Sieve of Erastothenes
-        for(int i = 2; i <= N; i++) {
-            if (isPrime[i] == 0)
-                continue;
-            if (i > N / i)
-                break;
+        for (int i = 2; i <= N; i++) {
+            if (isPrime[i] == 0) continue;
+            if (i > N / i) break;
             for (int j = i * i; j <= N; j += i)
                 isPrime[j] = 0;
         }
         return isPrime;
     }
+
     public int[] primesum(int A) {
         int[] isPrime = sieve(A);
         int[] ans = new int[2];
-        for(int i = 2; i <= A; ++i) {
-            if(isPrime[i] == 1 && isPrime[A - i] == 1) {
+        for (int i = 2; i <= A; ++i) {
+            if (isPrime[i] == 1 && isPrime[A - i] == 1) {
+                ans[0] = i;
+                ans[1] = A - i;
+                return ans;
+            }
+        }
+        return ans;
+    }
+}
+
+class PrimeSum1 {
+    public int[] sieve(int N) {
+//        0 => not prime , 1 =>  prime
+        int[] s = new int[N + 1];
+        Arrays.fill(s, 1);
+
+        int sqrtOfN = (int) Math.sqrt(N);
+
+        s[0] = 0;
+        s[1] = 0;
+        for (int i = 2; i < sqrtOfN; i++) {
+            if (s[i] == 1) {
+                for (int j = i * 2; j < N; j += i) {
+                    s[j] = 0;
+                }
+            }
+        }
+        return s;
+    }
+
+    public int[] primesum(int A) {
+        int[] isPrime = sieve(A);
+        int[] ans = new int[2];
+        for (int i = 2; i <= A; ++i) {
+            if (isPrime[i] == 1 && isPrime[A - i] == 1) {
                 ans[0] = i;
                 ans[1] = A - i;
                 return ans;
