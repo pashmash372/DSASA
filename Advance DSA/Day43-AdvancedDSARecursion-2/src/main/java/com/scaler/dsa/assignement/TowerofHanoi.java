@@ -33,9 +33,9 @@ class TowerofHanoi1 {
     int[][] ans;
 
     public int[][] towerOfHanoi(int A) {
-        int M = (1 << A) - 1;
+        int M = (1 << A) - 1; // (2^A)-1
         ans = new int[M][3];
-        toh(A, 1, 2, 3);
+        toh(A, 1, 2, 3); // 1=> source , 2=> intermeditate , 3=> destination
         return ans;
     }
 
