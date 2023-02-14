@@ -46,6 +46,31 @@ public class LuckyNumbers {
         }
     }
 }
+
+/*Java easily readable explained solution*/
+
+class LuckyNumbers1 {
+    public int solve(int A) {
+        int[] sieve = new int[A + 1];
+        for (int p = 2; p <= A; p++) {
+            if (sieve[p] == 0) {
+                for (int i = p; i <= A; i += p) {
+                    sieve[i] += 1;
+                }
+            }
+        }
+
+        int count = 0;
+        for (int i = 2; i <= A; i++) {
+            if (sieve[i] == 2) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+
 /*Q3. Lucky Numbers
 Solved
 character backgroundcharacter

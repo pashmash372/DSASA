@@ -48,7 +48,7 @@ class PrimeSum1 {
         s[1] = 0;
         for (int i = 2; i < sqrtOfN; i++) {
             if (s[i] == 1) {
-                for (int j = i * 2; j < N; j += i) {
+                for (int j = i * i; j < N; j += i) {
                     s[j] = 0;
                 }
             }
