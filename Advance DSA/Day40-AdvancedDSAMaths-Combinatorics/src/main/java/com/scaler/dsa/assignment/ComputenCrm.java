@@ -1,6 +1,8 @@
 package com.scaler.dsa.assignment;
 
 
+import java.util.Arrays;
+
 public class ComputenCrm {
     public int solve(int A, int B, int C) {
         // dp[n][r] stores the value of nCr
@@ -15,9 +17,31 @@ public class ComputenCrm {
                 }
             }
         }
+        System.out.println(Arrays.deepToString(dp));
         return dp[A][B] % C;
+
     }
 }
+
+/*
+      // We know that ncr = n-1cr-1 + n-1cr
+        // eg 4c2 = 3c1 + 3c2
+        // Approach 1
+        // Calculating factorial here will be a costly operation so we need to devise something extra
+        // nc0 = 1
+        // 0cr = 0
+        // we need to use recursion to avoid calculating factorial
+
+        // Appraoch 2
+        // Now ncr = n!/(n-r!*r!) so we need to use inverse modulo here we have (n^-1)%p = (n^(p-2))%p Fermet's Algorithm if p is prime
+        // We need to use fastpower method(binary expansion)
+        // This will not work for non prime p
+
+        // Approach 3
+        // We can use Pascal's Triangle approach(dynamic programming) which is based on same principle as approach 1 but instead of calculating recursively
+        // we are using matrix to calculate
+* */
+
 /*Q1. Compute nCr % m
 Solved
 character backgroundcharacter
