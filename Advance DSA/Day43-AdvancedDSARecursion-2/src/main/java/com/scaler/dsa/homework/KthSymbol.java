@@ -2,22 +2,33 @@ package com.scaler.dsa.homework;
 
 
 public class KthSymbol {
-    public int solve(int A, int B) {
-        return solveQ(A, B) ? 1 : 0;
-    }
     static boolean solveQ(int n, int k) {
 
-        if (n == 1 && k == 1)
-            return false;
+        if (n == 1 && k == 1) return false;
 
         int mid = (int) Math.pow(2, n - 1) / 2;
 
-        if (k <= mid)
-            return solveQ(n - 1, k);
-        else
-            return !solveQ(n - 1, k - mid);
+        if (k <= mid) return solveQ(n - 1, k);
+        else return !solveQ(n - 1, k - mid);
+    }
+
+    public int solve(int A, int B) {
+        return solveQ(A, B) ? 1 : 0;
     }
 }
+/**/
+
+class KthSymbol1 {
+
+    public int solve(int A, int B) {
+        if (A == 1) return 0;
+        int res = solve(A - 1, (B / 2 + B % 2));
+
+        if (B % 2 != 0) return res;
+        return (res == 0) ? 1 : 0;
+    }
+}
+
 /*Q1. Kth Symbol
 Solved
 character backgroundcharacter
