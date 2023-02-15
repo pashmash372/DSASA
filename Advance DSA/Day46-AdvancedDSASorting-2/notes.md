@@ -1,11 +1,11 @@
 # Assignment
 
-| No.   | Name                        | Type                                                        | Solution link                                                                    |
-|-------|-----------------------------|-------------------------------------------------------------|----------------------------------------------------------------------------------|
-| - Q1. | Inversion count in an array | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/Inversioncountinanarray.java) |
-| - Q2. | Largest Number              | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/LargestNumber.java)           |
-| - Q3. | Wave Array                  | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/WaveArray.java)               |
-| - Q4. | Sort the Unsorted Array     | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/SorttheUnsortedArray.java)    |
+| No.   | Name                        | Type                                                        | Solution link                                                                                       |
+|-------|-----------------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| - Q1. | Inversion count in an array | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/Inversioncountinanarray.java) important  | 
+| - Q2. | Largest Number              | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/LargestNumber.java)                              |
+| - Q3. | Wave Array                  | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/WaveArray.java)                                  |
+| - Q4. | Sort the Unsorted Array     | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/assignment/SorttheUnsortedArray.java)                       |
 
 *** 
 
