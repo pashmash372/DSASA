@@ -2,41 +2,99 @@ package com.scaler.dsa.assignment;
 
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LargestNumber {
     // DO NOT MODIFY THE LIST
-    public String largestNumber(final List< Integer > A) {
+    public String largestNumber(final List<Integer> A) {
         StringBuffer strBuf = new StringBuffer();
-        Node num[];
+        Node[] num;
         int i = 0;
         num = new Node[A.size()];
-        for (int n: A) {
+        for (int n : A) {
             num[i] = new Node(n);
             i++;
         }
         // sorts the array lexicographically
         Arrays.sort(num);
-        for (Node n: num) {
-            if (n.number == 0 && strBuf.length() != 0)
-                continue;
+        for (Node n : num) {
+            if (n.number == 0 && strBuf.length() != 0) continue;
             strBuf.append(n.number);
         }
         return strBuf.toString();
     }
-    class Node implements Comparable < Node > {
+
+    class Node implements Comparable<Node> {
         int number;
+
         public Node(int number) {
             this.number = number;
         }
+
         @Override
         public int compareTo(Node o) {
-            String first = String.valueOf(this.number) + String.valueOf(o.number);
-            String second = String.valueOf(o.number) + String.valueOf(this.number);
+            String first = String.valueOf(this.number) + o.number;
+            String second = String.valueOf(o.number) + this.number;
             return second.compareTo(first);
         }
     }
 }
+
+/*Java Solution || Easy*/
+class LargestNumber1 {
+    public String largestNumber(final List<Integer> A) {
+        Collections.sort(A,new Comparator<Integer>(){
+            public int compare(Integer a,Integer b){
+                String ab=a+""+b;
+                String ba=b+""+a;
+                // if(ab.equals(ba)) return 0;
+                return ba.compareTo(ab); // decreasing order
+
+
+            }
+        });
+        System.out.println("after sorting A"+A); // sorting in descending fashion
+        if (A.get(0) == 0) return "0";
+        StringBuilder output = new StringBuilder();
+
+        for (int i = 0; i < A.size(); i++) {
+
+            output.append(A.get(i));
+        }
+
+        return output.toString();
+    }
+}
+
+/*
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public String largestNumber(final List<Integer> A) {
+        Collections.sort(A,new Comparator<Integer>(){
+            public int compare(Integer a,Integer b){
+                String ab=a+""+b;
+                String ba=b+""+a;
+               // if(ab.equals(ba)) return 0;
+                return ba.compareTo(ab);
+
+
+            }
+        });
+        if(A.get(0)==0) return "0";
+        StringBuilder output=new StringBuilder() ;
+
+        for(int i=0;i<A.size();i++){
+
+            output.append(A.get(i));
+        }
+
+        return output.toString();
+    }
+}
+*/
+
 /*Q2. Largest Number
 Solved
 character backgroundcharacter
