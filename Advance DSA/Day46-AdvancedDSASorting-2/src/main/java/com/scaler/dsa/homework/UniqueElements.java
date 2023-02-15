@@ -1,7 +1,9 @@
 package com.scaler.dsa.homework;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class UniqueElements {
     public int solve(int[] A) {
@@ -23,6 +25,29 @@ public class UniqueElements {
         }
         // return the answer
         return steps;
+    }
+}
+
+/*Unique Element using Java Arraylist with comment explanation*/
+
+class UniqueElements1 {
+    public int solve(ArrayList<Integer> A) {
+
+        int count = 0;
+        Collections.sort(A);
+        System.out.println("sorted A: "+A);
+        // iterate over the loop
+        for (int i = 1; i < A.size(); i++) {
+            // check if the adjacent element are equal or smaller than the previous element
+            if (A.get(i - 1) >= A.get(i)) {
+                // if yes then find the difference between them and add to the count
+                count += A.get(i - 1) + 1 - A.get(i);
+                // now the assign the current element at i with preivous element
+                // as the previous element will increase by one stem
+                A.set(i, A.get(i - 1) + 1);
+            }
+        }
+        return count;
     }
 }
 /*Q1. Unique Elements
