@@ -7,23 +7,104 @@ import java.util.Comparator;
 
 public class BClosestPointstoOrigin {
     public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, int B) {
-        ArrayList <ArrayList <Integer>> ans = new ArrayList <ArrayList <Integer>>();
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         // sorts the list based on euclidean distance from origin
-        Collections.sort(A, new Comparator<ArrayList <Integer>>() {
-            public int compare(ArrayList <Integer> a, ArrayList <Integer> b) {
-                long d1 = (long)a.get(0) * a.get(0) + (long)a.get(1) * a.get(1);
-                long d2 = (long)b.get(0) * b.get(0) + (long)b.get(1) * b.get(1);
-                if(d1 < d2)return -1;
-                else if(d2 < d1)return 1;
+        Collections.sort(A, new Comparator<ArrayList<Integer>>() {
+            public int compare(ArrayList<Integer> a, ArrayList<Integer> b) {
+                long d1 = (long) a.get(0) * a.get(0) + (long) a.get(1) * a.get(1);
+                long d2 = (long) b.get(0) * b.get(0) + (long) b.get(1) * b.get(1);
+                if (d1 < d2) return -1;
+                else if (d2 < d1) return 1; // increasing order
                 else return 0;
             }
         });
-        for(int i = 0; i < B; i++){
+        for (int i = 0; i < B; i++) {
             ans.add(A.get(i));
         }
         return ans;
     }
 }
+
+/*Java Solution using Merge Sort*/
+
+
+class BClosestPointstoOrigin1 {
+    public int[][] solve(int[][] A, int B) {
+        int n = A.length;
+        mergeSort(A, 0, n - 1);
+        int[][] ans = new int[B][2];
+        for (int i = 0; i < ans.length; i++) {
+            ans[i][0] = A[i][0];
+            ans[i][1] = A[i][1];
+        }
+        return ans;
+    }
+
+    public void mergeSort(int[][] A, int s, int e) {
+        if (s >= e) return;
+        int mid = (s + e) / 2;
+        mergeSort(A, s, mid);
+        mergeSort(A, mid + 1, e);
+        merge(A, s, mid, e);
+    }
+
+    public void merge(int[][] A, int s, int mid, int e) {
+        int n1 = mid - s + 1; //number of elements in array1
+        int n2 = e - mid;//number of elements in array2
+        int[][] A1 = new int[n1][2];
+        int[][] A2 = new int[n2][2];
+        int index = 0;
+
+        //filling A1 and A2
+        for (int i = s; i <= mid; i++) {
+            A1[index][0] = A[i][0];
+            A1[index][1] = A[i][1];
+            index++;
+        }
+
+        index = 0;
+        for (int i = mid + 1; i <= e; i++) {
+            A2[index][0] = A[i][0];
+            A2[index][1] = A[i][1];
+            index++;
+        }
+        int i = 0, j = 0; // i and j referncing A1 and A2 array respectively
+        index = s; // important
+
+        while (i < n1 && j < n2) {
+            long s1 = ((long) A1[i][0] * A1[i][0]) + ((long) A1[i][1] * A1[i][1]);
+            long s2 = ((long) A2[j][0] * A2[j][0]) + ((long) A2[j][1] * A2[j][1]);
+            if (s1 < s2) {// equals to condition for equal elements
+                A[index][0] = A1[i][0];
+                A[index][1] = A1[i][1];
+                index++;
+                i++;
+            } else {
+                A[index][0] = A2[j][0];
+                A[index][1] = A2[j][1];
+                index++;
+                j++;
+            }
+        }
+        //if some elements still remaining after traversal
+        if (i < n1) {
+            while (i < n1) {
+                A[index][0] = A1[i][0];
+                A[index][1] = A1[i][1];
+                index++;
+                i++;
+            }
+        } else {
+            while (j < n2) {
+                A[index][0] = A2[j][0];
+                A[index][1] = A2[j][1];
+                index++;
+                j++;
+            }
+        }
+    }
+}
+
 
 /*Q3. B Closest Points to Origin
 Solved

@@ -2,20 +2,21 @@ package com.scaler.dsa.assignment;
 
 
 public class QuickSort {
-    void swap(int[] A, int i, int j){
+    void swap(int[] A, int i, int j) {
         int temp = A[i];
         A[i] = A[j];
         A[j] = temp;
     }
-    int partition (int[] A, int low, int high){
+
+    int partition(int[] A, int low, int high) {
         // We can select pivot any element like: middle, first, last or random
         int pivot = A[high]; // pivot
 
         int i = (low - 1); // Index of smaller element
 
-        for (int j = low; j <= high - 1; j++){
+        for (int j = low; j <= high - 1; j++) {
             // If current element is smaller than the pivot
-            if (A[j] < pivot){
+            if (A[j] < pivot) {
                 i++; // increment index of smaller element
                 swap(A, i, j);
             }
@@ -23,16 +24,66 @@ public class QuickSort {
         swap(A, i + 1, high);
         return (i + 1);
     }
-    void quickSort(int[] A, int low, int high){
-        if (low < high){
+
+    void quickSort(int[] A, int low, int high) {
+        if (low < high) {
             int idx = partition(A, low, high);
             quickSort(A, low, idx - 1);
             quickSort(A, idx + 1, high);
         }
     }
+
     public int[] solve(int[] A) {
         quickSort(A, 0, A.length - 1);
         return A;
+    }
+}
+
+/*Quick sort with explaination*/
+
+class QuickSort1 {
+    public int[] solve(int[] A) {
+        Quicksort(A, 0, A.length - 1);
+        return A;
+    }
+
+    public int partition(int[] A, int s, int e) {
+        // selecting random within the defined range
+        // We take min and max variable to define the range for random numbers, both min and max inxlusive
+        //range = max-min+1
+        int randomindex = (int) (Math.random() * (e - s + 1) + s);
+        //Swapping A[s] and A[randomindex] to bring A[randomindex] to its original positon
+        int temp = A[randomindex];
+        A[randomindex] = A[s];
+        A[s] = temp;
+        int l = s + 1, r = e;
+        while (l <= r) {
+            if (A[l] <= A[s]) {
+                l++;
+            } else if (A[r] > A[s]) {
+                r--;
+            } else {
+                int swap = A[r];
+                A[r] = A[l];
+                A[l] = swap;
+                l++;
+                r--;
+            }
+        }
+        //Now swapping s with l-1 for moving s to its correct position
+        int correct = A[l - 1];
+        A[l - 1] = A[s];
+        A[s] = correct;
+        return l - 1;
+    }
+
+    public void Quicksort(int[] A, int s, int e) {
+        if (s >= e) {
+            return;
+        }
+        int p = partition(A, s, e);
+        Quicksort(A, s, p - 1);
+        Quicksort(A, p + 1, e);
     }
 }
 

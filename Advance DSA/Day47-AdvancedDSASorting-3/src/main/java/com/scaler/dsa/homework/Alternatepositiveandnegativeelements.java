@@ -1,40 +1,76 @@
 package com.scaler.dsa.homework;
 
 
-
 public class Alternatepositiveandnegativeelements {
     public int[] solve(int[] A) {
         rearrange(A, A.length);
         return A;
     }
-    public void rightRotate(int a[], int n, int l, int r) {
+
+    public void rightRotate(int[] a, int n, int l, int r) { // shifting >> right side
         // right rotates the subarray a[l]..a[r]
         int t = a[r];
         for (int i = r; i > l; i--)
             a[i] = a[i - 1];
         a[l] = t;
     }
+
     void rearrange(int[] a, int n) {
         int op = -1;
         for (int ind = 0; ind < n; ind++) {
             // finds an element with opposite sign to the out of place element
             if (op >= 0) {
+                // (ele is positive && a[op] is negative  || ele is negative && a[op] is positive)
                 if ((a[ind] >= 0 && a[op] < 0) || (a[ind] < 0 && a[op] >= 0)) {
                     rightRotate(a, n, op, ind);
-                    if (ind - op > 2)
-                        op = op + 2;
-                    else
-                        op = -1;
+                    if (ind - op > 2) op = op + 2;
+                    else op = -1;
                 }
             }
             // finds an out of place element
             if (op == -1) {
-                if ((a[ind] >= 0 && (ind & 1) == 0) || (a[ind] < 0 && (ind & 1) == 1))
-                    op = ind;
+                // (ele is positive && index is even) || (ele is negative && index is odd )
+                if ((a[ind] >= 0 && (ind & 1) == 0) || (a[ind] < 0 && (ind & 1) == 1)) op = ind;
             }
         }
     }
 }
+
+/*Simple Java Solution*/
+class Alternatepositiveandnegativeelements1 {
+    public int[] solve(int[] A) {
+        int i = 0, j = 0, k = 0;
+
+        for (i = 0; i < A.length; i++) {
+            if (i % 2 == 0) {
+                if (A[i] < 0) continue;
+                while (j < A.length && j <= i) j++;
+                while (j < A.length && A[j] >= 0) j++;
+                if (j < A.length) bubbleUp(A, i, j);
+                j++;
+            } else if (i % 2 == 1) {
+                if (A[i] >= 0) continue;
+                while (k < A.length && k <= i) k++;
+                while (k < A.length && A[k] < 0) k++;
+                if (k < A.length) bubbleUp(A, i, k);
+                k++;
+            }
+
+        }
+
+        return A;
+    }
+
+    public void bubbleUp(int[] A, int i, int j) {
+        while (j > i) {
+            int temp = A[j];
+            A[j] = A[j - 1];
+            A[j - 1] = temp;
+            j--;
+        }
+    }
+}
+
 /*Q2. Alternate positive and negative elements
 Solved
 character backgroundcharacter
