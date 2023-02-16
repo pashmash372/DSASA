@@ -7,7 +7,7 @@ public class MatrixMedian {
         while (l <= h) {
             int mid = (h - l) / 2 + l;
             if (A[mid] < val) {
-                ans = mid;
+                ans = mid; // floor
                 l = mid + 1;
             } else h = mid - 1;
         }

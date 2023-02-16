@@ -31,7 +31,7 @@ class Ceilinginasortedarray1 {
                 return nums[mid];
             } else if (x < nums[mid]) {
                 ceil = nums[mid];
-                right = mid - 1;
+                right = mid - 1; // ciel
             } else {
                 left = mid + 1;
             }
