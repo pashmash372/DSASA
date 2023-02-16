@@ -6,10 +6,11 @@ public class SquareRootofInteger {
         int low = 1, high = A, root = 0;
         while (low <= high) {
             int mid = (low + high) / 2;
+            // mid*mid=A
             if (mid == A / mid && (A % mid == 0))
                 return mid;
             if (mid <= A / mid) {
-                root = mid;
+                root = mid; // floor
                 low = mid + 1;
             } else {
                 high = mid - 1;

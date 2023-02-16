@@ -36,7 +36,8 @@ public class SpecialInteger {
             if (i == s - 1) {
                 if (arr[i] > sm)
                     return 1;
-            } else if (arr[i] - arr[i - s] > sm) {
+                // sum[s,e] = ps[e]-ps[s-1]  ,  s=>start, e=>end
+            } else if (arr[i] - arr[i - s] > sm) {// s= mid-1
                 return 1;
             }
         }
@@ -56,7 +57,7 @@ Given an array of integers A and an integer B, find and return the maximum value
 
 
 Problem Constraints
-1 <= |A| <= 100000
+1 <= |A| <= 100000 (10^5)
 1 <= A[i] <= 10^9
 
 1 <= B <= 10^9

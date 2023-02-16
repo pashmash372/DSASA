@@ -93,7 +93,7 @@ NOTE: Users are expected to solve this in O(log(N)) time.
 
 
 Problem Constraints
-1 <= N <= 1000000
+1 <= N <= 1000000 (10^6) O(log n)
 
 1 <= A[i] <= 10^9
 

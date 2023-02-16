@@ -2,31 +2,30 @@ package com.scaler.dsa.homework;
 
 public class KthPrice {
 
-    /*int Solution::solve(const vector<int> &A, int k) {
+    public int solve(int[] A, int k) {
 
-	// Binary search for the answer.
-	int ans = -1;
-	int start = A[0], end = A[0];
-	for (int i = 1; i < A.size(); i++) {
-		start = min(start, A[i]);
-		end = max(end, A[i]);
-	}
-	int mid, numSmaller, i;
-	while (start <= end) {
-		mid = (start + end) / 2;
-		numSmaller = 0;
-		for (i = 0; i < A.size(); i++) if (A[i] <= mid) numSmaller++;
-		if (numSmaller >= k) {
-			end = mid - 1;
-			ans = mid;
-		}
-		else {
-			start = mid + 1;
-		}
-	}
-	return ans;
+        // Binary search for the answer.
+        int ans = -1;
+        int start = A[0], end = A[0];
+        for (int i = 1; i < A.length; i++) {
+            start = Math.min(start, A[i]);
+            end = Math.max(end, A[i]);
+        }
+        int mid, numSmaller, i;
+        while (start <= end) {
+            mid = (start + end) / 2;
+            numSmaller = 0;
+            for (i = 0; i < A.length; i++) if (A[i] <= mid) numSmaller++;
+            if (numSmaller >= k) {
+                end = mid - 1;
+                ans = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return ans;
 
-}*/
+    }
 
 }
 
