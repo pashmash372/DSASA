@@ -8,8 +8,8 @@ public class KthPrice {
         int ans = -1;
         int start = A[0], end = A[0];
         for (int i = 1; i < A.length; i++) {
-            start = Math.min(start, A[i]);
-            end = Math.max(end, A[i]);
+            start = Math.min(start, A[i]); // min
+            end = Math.max(end, A[i]); // max
         }
         int mid, numSmaller, i;
         while (start <= end) {
