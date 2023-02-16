@@ -46,7 +46,7 @@ public class SearchforaRange {
         int mid;
         int up = end + 1;
         int val;
-        while (steps > 0) {
+        while (steps > 0) { // till step not equal to zero
             mid = (start + end) / 2;
             val = A.get(mid);
             if (num < val)

@@ -5,13 +5,43 @@ import java.util.ArrayList;
 
 public class Ceilinginasortedarray {
     public int solve(int A, ArrayList<Integer> B) {
-        Integer ans=Integer.MIN_VALUE;
-        for(int i=0; i<A; i++){
-            ans=Math.max(ans, B.get(i));
+        Integer ans = Integer.MIN_VALUE;
+        for (int i = 0; i < A; i++) {
+            ans = Math.max(ans, B.get(i));
         }
         return ans;
     }
 }
+
+/*Function to find the ceil of `x` in a sorted array nums[]*/
+
+class Ceilinginasortedarray1 {
+    public int solve(int A, int[] nums, int x) {
+
+        int left = 0, right = nums.length - 1;
+
+        int ceil = -1;
+
+        while (left <= right) {
+
+            int mid = (left + right) / 2;
+
+
+            if (nums[mid] == x) {
+                return nums[mid];
+            } else if (x < nums[mid]) {
+                ceil = nums[mid];
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return ceil;
+
+    }
+}
+
 /*Q2. Ceiling in a sorted array
 Solved
 character backgroundcharacter

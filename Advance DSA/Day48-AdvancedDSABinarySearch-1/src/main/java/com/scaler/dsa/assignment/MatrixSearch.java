@@ -9,6 +9,7 @@ public class MatrixSearch {
         int low = 0, high = n * m - 1, ans = -1;
         while(low <= high){
             int mid = (high - low) / 2 + low;
+            // eg 6*7 =42 ele, search 24 ele row = 24/7 => 4 col 24%7 => 0
             int row = mid / m, col = mid % m;
             if(A[row][col] > B)
                 high = mid - 1;
