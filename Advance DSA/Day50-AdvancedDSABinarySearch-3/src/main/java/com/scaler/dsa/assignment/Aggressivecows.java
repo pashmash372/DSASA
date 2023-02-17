@@ -25,7 +25,7 @@ public class Aggressivecows {
             int mid = (l + r) / 2;
             if (check(mid, A, B)) {
                 ans = mid;
-                l = mid + 1;
+                l = mid + 1; // floor
             } else {
                 r = mid - 1;
             }

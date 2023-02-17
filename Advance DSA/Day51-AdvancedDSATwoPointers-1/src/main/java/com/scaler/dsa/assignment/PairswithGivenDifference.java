@@ -18,7 +18,7 @@ public class PairswithGivenDifference {
             if (y - x == B) {
                 // count the pair A[i], A[j] only once
                 ans++;
-                while (i < A.size() && A.get(i) == x) i++;
+                while (i < A.size() && A.get(i) == x) i++; // duplicate handling
                 while (j < A.size() && A.get(j) == y) j++;
             } else if (y - x > B) {
                 i++;

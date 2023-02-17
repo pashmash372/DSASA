@@ -15,7 +15,7 @@ public class ContainerWithMostWater {
             int width = last - first;
             // finds the area for the current window
             area = Math.max(area, Math.min(A.get(first), A.get(last)) * width);
-            if (A.get(first).intValue() >= A.get(last).intValue())
+            if (A.get(first).intValue() >= A.get(last).intValue()) // first ele > last ele
                 last--;
             else
                 first++;

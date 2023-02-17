@@ -12,7 +12,7 @@ public class FoodPacketsDistribution {
     }
     public int solve(int[] A, int B) {
         n = A.length;
-        long mn = 1000000000, sm = 0;
+        long mn = 1000000000, sm = 0; //(10^9)
         for (int i = 0; i < n; i++) {
             a[i] = (long) A[i];
             sm += a[i];

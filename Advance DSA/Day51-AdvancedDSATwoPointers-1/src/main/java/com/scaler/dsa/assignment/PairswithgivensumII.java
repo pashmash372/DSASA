@@ -1,7 +1,7 @@
 package com.scaler.dsa.assignment;
 
 
-public class PairswithgivensumII {
+public class PairswithgivensumII { // sorted with  duplicates
     public int solve(int[] A, int B) {
         int i = 0, j = A.length - 1, mod = 1000 * 1000 * 1000 + 7;
         long ans = 0;

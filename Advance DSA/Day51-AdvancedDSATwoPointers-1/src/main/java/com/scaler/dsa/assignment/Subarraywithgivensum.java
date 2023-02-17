@@ -2,7 +2,7 @@ package com.scaler.dsa.assignment;
 
 
 
-public class Subarraywithgivensum {
+public class Subarraywithgivensum { // for postive elements only
     public int[] solve(int[] A, int B) {
         long n = A.length;
         int l = 0, r = 0;

@@ -10,8 +10,7 @@ public class ThreeSumZero {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         ArrayList<Integer> temp = new ArrayList<>();
 
-        if (A == null)
-            return res;
+        if (A == null) return res;
 
         Collections.sort(A);
         int n = A.size();
@@ -22,8 +21,7 @@ public class ThreeSumZero {
             int high = n - 1;
             int sum = -A.get(low);
 
-            if (low > 0 && A.get(low).intValue() == A.get(low - 1).intValue())
-                continue;
+            if (low > 0 && A.get(low).intValue() == A.get(low - 1).intValue()) continue;
 
             while (mid < high) {
 
@@ -37,8 +35,7 @@ public class ThreeSumZero {
                     temp.clear();
 
                     int prev = mid;
-                    while (mid <= high && A.get(mid).intValue() == A.get(prev).intValue())
-                        mid++;
+                    while (mid <= high && A.get(mid).intValue() == A.get(prev).intValue()) mid++;
 
                 } else if (num < sum) {
                     mid++;
@@ -53,6 +50,44 @@ public class ThreeSumZero {
 
     }
 }
+
+/*Java Easy Two Pointer Approach*/
+
+class ThreeSumZero1 {
+    public ArrayList<ArrayList<Integer>> threeSum(ArrayList<Integer> A) {
+        ArrayList<ArrayList<Integer>> List = new ArrayList<>();
+        Collections.sort(A);
+
+        for (int i = 0; i < A.size() - 2; i++) {
+            int s = i + 1;
+            int e = A.size() - 1;
+
+            while (s < e) {
+                ArrayList<Integer> a = new ArrayList<Integer>();
+                if (A.get(i) + A.get(s) + A.get(e) == 0) {
+                    a.add(A.get(i));
+                    a.add(A.get(s));
+                    a.add(A.get(e));
+                    if (!List.contains(a)) {
+                        List.add(a);
+                    }
+                    s++;
+                    e--;
+                }
+                if (A.get(i) + A.get(s) + A.get(e) > 0) {
+                    e--;
+                }
+                if (A.get(i) + A.get(s) + A.get(e) < 0) {
+                    s++;
+                }
+            }
+
+        }
+        return List;
+    }
+}
+
+
 
 /*Q4. 3 Sum Zero
 Solved

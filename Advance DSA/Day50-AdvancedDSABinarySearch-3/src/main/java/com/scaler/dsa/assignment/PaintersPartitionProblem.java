@@ -19,7 +19,7 @@ public class PaintersPartitionProblem {
             boolean status = possible(A, B, C, mid);
             if (status) {
                 res = mid;
-                high = mid - 1;
+                high = mid - 1; // ciel
             } else {
                 low = mid + 1;
             }

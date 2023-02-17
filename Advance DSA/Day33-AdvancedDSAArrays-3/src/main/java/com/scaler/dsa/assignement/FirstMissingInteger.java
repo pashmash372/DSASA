@@ -21,6 +21,7 @@ public class FirstMissingInteger {
             if (A.get(i) != i + 1)
                 return (i + 1);
         }
+
         return n + 1;
     }
 }
