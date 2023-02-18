@@ -4,7 +4,7 @@ package com.scaler.dsa.assignment;
 import java.util.HashMap;
 import java.util.List;
 
-public class LongestConsecutiveSequence {
+public class LongestConsecutiveSequence{
     public int longestConsecutive(final List<Integer> A) {
         HashMap<Integer, Integer> mp = new HashMap<>();
         int maxCount = 0;
@@ -21,9 +21,16 @@ public class LongestConsecutiveSequence {
                     rCount = mp.get(ele + 1);
                 }
                 mp.put(ele, lCount + 1 + rCount);
-                mp.put(ele - lCount, mp.get(ele));
-                mp.put(ele + rCount, mp.get(ele));
-                if (maxCount < lCount + 1 + rCount) maxCount = lCount + 1 + rCount;
+                if(mp.containsKey(ele - lCount))
+                    mp.put(ele - lCount, mp.get(ele));
+                else
+                    mp.put(ele - lCount, mp.get(ele));
+                if(mp.containsKey(ele + rCount))
+                    mp.put(ele + rCount, mp.get(ele));
+                else
+                    mp.put(ele + rCount, mp.get(ele));
+                if (maxCount < lCount + 1 + rCount)
+                    maxCount = lCount + 1 + rCount;
             }
         }
         return maxCount;
