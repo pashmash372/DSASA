@@ -11,7 +11,7 @@ public class PairswithgivensumII { // sorted with  duplicates
                 if (A[i] == A[j]) {
                     // equal A[i] and A[j]
                     long cnt = j - i + 1;
-                    ans += (cnt * (cnt - 1) / 2) % mod;
+                    ans += (cnt * (cnt - 1) / 2) % mod; // NC2 why? pair
                     ans %= mod;
                     break;
                 } else {
