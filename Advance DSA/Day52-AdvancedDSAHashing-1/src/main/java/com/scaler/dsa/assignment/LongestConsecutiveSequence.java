@@ -2,9 +2,10 @@ package com.scaler.dsa.assignment;
 
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
-public class LongestConsecutiveSequence{
+public class LongestConsecutiveSequence {
     public int longestConsecutive(final List<Integer> A) {
         HashMap<Integer, Integer> mp = new HashMap<>();
         int maxCount = 0;
@@ -21,21 +22,44 @@ public class LongestConsecutiveSequence{
                     rCount = mp.get(ele + 1);
                 }
                 mp.put(ele, lCount + 1 + rCount);
-                if(mp.containsKey(ele - lCount))
-                    mp.put(ele - lCount, mp.get(ele));
-                else
-                    mp.put(ele - lCount, mp.get(ele));
-                if(mp.containsKey(ele + rCount))
-                    mp.put(ele + rCount, mp.get(ele));
-                else
-                    mp.put(ele + rCount, mp.get(ele));
-                if (maxCount < lCount + 1 + rCount)
-                    maxCount = lCount + 1 + rCount;
+                if (mp.containsKey(ele - lCount)) mp.put(ele - lCount, mp.get(ele));
+                else mp.put(ele - lCount, mp.get(ele));
+                if (mp.containsKey(ele + rCount)) mp.put(ele + rCount, mp.get(ele));
+                else mp.put(ele + rCount, mp.get(ele));
+                if (maxCount < lCount + 1 + rCount) maxCount = lCount + 1 + rCount;
             }
         }
         return maxCount;
     }
 }
+
+/*Java Simple Solution using Hashset*/
+class LongestConsecutiveSequence1 {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int longestConsecutive(final int[] A) {
+// Create Hashset
+        HashSet<Integer> hs = new HashSet<>();
+// Insert all elemets to Hashset
+        for (int i = 0; i < A.length; i++) {
+            hs.add(A[i]);
+        }
+        int ans = Integer.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            if (hs.contains(A[i] - 1)) {
+                continue;
+            }
+            int count = 0;
+            int val = A[i];
+            while (hs.contains(val)) {
+                count++;
+                val++;
+            }
+            ans = Math.max(ans, count);
+        }
+        return ans;
+    }
+}
+
 
 /*Q1. Longest Consecutive Sequence
 Solved
