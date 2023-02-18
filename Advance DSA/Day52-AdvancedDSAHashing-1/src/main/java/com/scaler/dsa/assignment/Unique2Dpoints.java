@@ -3,29 +3,45 @@ package com.scaler.dsa.assignment;
 
 import java.util.HashSet;
 
+class Point {
+
+    int x;
+    int y;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int hashCode() {
+        return (x + y) % 100;
+    }
+
+    public boolean equals(Object obj) {
+
+        Point o = (Point) obj;
+
+        return this.x == o.x && this.y == o.y;
+    }
+}
+
 class Unique2Dpoints1 {
-    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
-    public int longestConsecutive(final int[] A) {
-// Create Hashset
-        HashSet<Integer> hs = new HashSet<>();
-// Insert all elemets to Hashset
-        for (int i = 0; i < A.length; i++) {
-            hs.add(A[i]);
+    public int solve(int[][] A) {
+
+        HashSet<Point> set = new HashSet<>();
+
+        int n = A.length;
+
+        int m = A[0].length;
+
+        for (int i = 0; i < n; i++) {
+
+            Point pi = new Point(A[i][0], A[i][1]);
+
+            set.add(pi);
         }
-        int ans = Integer.MIN_VALUE;
-        for (int i = 0; i < A.length; i++) {
-            if (hs.contains(A[i] - 1)) {
-                continue;
-            }
-            int count = 0;
-            int val = A[i];
-            while (hs.contains(val)) {
-                count++;
-                val++;
-            }
-            ans = Math.max(ans, count);
-        }
-        return ans;
+
+        return set.size();
     }
 }
 
