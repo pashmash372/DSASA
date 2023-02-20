@@ -3,6 +3,7 @@ package com.scaler.dsa.assignment;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 public class CountRectangles {
     public int solve(int[] a, int[] b) {
@@ -11,10 +12,8 @@ public class CountRectangles {
         HashSet<Integer> h;
         // stores all the points
         for (int i = 0; i < n; i++) {
-            if (mpx.containsKey(a[i]))
-                h = mpx.get(a[i]);
-            else
-                h = new HashSet<>();
+            if (mpx.containsKey(a[i])) h = mpx.get(a[i]);
+            else h = new HashSet<>();
             h.add(b[i]);
             mpx.put(a[i], h);
         }
@@ -23,13 +22,32 @@ public class CountRectangles {
             for (int j = i + 1; j < n; j++) {
                 // checks if there exists a rectange such that the i-th and
                 // j-th points are the ends of a diagonal
-                if (a[i] == a[j] || b[i] == b[j])
-                    continue;
-                if (mpx.get(a[i]).contains(b[j]) && mpx.get(a[j]).contains(b[i]))
-                    ans++;
+                if (a[i] == a[j] || b[i] == b[j]) continue;
+                if (mpx.get(a[i]).contains(b[j]) && mpx.get(a[j]).contains(b[i])) ans++;
             }
         }
         return ans >> 1;
+    }
+}
+
+/*Java Solution, T.C = O(N^2), no need of custom class*/
+class CountRectangles1 {
+    public int solve(int[] A, int[] B) {
+        int n = A.length;
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(A[i] + "-" + B[i]);
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (A[i] < A[j] && B[i] < B[j] && set.contains(A[i] + "-" + B[j]) && set.contains(A[j] + "-" + B[i]))
+                    ans++;
+            }
+        }
+
+        return ans;
     }
 }
 
