@@ -50,6 +50,59 @@ public class WindowString {
     }
 }
 
+/*JAVA -Sliding Window -Explained*/
+
+/*      1) We create a frequency array to store the frequecies of all the characters of the String b.
+        2)The variable 'k' is used to store the no of distinct characters in the String b.
+        3) Then we keep left=0, and iterate over the right , which is standard template of sliding window.
+        4)At each iteration , we reduce that character's frequency , and if that character's frequency became zero that means , our window has the complete frequency of that character.
+        5) k==0 signifies that our window has all the characters of b.
+        6) So, we store that answer, we also perform left++  to make our window  have one less character. and we will continue our for loop iteration
+*/
+
+class WindowString1 {
+    public String minWindow(String a, String b) {
+        int len1 = a.length();
+        int len2 = b.length();
+        if (len2 > len1) return "";
+        int[] freq = new int[128];
+        int k = 0;
+
+        for (int i = 0; i < len2; i++) {
+            if (freq[b.charAt(i) - '0'] == 0) k++;
+            freq[b.charAt(i) - '0']++;
+        }
+
+
+        int left = 0;
+        int leftAns = 0;
+        int rightAns = 10000000;
+
+        for (int right = 0; right < len1; right++) {
+            char c = a.charAt(right);
+            freq[c - '0']--;
+            if (freq[c - '0'] == 0) k--;
+
+            while (k == 0) {
+
+                while (rightAns - leftAns + 1 > right - left + 1) {
+                    rightAns = right;
+                    leftAns = left;
+                }
+                if (freq[a.charAt(left) - '0'] == 0) k++;
+                freq[a.charAt(left) - '0']++;
+                left++;
+
+            }
+
+        }
+
+        if (rightAns > len1 - 1) return "";
+        return a.substring(leftAns, rightAns + 1);
+
+
+    }
+}
 
 
 /*Q3. Window String

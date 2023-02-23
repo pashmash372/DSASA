@@ -1,9 +1,9 @@
 # Assignment
 
-| No.   | Name                | Type                                                        | Solution link                                                               |
-|-------|---------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------|
-| - Q1. | Cyclic Permutations | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/CyclicPermutations.java) | 
-| - Q2. | Period of a string  | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/Periodofastring.java)    |
+| No.   | Name                | Type                                                        | Solution link                                                                        |
+|-------|---------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| - Q1. | Cyclic Permutations | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/CyclicPermutations.java)          | 
+| - Q2. | Period of a string  | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/assignment/Periodofastring.java)   too tough |
 
 *** 
 
