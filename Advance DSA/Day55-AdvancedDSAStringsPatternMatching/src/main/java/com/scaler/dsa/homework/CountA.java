@@ -11,7 +11,7 @@ public class CountA {
                 count_A += 1;
         }
         // return the number of strings that start and end with 'a'
-        return (count_A * (count_A + 1)) / 2;
+        return (count_A * (count_A + 1)) / 2;  // this is formula for the count of subarrays ie (n*(n+1))/2
     }
 }
 
