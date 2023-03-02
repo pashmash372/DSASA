@@ -26,7 +26,7 @@ public class BinaryTreeFromInorderAndPreorder {
             }
         }
         root.left = rec(start, i - 1, index + 1);
-        root.right = rec(i + 1, end, index + i - start + 1);
+        root.right = rec(i + 1, end, index + i - start + 1); // imp
         return root;
     }
 }

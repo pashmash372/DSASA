@@ -3,6 +3,7 @@ package com.scaler.dsa.assignment;
 import com.scaler.dsa.common.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class InorderTraversal {
     // Threaded binary tree Morris traversal
@@ -29,6 +30,45 @@ public class InorderTraversal {
             }
         }
         return res;
+    }
+}
+/*Easy to understand with 2 approaches with and without recursion. (Java)*/
+
+// recursive approach
+
+class InorderTraversal1 {
+    void traverseTree(TreeNode root, ArrayList list) {
+        if (root != null) {
+            traverseTree(root.left, list);
+            list.add(root.val);
+            traverseTree(root.right, list);
+        }
+    }
+
+    public ArrayList<Integer> inorderTraversal(TreeNode A) {
+        ArrayList<Integer> list = new ArrayList<>();
+        traverseTree(A, list);
+        return list;
+    }
+}
+// iterative approach
+
+class InorderTraversal2 {
+    public ArrayList<Integer> inorderTraversal(TreeNode A) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = A;
+
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            list.add(root.val);
+            root = root.right;
+        }
+        return list;
     }
 }
 
