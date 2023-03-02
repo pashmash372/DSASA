@@ -51,6 +51,45 @@ public class SlidingWindowMaximum {
     }
 }
 
+/**/
+
+class SlidingWindowMaximum1 {
+    // DO NOT MODIFY THE ARGUMENTS WITH “final” PREFIX. IT IS READ ONLY
+    public int[] slidingMaximum(final int[] A, int k) {
+        int n = A.length;
+        int[] ans = new int[n - k + 1];
+        //need double ended queue in this beacuse need to insert element from end and remove from end and front both
+        Deque<Integer> q = new LinkedList<>();
+
+        //1st window
+        for (int i = 0; i < k; i++) {
+            if (q.isEmpty()) q.add(A[i]);
+            else {
+                if (q.getLast() >= A[i]) q.addLast(A[i]);
+                else {
+                    while (!q.isEmpty() && q.getLast() < A[i]) q.removeLast();
+                    q.add(A[i]);
+                }
+            }
+        }
+        int index = 0;
+        ans[index++] = q.peek();
+        int i = k;
+
+        //rest of the windows
+        while (i < n) {
+            int outgoing = A[i - k];
+            int incoming = A[i];
+            if (q.getFirst() == outgoing) q.removeFirst();
+            while (!q.isEmpty() && q.getLast() < incoming) q.removeLast();
+            q.add(incoming);
+            ans[index++] = q.peek();
+            i++;
+        }
+
+        return ans;
+    }
+}
 
 /*Q2. Sliding Window Maximum
 Solved
