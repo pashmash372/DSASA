@@ -11,7 +11,7 @@ public class SerializeBinaryTree {
         ArrayList<Integer> ans = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
         q.add(A);
-        while (q.size() != 0) {
+        while (q.size() != 0) { //  q.isEmpty()
             TreeNode cur = q.peek();
             q.remove();
             if (cur == null) {
