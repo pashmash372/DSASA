@@ -3,6 +3,7 @@ package com.scaler.dsa.homework;
 import com.scaler.dsa.common.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 public class PostorderTraversal {
@@ -28,7 +29,38 @@ public class PostorderTraversal {
         return postorder;
     }
 }
+/*Postorder traversal using single stack*/
 
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) {
+ * val = x;
+ * left=null;
+ * right=null;
+ * }
+ * }
+ */
+// we cannot directly calculate LRN because we can't keep the track whether that node /has been processed or not.
+// calculate NRL then reverse it
+class PostorderTraversal1 {
+    public ArrayList<Integer> postorderTraversal(TreeNode head) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(head);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            ans.add(node.val);
+            if (node.left != null) stack.push(node.left);
+            if (node.right != null) stack.push(node.right);
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
+}
 /*Q3. Postorder Traversal
 Solved
 character backgroundcharacter
