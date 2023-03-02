@@ -1,12 +1,14 @@
 package com.scaler.dsa.assignment;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class MAXandMIN {
     int[] a;
-    public void findNextGreaterElement(int[] Next_greater_element, int n){
+
+    public void findNextGreaterElement(int[] Next_greater_element, int n) {
         // this function calculates next_greater element index
-        Stack < Integer > s = new Stack < Integer > ();
+        Stack<Integer> s = new Stack<Integer>();
         for (int i = 0; i < n; i++) Next_greater_element[i + 1] = n + 1;
         for (int i = 1; i <= n; i++) {
             if (s.empty()) {
@@ -20,9 +22,10 @@ public class MAXandMIN {
             }
         }
     }
-    public void findPreviousGreaterElement(int[] Previous_greater_element, int n){
+
+    public void findPreviousGreaterElement(int[] Previous_greater_element, int n) {
         // this function calculates Previous_greater element index
-        Stack < Integer > s = new Stack < Integer > ();
+        Stack<Integer> s = new Stack<Integer>();
         for (int i = n; i > 0; i--) {
             if (s.empty()) {
                 s.push(i);
@@ -35,9 +38,10 @@ public class MAXandMIN {
             }
         }
     }
-    public void findPreviousSmallerElement(int[] Previous_smaller_element, int n){
+
+    public void findPreviousSmallerElement(int[] Previous_smaller_element, int n) {
         // this function calculates Previous smaller element index
-        Stack < Integer > s = new Stack < Integer > ();
+        Stack<Integer> s = new Stack<Integer>();
         for (int i = n; i > 0; i--) {
             if (s.empty()) {
                 s.push(i);
@@ -50,9 +54,10 @@ public class MAXandMIN {
             }
         }
     }
-    public void findNextSmallerElement(int[] Next_smaller_element, int n){
+
+    public void findNextSmallerElement(int[] Next_smaller_element, int n) {
         // function function calculates Next smaller element index
-        Stack < Integer > s = new Stack < Integer > ();
+        Stack<Integer> s = new Stack<Integer>();
         for (int i = 0; i < n; i++) Next_smaller_element[i + 1] = n + 1;
         for (int i = 1; i <= n; i++) {
             if (s.empty()) {
@@ -70,13 +75,11 @@ public class MAXandMIN {
     public int solve(int[] A) {
         int n = A.length, mod = 1000 * 1000 * 1000 + 7;
         a = new int[n + 1];
-        int Next_greater_element[] = new int[n + 1];
-        int Previous_greater_element[] = new int[n + 1];
-        int Previous_smaller_element[] = new int[n + 1];
-        int Next_smaller_element[] = new int[n + 1];
-        for (int i = 0; i < n; i++) {
-            a[i + 1] = A[i];
-        }
+        int[] Next_greater_element = new int[n + 1];
+        int[] Previous_greater_element = new int[n + 1];
+        int[] Previous_smaller_element = new int[n + 1];
+        int[] Next_smaller_element = new int[n + 1];
+        System.arraycopy(A, 0, a, 1, n);
 
         findNextGreaterElement(Next_greater_element, n);
         findPreviousGreaterElement(Previous_greater_element, n);
@@ -98,7 +101,114 @@ public class MAXandMIN {
         return (int) ans;
     }
 }
+/**/
 
+class MAXandMIN1 {
+    int mod = (int) 1e9 + 7;
+
+    public int solve(int[] A) {
+        int n = A.length;
+        if (n == 1) return A[0];
+
+        int[] nsl = nearestSmallerLeft(A);
+        int[] nsr = nearestSmallerRight(A);
+        int[] ngl = nearestGreaterLeft(A);
+        int[] ngr = nearestGreaterRight(A);
+
+        long totalMax = 0L, totalMin = 0L;
+
+        for (int i = 0; i < n; i++) {
+            //number of subarrays where A[i] will be maximum
+            long maxSubarrayCount = (long) (ngr[i] - i) * (i - ngl[i]);
+            long currentMaxContri = (A[i] * maxSubarrayCount) % mod;
+
+            //number of subarrays where A[i] will be minimum
+            long minSubarrayCount = (long) (nsr[i] - i) * (i - nsl[i]);
+            long currentMinContri = (A[i] * minSubarrayCount) % mod;
+
+            //generating total max contribution and minimum contribution
+            totalMax = ((currentMaxContri % mod) + (totalMax % mod)) % mod;
+            totalMin = ((currentMinContri % mod) + (totalMin % mod)) % mod;
+        }
+
+        int sum = (int) (totalMax - totalMin) % mod;
+        return (sum + mod) % mod;
+    }
+
+    public int[] nearestSmallerLeft(int[] a) {
+        Stack<Integer> cl = new Stack<>();
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, -1);
+
+        for (int i = 0; i < a.length; i++) {
+            while (!cl.isEmpty() && a[cl.peek()] >= a[i]) {
+                cl.pop();
+            }
+            if (!cl.isEmpty()) {
+                ans[i] = cl.peek();
+            }
+            cl.push(i);
+        }
+
+        return ans;
+    }
+
+    public int[] nearestSmallerRight(int[] a) {
+        int n = a.length;
+        Stack<Integer> cl = new Stack<>();
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, n);
+
+        for (int i = a.length - 1; i >= 0; i--) {
+            while (!cl.isEmpty() && a[cl.peek()] >= a[i]) {
+                cl.pop();
+            }
+            if (!cl.isEmpty()) {
+                ans[i] = cl.peek();
+            }
+            cl.push(i);
+        }
+
+        return ans;
+    }
+
+    public int[] nearestGreaterLeft(int[] a) {
+        Stack<Integer> cl = new Stack<>();
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, -1);
+
+        for (int i = 0; i < a.length; i++) {
+            while (!cl.isEmpty() && a[cl.peek()] <= a[i]) {
+                cl.pop();
+            }
+            if (!cl.isEmpty()) {
+                ans[i] = cl.peek();
+            }
+            cl.push(i);
+        }
+
+        return ans;
+    }
+
+    public int[] nearestGreaterRight(int[] a) {
+        int n = a.length;
+        Stack<Integer> cl = new Stack<>();
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, n);
+
+        for (int i = a.length - 1; i >= 0; i--) {
+            while (!cl.isEmpty() && a[cl.peek()] <= a[i]) {
+                cl.pop();
+            }
+            if (!cl.isEmpty()) {
+                ans[i] = cl.peek();
+            }
+            cl.push(i);
+        }
+
+        return ans;
+    }
+}
 
 /*Q3. MAX and MIN
 Solved
