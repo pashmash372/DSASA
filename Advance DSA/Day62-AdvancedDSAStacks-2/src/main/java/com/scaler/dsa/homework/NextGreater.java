@@ -26,7 +26,28 @@ public class NextGreater {
         return ans;
     }
 }
+/*Another Solution*/
 
+class NextGreater1 {
+    public int[] nearestGreaterRight(int[] a) {
+        int n = a.length;
+        Stack<Integer> cl = new Stack<>();
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, n);
+
+        for (int i = a.length - 1; i >= 0; i--) {
+            while (!cl.isEmpty() && a[cl.peek()] <= a[i]) {
+                cl.pop();
+            }
+            if (!cl.isEmpty()) {
+                ans[i] = cl.peek();
+            }
+            cl.push(i);
+        }
+
+        return ans;
+    }
+}
 
 /*Q1. Next Greater
 Solved
