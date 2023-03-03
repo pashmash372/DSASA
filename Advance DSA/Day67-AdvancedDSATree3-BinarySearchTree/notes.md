@@ -14,7 +14,7 @@
 |-------|------------------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------|
 | - Q1. | Check for BST with One Child | Easy [![](https://img.shields.io/badge/-EASY-green)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/CheckforBSTwithOneChild.java) |
 | - Q2. | BST nodes in a range         | Medium [![](https://img.shields.io/badge/-MEDIUM-yellow)]() | [SOLUTION](src/main/java/com/scaler/dsa/homework/BSTnodesinarange.java)        |
-| - Q3. | Two Sum BST                  | Hard   [![](https://img.shields.io/badge/-HARD-red)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/TwoSumBST.java)               |
+| - Q3. | Two Sum BST                  | Hard   [![](https://img.shields.io/badge/-HARD-red)]()      | [SOLUTION](src/main/java/com/scaler/dsa/homework/TwoSumBST.java)   tough       |
 
 [![](https://img.shields.io/badge/github-blue?style=for-the-badge)](https://github.com/pashmash372)
 

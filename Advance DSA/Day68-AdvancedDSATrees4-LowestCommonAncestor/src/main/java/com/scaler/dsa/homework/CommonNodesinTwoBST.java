@@ -2,6 +2,8 @@ package com.scaler.dsa.homework;
 
 import com.scaler.dsa.common.TreeNode;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Stack;
 
 public class CommonNodesinTwoBST {
@@ -70,6 +72,40 @@ public class CommonNodesinTwoBST {
     }
 
 }
+
+/**/
+
+class CommonNodesinTwoBST1 {
+    public int solve(TreeNode A, TreeNode B) {
+        ArrayList<Integer> A1 = new ArrayList<>();
+        ArrayList<Integer> B1 = new ArrayList<>();
+        inOrder(A, A1);
+        inOrder(B, B1);
+        int mod = 1000000007;
+        int sum = 0;
+        HashSet<Integer> hs = new HashSet<Integer>();
+        for (int i = 0; i < A1.size(); i++) {
+            hs.add(A1.get(i));
+        }
+        for (int i = 0; i < B1.size(); i++) {
+            if (hs.contains(B1.get(i))) {
+                sum += B1.get(i);
+                sum = sum % mod;
+            }
+        }
+        return sum % mod;
+    }
+
+    public void inOrder(TreeNode A, ArrayList<Integer> ans) {
+        if (A == null) {
+            return;
+        }
+        inOrder(A.left, ans);
+        ans.add(A.val);
+        inOrder(A.right, ans);
+    }
+}
+
 
 /*Q1. Common Nodes in Two BST
 Solved

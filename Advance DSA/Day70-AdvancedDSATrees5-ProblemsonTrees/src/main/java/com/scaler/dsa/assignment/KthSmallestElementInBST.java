@@ -6,21 +6,40 @@ public class KthSmallestElementInBST {
     static int k = 0;
 
     public static int find(TreeNode root) {
-        if(root==null)
-            return -1;
+        if (root == null) return -1;
         /* We do an inorder traversal here. */
-        int k1=find(root.left);
-        if(k==0)
-            return k1; /* left subtree has k or more elements. */
+        int k1 = find(root.left);
+        if (k == 0) return k1; /* left subtree has k or more elements. */
         k--;
-        if(k==0)
-            return root.val; /* root is the kth element */
+        if (k == 0) return root.val; /* root is the kth element */
         return find(root.right); /* answer lies in the right node*/
     }
 
     public int kthsmallest(TreeNode A, int B) {
         k = B;
         return find(A);
+    }
+}
+
+/*Java sol | TC O(N) | SC O(H)*/
+
+class KthSmallestElementInBST1 {
+    int ans = 0, count = 0;
+
+    public int kthsmallest(TreeNode A, int B) {
+        inorder(A, B);
+        return ans;
+    }
+
+    public void inorder(TreeNode A, int B) {
+        if (A == null) return;
+        inorder(A.left, B);
+        count++;
+        if (count == B) {
+            ans = A.val;
+            return;
+        }
+        inorder(A.right, B);
     }
 }
 
