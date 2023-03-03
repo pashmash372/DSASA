@@ -122,8 +122,8 @@ class LargestBSTSubtree1 {
             valid = false;
         }
 
-        int min = java.lang.Math.min(node.val, java.lang.Math.min(left.min, right.min));
-        int max = java.lang.Math.max(node.val, java.lang.Math.max(left.max, right.max));
+        int min = Math.min(node.val, Math.min(left.min, right.min));
+        int max = Math.max(node.val, Math.max(left.max, right.max));
 
         if (valid) {
             return new Pair(valid, left.size + right.size + 1, min, max);
