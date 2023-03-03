@@ -128,7 +128,7 @@ class LargestBSTSubtree1 {
         if (valid) {
             return new Pair(valid, left.size + right.size + 1, min, max);
         }
-        return new Pair(valid, java.lang.Math.max(left.size, right.size), min, max);
+        return new Pair(valid, Math.max(left.size, right.size), min, max);
     }
 
     class Pair {
