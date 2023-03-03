@@ -7,20 +7,34 @@ public class PathSum {
         boolean status = sum(A, 0, B);
         return status ? 1 : 0;
     }
+
     public boolean sum(TreeNode A, int curSum, int reqSum) {
         if (A == null) {
             return false;
         }
         if (A.left == null && A.right == null) {
             curSum += A.val;
-            if (curSum == reqSum)
-                return true;
-            return false;
+            return curSum == reqSum;
         }
         int sum = curSum + A.val;
         return sum(A.left, sum, reqSum) || sum(A.right, sum, reqSum);
     }
 
+}
+/*Simple java Solution*/
+
+class PathSum1 {
+    boolean isPossiblePath(TreeNode A, int sum) {
+        if (A == null) return false;
+        if (sum == A.val && A.left == null && A.right == null) return true;
+        return isPossiblePath(A.left, sum - A.val) || isPossiblePath(A.right, sum - A.val);
+
+    }
+
+    public int hasPathSum(TreeNode A, int B) {
+        if (isPossiblePath(A, B)) return 1;
+        return 0;
+    }
 }
 
 /*Q2. Path Sum
