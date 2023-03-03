@@ -37,7 +37,48 @@ public class Sumbinarytreeornot {
     }
 }
 
+/*Easy Java solution with diagram*/
 
+class Sumbinarytreeornot1 {
+    int ans = 1;// considering my tree is sum tree
+
+    public int solve(TreeNode root) {
+        traverse(root);
+        return ans;
+    }
+
+    public int traverse(TreeNode root) {
+        if (root == null) return 0;
+        //as I know all leaf nodes are considered as sum tree
+        if (root.left == null && root.right == null) return root.val;
+        int l = traverse(root.left);
+        int r = traverse(root.right);
+        //condition to check if tree is not sum tree
+        if (root.val != (l + r)) ans = 0;
+        return root.val + l + r;
+    }
+}
+/*Post Order Approach*/
+
+class Sumbinarytreeornot2 {
+    boolean flag = true;
+
+    public int solve(TreeNode A) {
+        helper(A);
+        if (flag) return 1;
+        return 0;
+    }
+
+    private int helper(TreeNode root) {
+        if (root == null) return 0;
+        int leftSum = helper(root.left);
+        int rightSum = helper(root.right);
+        if (root.val != (leftSum + rightSum) && (root.left != null || root.right != null)) {
+            flag = false;
+        }
+        return leftSum + rightSum + root.val;
+    }
+}
 /*Q3. Sum binary tree or not
 Solved
 character backgroundcharacter
