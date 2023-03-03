@@ -24,7 +24,7 @@ public class ModifiedSearch {
         if (i == n) {
             return flag == 1 && last;
         }
-        int c = s.charAt(i) - 97;
+        int c = s.charAt(i) - 97; // a - 97
         if (flag == 0) {
             for (int x = 0; x < 26; x++) {
                 if (cur.children[x] == null) continue;

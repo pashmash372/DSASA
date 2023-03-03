@@ -30,7 +30,7 @@ public class AutoComplete {
         for (int i = 0; i < A.length; i++) {
             v.add(new pair(W[i], i));
         }
-        Collections.sort(v);
+        Collections.sort(v); // increasing order sorting
         for (int i = v.size() - 1; i >= 0; i--) {
             insert(root, A[v.get(i).second], v.get(i).second, W);
         }

@@ -21,7 +21,7 @@ public class ShortestUniquePrefix {
             list.add(getShortestUniquePrefix(word));
         }
 
-        String[] arr = list.toArray(new String[0]);
+        String[] arr = list.toArray(new String[0]); // imp
         return arr;
     }
 
