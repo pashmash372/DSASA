@@ -1,6 +1,8 @@
 package com.scaler.dsa.assignment;
 
 
+import java.util.HashMap;
+
 public class SpellingChecker {
     static final int ALPHABET_SIZE = 26;
     static TrieNode root;
@@ -53,6 +55,58 @@ public class SpellingChecker {
                 children[i] = null;
         }
     }
+}
+/*JAVA EASY APPROACH USING FUNCTIONS | TRIES & HASHMAP data structure. 564ms submission*/
+
+class SpellingChecker1 {
+    public static void Insertion(String A, Node root) {
+        Node temp = root;
+
+        for (int i = 0; i < A.length(); i++) {
+            char ch = A.charAt(i);
+
+            if (temp.hm.containsKey(ch)) {
+                temp = temp.hm.get(ch);
+            } else {
+                Node nn = new Node();
+                temp.hm.put(ch, nn);
+                temp = temp.hm.get(ch);
+            }
+        }
+        temp.isEnd = true;
+    }
+
+    public static boolean Search(String X, Node root) {
+        Node temp = root;
+
+        for (int i = 0; i < X.length(); i++) {
+            char ch = X.charAt(i);
+            if (temp.hm.containsKey(ch)) {
+                temp = temp.hm.get(ch);
+            } else return false;
+        }
+        return temp.isEnd;
+    }
+
+    public int[] solve(String[] A, String[] B) {
+        int[] ans = new int[B.length];
+        Node root = new Node();
+        for (int j = 0; j < A.length; j++) {
+            Insertion(A[j], root);
+        }
+        for (int i = 0; i < B.length; i++) {
+            String k = B[i];
+            if (Search(k, root)) {
+                ans[i] = 1;
+            } else ans[i] = 0;
+        }
+        return ans;
+    }
+}
+
+class Node {
+    boolean isEnd;
+    HashMap<Character, Node> hm = new HashMap<>();
 }
 
 
