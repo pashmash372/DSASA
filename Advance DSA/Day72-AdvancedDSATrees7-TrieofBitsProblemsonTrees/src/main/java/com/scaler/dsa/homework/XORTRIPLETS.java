@@ -60,6 +60,7 @@ public class XORTRIPLETS {
     }
 }
 
+
 /*Q1. XOR TRIPLETS
 Solved
 character backgroundcharacter

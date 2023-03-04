@@ -20,3 +20,5 @@
 
 
 String[] arr = list.toArray(new String[0]); // imp
+
+https://stackoverflow.com/questions/18136437/whats-the-use-of-new-string0-in-toarraynew-string0

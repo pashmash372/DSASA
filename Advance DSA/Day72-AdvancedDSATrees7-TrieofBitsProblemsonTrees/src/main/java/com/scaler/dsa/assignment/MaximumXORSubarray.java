@@ -1,5 +1,7 @@
 package com.scaler.dsa.assignment;
 
+import java.util.HashMap;
+
 public class MaximumXORSubarray {
     static final int INT_SIZE = 32;
     static TrieNode root;
@@ -83,6 +85,82 @@ class pair {
     }
 }
 
+
+/*Java: Trie Prefix XOR Approach: TC: O(N) and SC: O(N)*/
+
+class MaximumXORSubarray2 {
+    Node root = new Node();
+
+    //ADD NUMBER TO TRIE AND CALCULATE ITS MAX XOR//
+    public int addNumAndReturnMaxXor(Node root, int num) {
+        Node curr = root;
+        for (int i = 31; i >= 0; i--) {
+            int bit = (num >> i) & 1;
+            if (curr.children[bit] == null) {
+                curr.children[bit] = new Node();
+            }
+            curr = curr.children[bit];
+        }
+        int xor = 0;
+        curr = root;
+        for (int i = 31; i >= 0; i--) {
+            int bit = ((num >> i) & 1) ^ 1;
+            if (curr.children[bit] != null) {
+                xor += (1 << i);
+                curr = curr.children[bit];
+            } else {
+                curr = curr.children[bit ^ 1];
+            }
+        }
+        return xor;
+    }
+
+    public int[] solve(int[] A) {
+        int[] prefXor = new int[A.length + 1];
+        prefXor[0] = 0;
+        for (int i = 1; i < prefXor.length; i++) {
+            prefXor[i] = A[i - 1] ^ prefXor[i - 1];
+        }
+        int maxXor = Integer.MIN_VALUE;
+        for (int i = 0; i < prefXor.length; i++) {
+            int xor = addNumAndReturnMaxXor(root, prefXor[i]);
+            maxXor = Math.max(maxXor, xor);
+        }
+//FOUND MAX_XOR, NOW FIND START AND END INDEX OF THE SUBARRAY, SUCH THAT ITS LENGTH AND START ARE MINIMUM//
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int minLen = Integer.MAX_VALUE;
+        int minStart = Integer.MAX_VALUE;
+        int minEnd = Integer.MAX_VALUE;
+        for (int i = 0; i < prefXor.length; i++) {
+            int val = maxXor ^ prefXor[i];
+            if (map.containsKey(val)) {
+                int start = map.get(val) + 1;
+                int end = i;
+                int len = end - start + 1;
+                if (len < minLen) {
+                    minLen = len;
+                    minStart = start;
+                    minEnd = end;
+                } else if (len == minLen && start < minStart) {
+                    minLen = len;
+                    minStart = start;
+                    minEnd = end;
+                }
+            }
+            map.put(prefXor[i], i);
+        }
+        return new int[]{minStart, minEnd};
+    }
+
+    //NODE STRUCTURE AND CONSTRUCTOR//
+    class Node {
+        Node[] children;
+
+        Node() {
+            this.children = new Node[2];
+        }
+    }
+}
 
 
 /*Q2. Maximum XOR Subarray
