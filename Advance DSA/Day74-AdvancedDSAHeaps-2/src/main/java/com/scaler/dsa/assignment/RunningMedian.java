@@ -1,5 +1,6 @@
 package com.scaler.dsa.assignment;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -60,6 +61,50 @@ class CustomComp1 implements Comparator<Integer> {
         return b - a;
     }
 }
+
+
+/*Another Solution*/
+/*Java Solution using maxHeap and minHeap*/
+
+
+/*/to get the median from the sorted stream using heap data structure
+        Algorithm :
+        Initialize two heaps max heap and min heap.
+        Always insert new element in max heap
+        Check 2 conditions:
+        1 -> All the elements of maxHeap should be less than equal to min heap elements
+        2 -> If the difference in size of both heaps exceeds 1. shift greater heap size element to another heap
+        /*/
+
+class RunningMedian1 {
+    public int[] solve(int[] A) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());// contains all smaller elements than minHeap
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        int n = A.length;
+        int[] median = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            maxHeap.add(A[i]);
+            //check 1
+            if (!minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) minHeap.add(maxHeap.poll());
+            //check 2
+            if (Math.abs(minHeap.size() - maxHeap.size()) > 1) {
+                if (minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.poll());
+                else minHeap.add(maxHeap.poll());
+            }
+
+            int len = minHeap.size() + maxHeap.size();
+            if (len % 2 == 0) median[i] = maxHeap.peek();
+            else {
+                if (maxHeap.size() > minHeap.size()) median[i] = maxHeap.peek();
+                else median[i] = minHeap.peek();
+            }
+        }
+
+        return median;
+    }
+}
+
 
 
 /*Q1. Running Median

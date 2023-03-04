@@ -107,6 +107,7 @@ class Pair1 {
     }
 }
 
+// decreasing order
 class CustomComparator implements Comparator<Pair1> {
     public int compare(Pair1 p1, Pair1 p2) {
         double f1 = (double) p1.x / p1.y;
