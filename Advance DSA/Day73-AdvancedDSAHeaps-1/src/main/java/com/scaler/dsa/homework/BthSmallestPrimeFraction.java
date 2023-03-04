@@ -1,9 +1,6 @@
 package com.scaler.dsa.homework;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class BthSmallestPrimeFraction {
     public int[] solve(int[] A, int B) {
@@ -61,6 +58,63 @@ class CustomComp implements Comparator<Pair> {
         return -1;
     }
 }
+
+/*Custom Comparator using Pair, MAX HEAP*/
+
+class BthSmallestPrimeFraction1 {
+    public int[] solve(int[] A, int B) {
+
+        ArrayList<Pair1> arr = new ArrayList<>();
+        int n = A.length;
+
+        for (int i = 0; i < n; i++) {
+            int p = A[i];
+            for (int j = i + 1; j < n; j++) {
+                int q = A[j];
+                if (p < q) {
+                    arr.add(new Pair1(p, q));
+                }
+            }
+        }
+
+        PriorityQueue<Pair1> pq = new PriorityQueue<>(new CustomComparator());
+        for (Pair1 p : arr) {
+            if (pq.size() < B) {
+                pq.add(p);
+            } else {
+                Pair1 p2 = pq.peek();
+                double f1 = (double) p.x / p.y;
+                double f2 = (double) p2.x / p2.y;
+                if (f1 < f2) {
+                    pq.poll();
+                    pq.add(p);
+                }
+            }
+        }
+
+        Pair1 top = pq.peek();
+        return new int[]{top.x, top.y};
+    }
+}
+
+class Pair1 {
+    int x;
+    int y;
+
+    public Pair1(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class CustomComparator implements Comparator<Pair1> {
+    public int compare(Pair1 p1, Pair1 p2) {
+        double f1 = (double) p1.x / p1.y;
+        double f2 = (double) p2.x / p2.y;
+        return Double.compare(f2, f1);
+    }
+}
+
 
 /*Q3. B-th Smallest Prime Fraction
 Solved
