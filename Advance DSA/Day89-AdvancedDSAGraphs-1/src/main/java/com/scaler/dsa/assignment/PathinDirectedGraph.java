@@ -67,6 +67,38 @@ class PathinDirectedGraph1 {
     }
 }
 
+
+class PathinDirectedGraph2 {
+    int[] visited;
+    ArrayList<ArrayList<Integer>> adj;
+
+    public int solve(int A, int[][] B) {
+        int N = B.length;
+        adj = new ArrayList<ArrayList<Integer>>(N + 1);
+        visited = new int[N + 1];
+        for (int i = 0; i < N; i++) {
+            adj.add(new ArrayList<Integer>());
+            visited[i] = 0;
+        }
+        for (int i = 0; i < N; i++) {
+            adj.get(B[i][0]).add(B[i][1]);
+        }
+        dfs(1, A);
+        return visited[A];
+    }
+
+    void dfs(int s, int d) {
+        visited[s] = 1;
+        for (int i = 0; i < adj.get(s).size(); i++) {
+            int x = adj.get(s).get(i);
+            if(visited[x]==0){
+                dfs(x,d);
+            }
+        }
+    }
+}
+
+
 /*Q1. Path in Directed Graph
 Solved
 character backgroundcharacter

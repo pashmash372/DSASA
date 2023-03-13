@@ -28,7 +28,7 @@ public class ConstructRoads {
         ans %= mod;
         return (int) ans;
     }
-    public static void dfs(int u, int pnode, int c) {
+    public static void dfs(int u, int pnode, int c) { // pnode
         col[c]++;
         for (int v: adj.get(u)) {
             if (v != pnode) {
