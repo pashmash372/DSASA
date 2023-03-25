@@ -3,8 +3,14 @@ package com.scaler.dsa.assignement;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class FirstMissingInteger {
+    public static void main(String[] args) {
+        ArrayList<Integer> A = new ArrayList<>(List.of(1, 2, 3, 5));
+        System.out.println(new FirstMissingInteger().firstMissingPositive(A));
+    }
+
     public int firstMissingPositive(ArrayList<Integer> A) {
         int n = A.size();
         for (int i = 0; i < n; i++) {
@@ -18,11 +24,57 @@ public class FirstMissingInteger {
             }
         }
         for (int i = 0; i < n; i++) {
-            if (A.get(i) != i + 1)
-                return (i + 1);
+            if (A.get(i) != i + 1) return (i + 1);
         }
 
         return n + 1;
+    }
+}
+
+class Solution {
+    public static void main(String[] args) {
+        int[] A = new int[]{1, 2, 3, 5};
+        int n = 5;
+        System.out.println(new Solution().MissingNumber(A, n));
+    }
+
+    public int MissingNumber(int[] A, int n) {
+
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] > 0 && A[i] <= n) {
+                int pos = A[i] - 1;
+                if (A[pos] != A[i]) {
+                    swap(A, pos, i);
+                    i--;
+                }
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (A[i] != i + 1) return (i + 1);
+        }
+        return n + 1;
+    }
+
+    void swap(int[] A, int x, int y) {
+        int temp = A[x];
+        A[x] = A[y];
+        A[y] = temp;
+    }
+}
+
+class Solution12 {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 5};
+        int n = 5;
+        System.out.println(new Solution12().MissingNumber(a, n));
+    }
+
+    int MissingNumber(int[] a, int n) {
+
+        int sum = (n * n + 1) / 2;
+        for (int i = 0; i < a.length; i++)
+            sum -= a[i];
+        return sum;
     }
 }
 /*Q1. First Missing Integer
