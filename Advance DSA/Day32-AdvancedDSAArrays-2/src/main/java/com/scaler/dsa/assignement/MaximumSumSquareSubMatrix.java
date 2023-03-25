@@ -130,6 +130,37 @@ class MaximumSumSquareSubMatrix1 {
     }
 }
 
+/**/
+
+class MaximumSumSquareSubMatrix2 {
+    public int solve(int[][] A, int B) {
+        int ans = Integer.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[0].length; j++) {
+                if (j != 0) {
+                    A[i][j] = A[i][j - 1] + A[i][j];
+                }
+            }
+        }
+        for (int i = 0; i < A[0].length; i++) {
+            for (int j = 1; j < A.length; j++) {
+                A[j][i] = A[j - 1][i] + A[j][i];
+            }
+        }
+        for (int i = 0; i <= (A.length - B); i++) {
+            for (int j = 0; j <= (A[0].length - B); j++) {
+                int a1 = i, b1 = j, a2 = i - 1 + B, b2 = j - 1 + B, sum = 0;
+                sum = A[a2][b2];
+                if (b1 - 1 >= 0) sum -= A[a2][b1 - 1];
+                if (a1 - 1 >= 0) sum -= A[a1 - 1][b2];
+                if (a1 - 1 >= 0 && b1 - 1 >= 0) sum += A[a1 - 1][b1 - 1];
+                ans = Math.max(ans, sum);
+            }
+        }
+        return ans;
+    }
+}
+
 /*Q3. Maximum Sum Square SubMatrix
 Solved
 character backgroundcharacter
