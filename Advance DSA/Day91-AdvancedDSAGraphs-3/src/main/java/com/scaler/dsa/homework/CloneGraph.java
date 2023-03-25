@@ -19,7 +19,7 @@ public class CloneGraph {
     HashMap<UndirectedGraphNode, UndirectedGraphNode> map;
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
+        map = new HashMap<>();
         return auxCloneGraph(node);
     }
 

@@ -72,6 +72,38 @@ class CustomComp implements Comparator<Pair> {
         return aa.a - bb.a;
     }
 }
+
+class Solution {
+    public static void main(String[] args) {
+//        int[] a = new int[]{6, 1, 2, 8, 3, 4, 7, 10, 5};
+//        int n = 9;
+        int[] a = new int[]{1,2,3,5};
+        int n = 5;
+        System.out.println(new Solution().MissingNumber(a, n));
+    }
+
+    int MissingNumber(int[] a, int n) {
+
+        int i;
+        for (i = 0; i < n; i++) {
+            while (a[i] != i + 1 && 1 <= a[i] && a[i] < n-1) {
+                swap(a, i, a[i] - 1);
+            }
+        }
+        for (i = 0; i < n; i++) {
+            if (a[i] != i + 1) return i + 1;
+        }
+        return -1;
+    }
+
+    void swap(int[] a, int x, int y) {
+        int temp = a[x];
+        a[x] = a[y];
+        a[y] = temp;
+    }
+}
+
+
 /*Q3. Dijsktra
 Solved
 character backgroundcharacter
