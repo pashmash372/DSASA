@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class MaxDistance {
+    public static void main(String[] args) {
+        int[] A = {3, 5, 4, 2};
+        System.out.println(new MaxDistance().maximumGap(A));
+    }
+
     // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
     public int maximumGap(final int[] A) {
         int n = A.length;

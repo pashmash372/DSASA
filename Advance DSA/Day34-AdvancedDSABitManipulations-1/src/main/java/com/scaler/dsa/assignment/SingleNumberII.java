@@ -2,46 +2,50 @@ package com.scaler.dsa.assignment;
 
 import java.util.List;
 
-public class SingleNumberII {
-//    Approach 1:
 
-    public class Solution {
-        public int singleNumber(final List<Integer> A) {
-            int[] bits = new int[32];
-            // check frequency of each bit
-            for (int num : A) {
-                for (int i = 0; i < 32; i++) {
-                    bits[i] += (1 & (num >> i));
-                    bits[i] %= 3;
-                }
-            }
-            int number = 0;
-            for (int i = 31; i >= 0; i--) {
-                number = number * 2 + bits[i];
-            }
-            return number;
-        }
+public class SingleNumberII {
+
+    public static void main(String[] args) {
+        SingleNumberII s = new SingleNumberII();
+        List<Integer> A = List.of(1, 2, 4, 3, 3, 2, 2, 3, 1, 1);
+        System.out.println(s.singleNumber(A));
     }
 
-//    Approach 2:
-
-    public class Solution1 {
-        public int singleNumber(final List<Integer> A) {
-            int ones = 0, twos = 0, threes = 0;
-            for (int num : A) {
-                // twos is a bitmask to represent the ith bit had appeared twice
-                twos |= ones & num;
-                // ones is a bitmask to represent the ith bit had appeared once
-                ones ^= num;
-                // threes is a bitmask to represent the ith bit had appeared three times
-                threes = ones & twos;
-                ones &= ~threes;
-                twos &= ~threes;
+    public int singleNumber(final List<Integer> A) {
+        int[] bits = new int[32];
+        // check frequency of each bit
+        for (int num : A) {
+            for (int i = 0; i < 32; i++) {
+                bits[i] += (1 & (num >> i));
+                bits[i] %= 3;
             }
-            return ones;
         }
+        int number = 0;
+        for (int i = 31; i >= 0; i--) {
+            number = number * 2 + bits[i];
+        }
+        return number;
     }
 }
+
+
+class SingleNumberII1 {
+    public int singleNumber(final List<Integer> A) {
+        int ones = 0, twos = 0, threes = 0;
+        for (int num : A) {
+            // twos is a bitmask to represent the ith bit had appeared twice
+            twos |= ones & num;
+            // ones is a bitmask to represent the ith bit had appeared once
+            ones ^= num;
+            // threes is a bitmask to represent the ith bit had appeared three times
+            threes = ones & twos;
+            ones &= ~threes;
+            twos &= ~threes;
+        }
+        return ones;
+    }
+}
+
 /*Q2. Single Number II
 Solved
 character backgroundcharacter
