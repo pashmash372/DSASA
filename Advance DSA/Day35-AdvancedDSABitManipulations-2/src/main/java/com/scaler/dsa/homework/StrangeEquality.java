@@ -19,12 +19,15 @@ public class StrangeEquality {
 }
 /*Java - O(1) - commented and explained solution*/
 
-  class StrangeEquality1 {
-    public boolean checkBit(int A, int i){
-        if((A & (1<<i)) != 0)
-            return true;
-        else
-            return false;
+class StrangeEquality1 {
+    public static void main(String[] args) {
+        StrangeEquality1 s = new StrangeEquality1();
+        int A = 16;
+        System.out.println(s.solve(A));
+    }
+
+    public boolean checkBit(int A, int i) {
+        return (A & (1 << i)) != 0;
     }
 
     public int solve(int A) {
@@ -39,24 +42,24 @@ public class StrangeEquality {
         // the bitwise And gives 0.
         // for example if A=5 (in bits 101), the greatest smaller number to give bitwise and as zero is 010.
         int lastOneBit = 0;
-        for(int i=0; i<32; i++){
-            if(checkBit(A,i)){
+        for (int i = 0; i < 32; i++) {
+            if (checkBit(A, i)) {
                 lastOneBit = i;
             }
         }
+        int lastBit = (A & (A - 1)) ;
+        int countOfBits = lastOneBit + 1;
 
-        int countOfBits = lastOneBit+1;
-
-        for(int i=0; i<countOfBits; i++){
-            if(!checkBit(A,i)){
-                n1 = n1 + (1<<i);
+        for (int i = 0; i < countOfBits; i++) {
+            if (!checkBit(A, i)) {
+                n1 = n1 + (1 << i);
             }
         }
 
         //for smallest greater number
         // the smallest number greater than number to give an bitwise and as zero is 2^countOfBits.
         // for example if A=5 (in bits 101), the smallest greater number to give bitwise and as zero is 1000.
-        n2 = (1<<countOfBits);
+        n2 = (1 << countOfBits);
 
         return n1 ^ n2;
     }

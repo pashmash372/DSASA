@@ -1,5 +1,8 @@
 package com.scaler.dsa.assignment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SumofpairwiseHammingDistance {
 }
 /**/
@@ -39,6 +42,13 @@ class SumofpairwiseHammingDistance1 {
         }
 
         return (int) ans;
+
+    }
+
+    public static  void main(String[] args) {
+        List<Integer> list= new ArrayList<Integer>();
+
+
 
     }
 

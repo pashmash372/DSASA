@@ -4,7 +4,7 @@ package com.scaler.dsa.assignment;
 public class RegularExpressionMatch {
 
     /* best possible solution */
-    public int isMatch(final String s, final String p) {
+    public static int isMatch(final String s, final String p) {
         /* s -> string p -> pattern */
         int N = s.length();
         int M = p.length();
@@ -16,7 +16,7 @@ public class RegularExpressionMatch {
             d[0][1] = true;
         }
 
-        for (int i = 0; i < M; ++i) { // column wise traversal right direction
+        for (int i = 0; i < M; i++) { // column wise traversal right direction
 
             if (p.charAt(i) == '*') {
                 d[0][i + 1] = d[0][i];
@@ -37,64 +37,60 @@ public class RegularExpressionMatch {
         }
         return d[N][M] ? 1 : 0;
     }
+
+    public static void main(String[] args) {
+
+        String s="ac";
+        String p="ab*c";
+        System.out.println(isMatch(s, p));
+    }
+}
+class RegularExpressionMatch1 {
+    public static boolean isMatch(String s, String p) {
+
+        if (s == null || p == null) {
+            return false;
+        }
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+        dp[0][0] = true;
+        for (int i = 0; i < p.length(); i++) {
+            if (p.charAt(i) == '*' && dp[0][i - 1]) {
+                dp[0][i + 1] = true;
+            }
+        }
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == '.') {
+                    dp[i + 1][j + 1] = dp[i][j];
+                }
+                if (p.charAt(j) == s.charAt(i)) {
+                    dp[i + 1][j + 1] = dp[i][j];
+                }
+                if (p.charAt(j) == '*') {
+                    if (p.charAt(j - 1) != s.charAt(i) && p.charAt(j - 1) != '.') {
+                        dp[i + 1][j + 1] = dp[i + 1][j - 1];
+                    } else {
+                        dp[i + 1][j + 1] = (dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1]);
+                    }
+                }
+            }
+        }
+        return dp[s.length()][p.length()];
+    }
+
+    public static void main(String[] args) {
+        String s="ac";
+        String p="ab*c";
+        System.out.println(isMatch(s, p));
+    }
 }
 
 /* Another solution */
 
-class RegularExpressionMatch1 {
-    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
-    public int isMatch(final String A, final String B) {
 
-        int n = A.length();
-        int m = B.length();
-        int[] first = new int[m + 1];
-        int[] second = new int[m + 1];
-
-        for (int i = 1; i <= m; i++) {
-            if (B.charAt(i - 1) == '*') first[i] = 1;
-            else break;
-        }
-
-        first[0] = 1;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
-                if (A.charAt(i - 1) == B.charAt(j - 1) || B.charAt(j - 1) == '?') second[j] = first[j - 1];
-                else if (B.charAt(j - 1) == '*') second[j] = (first[j] == 1 || second[j - 1] == 1) ? 1 : 0;
-                else second[j] = 0;
-            }
-            first[0] = 0;
-            int[] temp = first;
-            first = second;
-            second = temp;
-        }
-
-        return first[m];
-    }
-}
 
 /* Another solution  best solution for this question*/
 
-class RegularExpressionMatch2 {
-    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
-    public int isMatch(final String s, final String p) {
-        int N = s.length();
-        int M = p.length();
-        boolean[][] dp = new boolean[N + 1][M + 1];
-//        Arrays.fill(dp, false);
-        dp[0][0] = true;
-        for (int i = 1; i <= M; i++) { /* column traversing */
-            if (p.charAt(i - 1) == '*') dp[0][i] = true;
-            else break;
-        }
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= M; j++) {
-                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') dp[i][j] = dp[i - 1][j - 1];
-                else if (p.charAt(j - 1) == '*') dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
-            }
-        }
-        return dp[N][M] ? 1 : 0;
-    }
-}
 
 
 /*Q3. Regular Expression Match
