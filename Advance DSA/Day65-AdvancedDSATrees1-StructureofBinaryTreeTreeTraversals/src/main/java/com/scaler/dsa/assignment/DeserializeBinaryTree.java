@@ -29,30 +29,10 @@ public class DeserializeBinaryTree {
         return root;
     }
 
-    public static void main(String[] args) {
-        Student s1= new Student();
-        s1.age=10;
-        s1.name="A";
 
-        Student s2= new Student();
-        int tempAge=s1.age;
-        s1.age= s2.age;
-        s2.age= tempAge;
-        s2.display();
-    }
 }
 
-class Student{
-    int age;
-    String name;
 
-    void display(){
-        System.out.println("My name is "+this.name+". I am "+ this.age+" years old");
-    }
-    void sayHello(String name){
-        System.out.println(this.name+"syas hello to "+name);
-    }
-}
 
 
 /*Q4. Deserialize Binary Tree
