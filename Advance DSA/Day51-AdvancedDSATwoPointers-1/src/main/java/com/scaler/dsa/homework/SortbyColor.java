@@ -11,15 +11,15 @@ public class SortbyColor {
 
         for (int i = 0; i <= two;) {
             if (A.get(i) == 0) {
-                int temp = A.get(zero);
-                A.set(zero, 0);
-                A.set(i, temp);
+                int temp = A.get(zero); //temp=A[zero]
+                A.set(zero, 0); // A[zero]=0
+                A.set(i, temp); // A[i]=temp;
                 zero++;
                 i++;
             } else if (A.get(i) == 2) {
-                int temp = A.get(two);
-                A.set(two, 2);
-                A.set(i, temp);
+                int temp = A.get(two); // temp=A[two]
+                A.set(two, 2);// A[two]=2
+                A.set(i, temp);// A[i]=temp
                 two--;
             } else {
                 i++;
